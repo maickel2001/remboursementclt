@@ -158,23 +158,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .alert {
             color: #ffffff !important;
         }
+        
+        /* Navbar mobile improvements */
+        .navbar-toggler {
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            padding: 4px 8px !important;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25) !important;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            width: 1.2em !important;
+            height: 1.2em !important;
+        }
+        
+        .navbar-collapse {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border-radius: 8px !important;
+            margin-top: 10px !important;
+            padding: 15px !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                text-align: center !important;
+            }
+            
+            .navbar-nav .nav-item {
+                margin: 5px 0 !important;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem !important;
+            }
+            
+            .d-flex.align-items-center span {
+                font-size: 0.9rem !important;
+            }
+            
+            .btn-outline-light.btn-sm {
+                padding: 6px 12px !important;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
             </a>
             
-            <div class="d-flex align-items-center">
-                <span class="text-white me-3">
-                    <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
-                </span>
-                <a href="../logout.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row">
+                        <span class="text-white me-lg-3 mb-2 mb-lg-0">
+                            <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
+                        </span>
+                        <a href="../logout.php" class="btn btn-outline-light btn-sm">
+                            <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -215,7 +269,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </nav>
 
             <!-- Main content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="padding-top: 80px;">
                 <div class="py-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h1 class="text-white">
