@@ -132,6 +132,82 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Custom CSS -->
     <link href="../assets/css/style.css" rel="stylesheet">
     
+    <!-- CSS POUR LISIBILITÉ UNIQUEMENT -->
+    <style>
+        html, body {
+            background: #0f172a !important;
+            color: #ffffff !important;
+        }
+        
+        * {
+            color: #ffffff !important;
+        }
+        
+        .container, .container-fluid, .row, .col, [class*="col-"] {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+        
+        .navbar, .navbar-glass {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .dashboard-sidebar {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .glass, .form-glass {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 16px !important;
+            backdrop-filter: blur(20px) !important;
+        }
+        
+        .form-control, .form-select, input, textarea, select {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border-color: #3b82f6 !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25) !important;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+            color: #ffffff !important;
+        }
+        
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+        }
+        
+        .alert-success {
+            background: rgba(34, 197, 94, 0.2) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(34, 197, 94, 0.4) !important;
+        }
+        
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.2) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(239, 68, 68, 0.4) !important;
+        }
+        
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.2) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(245, 158, 11, 0.4) !important;
+        }
+    </style>
+    
     <!-- CSS MINIMAL POUR LISIBILITÉ -->
     <style>
         html, body {
