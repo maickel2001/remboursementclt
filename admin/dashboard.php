@@ -111,29 +111,6 @@ try {
             color: #60a5fa !important;
         }
 
-        /* Sidebar */
-        .dashboard-sidebar {
-            background: rgba(15, 23, 42, 0.9) !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-            min-height: 100vh !important;
-        }
-
-        .sidebar-item {
-            color: #ffffff !important;
-            background: transparent !important;
-            padding: 12px 20px !important;
-            margin: 5px 15px !important;
-            border-radius: 8px !important;
-            text-decoration: none !important;
-            display: block !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .sidebar-item:hover, .sidebar-item.active {
-            background: rgba(59, 130, 246, 0.2) !important;
-            color: #ffffff !important;
-        }
-
         /* Cards glassmorphism */
         .glass, .stats-card, .form-glass {
             background: rgba(15, 23, 42, 0.8) !important;
@@ -366,291 +343,260 @@ try {
             .navbar-brand {
                 font-size: 1.5rem !important;
             }
-            
-            .d-flex.align-items-center span {
-                font-size: 0.9rem !important;
-            }
-            
-            .btn-outline-light.btn-sm {
-                padding: 6px 12px !important;
-            }
-            
-            .dashboard-sidebar {
-                display: none !important;
-            }
-            
-            .col-md-9.ms-sm-auto.col-lg-10 {
-                margin-left: 0 !important;
-                max-width: 100% !important;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
             </a>
             
-            <div class="d-flex align-items-center">
-                <span class="text-white me-3">
-                    <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
-                    <span class="badge bg-danger ms-2">Admin</span>
-                </span>
-                <a href="../logout.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row">
+                        <span class="text-white me-lg-3 mb-2 mb-lg-0">
+                            <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
+                            <span class="badge bg-danger ms-2">Admin</span>
+                        </span>
+                        <div class="d-flex gap-2 flex-wrap justify-content-center">
+                            <a href="remboursements.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-credit-card me-1"></i>Remboursements
+                            </a>
+                            <a href="utilisateurs.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-people me-1"></i>Utilisateurs
+                            </a>
+                            <a href="settings.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-gear me-1"></i>Paramètres
+                            </a>
+                            <a href="../logout.php" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block dashboard-sidebar">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="sidebar-item active" href="dashboard.php">
-                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="remboursements.php">
-                                <i class="bi bi-credit-card me-2"></i>Remboursements
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="utilisateurs.php">
-                                <i class="bi bi-people me-2"></i>Utilisateurs
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="settings.php">
-                                <i class="bi bi-gear me-2"></i>Paramètres
-                            </a>
-                        </li>
-                    </ul>
+    <div class="container-fluid" style="padding-top: 80px;">
+        <div class="py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-white">
+                    <i class="bi bi-speedometer2 me-3"></i>Dashboard Administrateur
+                </h1>
+                <div class="text-white-50">
+                    <i class="bi bi-calendar3 me-2"></i><?= date('d/m/Y H:i') ?>
                 </div>
-            </nav>
+            </div>
 
-            <!-- Main content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="py-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h1 class="text-white">
-                            <i class="bi bi-speedometer2 me-3"></i>Dashboard Administrateur
-                        </h1>
-                        <div class="text-white-50">
-                            <i class="bi bi-calendar3 me-2"></i><?= date('d/m/Y H:i') ?>
+            <!-- Welcome message -->
+            <div class="glass p-4 rounded-3 mb-4">
+                <h3 class="text-white mb-3">
+                    Bienvenue dans l'espace administrateur, <?= htmlspecialchars($currentUser['firstName']) ?> ! 🔧
+                </h3>
+                <p class="text-white-50 mb-0">
+                    Gérez l'ensemble de la plateforme RemboursePRO depuis ce tableau de bord centralisé.
+                </p>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value"><?= $stats['total_clients'] ?></div>
+                        <div class="stats-label">
+                            <i class="bi bi-people me-2"></i>Clients Inscrits
                         </div>
                     </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value"><?= $stats['total_reimbursements'] ?></div>
+                        <div class="stats-label">
+                            <i class="bi bi-list-check me-2"></i>Total Demandes
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value"><?= number_format($stats['total_amount'], 0) ?>€</div>
+                        <div class="stats-label">
+                            <i class="bi bi-currency-euro me-2"></i>Montant Total
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value"><?= number_format($stats['total_reimbursed'], 0) ?>€</div>
+                        <div class="stats-label">
+                            <i class="bi bi-check-circle me-2"></i>Remboursé
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <!-- Welcome message -->
+            <!-- Status Overview -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value text-warning"><?= $stats['pending_count'] ?></div>
+                        <div class="stats-label">
+                            <i class="bi bi-clock me-2"></i>En Attente
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value text-success"><?= $stats['validated_count'] ?></div>
+                        <div class="stats-label">
+                            <i class="bi bi-check-circle me-2"></i>Validés
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value text-danger"><?= $stats['refused_count'] ?></div>
+                        <div class="stats-label">
+                            <i class="bi bi-x-circle me-2"></i>Refusés
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="glass p-4 rounded-3 mb-5">
+                <h4 class="text-white mb-4">
+                    <i class="bi bi-lightning-charge me-2"></i>Actions Rapides
+                </h4>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <a href="remboursements.php" class="btn btn-gradient w-100">
+                            <i class="bi bi-credit-card me-2"></i>Gérer Remboursements
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="utilisateurs.php" class="btn btn-glass w-100">
+                            <i class="bi bi-people me-2"></i>Gérer Utilisateurs
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="settings.php" class="btn btn-glass w-100">
+                            <i class="bi bi-gear me-2"></i>Paramètres
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="../index.php" class="btn btn-glass w-100">
+                            <i class="bi bi-house me-2"></i>Voir le Site
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Graphique des remboursements -->
+                <div class="col-lg-8">
                     <div class="glass p-4 rounded-3 mb-4">
-                        <h3 class="text-white mb-3">
-                            Bienvenue dans l'espace administrateur, <?= htmlspecialchars($currentUser['firstName']) ?> ! 🔧
-                        </h3>
-                        <p class="text-white-50 mb-0">
-                            Gérez l'ensemble de la plateforme RemboursePRO depuis ce tableau de bord centralisé.
-                        </p>
-                    </div>
-
-                    <!-- Statistics Cards -->
-                    <div class="row g-4 mb-5">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value"><?= $stats['total_clients'] ?></div>
-                                <div class="stats-label">
-                                    <i class="bi bi-people me-2"></i>Clients Inscrits
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-3 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value"><?= $stats['total_reimbursements'] ?></div>
-                                <div class="stats-label">
-                                    <i class="bi bi-list-check me-2"></i>Total Demandes
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-3 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value"><?= number_format($stats['total_amount'], 0) ?>€</div>
-                                <div class="stats-label">
-                                    <i class="bi bi-currency-euro me-2"></i>Montant Total
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-3 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value"><?= number_format($stats['total_reimbursed'], 0) ?>€</div>
-                                <div class="stats-label">
-                                    <i class="bi bi-check-circle me-2"></i>Remboursé
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Status Overview -->
-                    <div class="row g-4 mb-5">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value text-warning"><?= $stats['pending_count'] ?></div>
-                                <div class="stats-label">
-                                    <i class="bi bi-clock me-2"></i>En Attente
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value text-success"><?= $stats['validated_count'] ?></div>
-                                <div class="stats-label">
-                                    <i class="bi bi-check-circle me-2"></i>Validés
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value text-danger"><?= $stats['refused_count'] ?></div>
-                                <div class="stats-label">
-                                    <i class="bi bi-x-circle me-2"></i>Refusés
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quick Actions -->
-                    <div class="glass p-4 rounded-3 mb-5">
                         <h4 class="text-white mb-4">
-                            <i class="bi bi-lightning-charge me-2"></i>Actions Rapides
+                            <i class="bi bi-bar-chart me-2"></i>Évolution des Remboursements (12 derniers mois)
                         </h4>
-                        <div class="row g-3">
-                            <div class="col-md-3">
-                                <a href="remboursements.php" class="btn btn-gradient w-100">
-                                    <i class="bi bi-credit-card me-2"></i>Gérer Remboursements
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="utilisateurs.php" class="btn btn-glass w-100">
-                                    <i class="bi bi-people me-2"></i>Gérer Utilisateurs
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="settings.php" class="btn btn-glass w-100">
-                                    <i class="bi bi-gear me-2"></i>Paramètres
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="../index.php" class="btn btn-glass w-100">
-                                    <i class="bi bi-house me-2"></i>Voir le Site
-                                </a>
-                            </div>
+                        <div class="chart-container">
+                            <canvas id="reimbursementChart"></canvas>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <!-- Graphique des remboursements -->
-                        <div class="col-lg-8">
-                            <div class="glass p-4 rounded-3 mb-4">
-                                <h4 class="text-white mb-4">
-                                    <i class="bi bi-bar-chart me-2"></i>Évolution des Remboursements (12 derniers mois)
-                                </h4>
-                                <div class="chart-container">
-                                    <canvas id="reimbursementChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Répartition par statut -->
-                        <div class="col-lg-4">
-                            <div class="glass p-4 rounded-3 mb-4">
-                                <h4 class="text-white mb-4">
-                                    <i class="bi bi-pie-chart me-2"></i>Répartition par Statut
-                                </h4>
-                                <div class="chart-container">
-                                    <canvas id="statusChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recent Reimbursements -->
-                    <div class="glass p-4 rounded-3">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h4 class="text-white mb-0">
-                                <i class="bi bi-clock-history me-2"></i>Derniers Remboursements
-                            </h4>
-                            <a href="remboursements.php" class="btn btn-glass">
-                                <i class="bi bi-eye me-2"></i>Voir tout
-                            </a>
-                        </div>
-                        
-                        <?php if (empty($recentReimbursements)): ?>
-                            <div class="text-center py-5">
-                                <i class="bi bi-inbox" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
-                                <p class="text-white-50 mt-3">Aucun remboursement pour le moment</p>
-                            </div>
-                        <?php else: ?>
-                            <div class="table-responsive">
-                                <table class="table table-glass">
-                                    <thead>
-                                        <tr>
-                                            <th>Client</th>
-                                            <th>Date</th>
-                                            <th>Montant</th>
-                                            <th>Remboursement</th>
-                                            <th>Moyen de paiement</th>
-                                            <th>Statut</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($recentReimbursements as $reimbursement): ?>
-                                            <tr>
-                                                <td>
-                                                    <?= htmlspecialchars($reimbursement['firstName'] . ' ' . $reimbursement['lastName']) ?>
-                                                    <br><small class="text-white-50"><?= htmlspecialchars($reimbursement['email']) ?></small>
-                                                </td>
-                                                <td><?= date('d/m/Y H:i', strtotime($reimbursement['created_at'])) ?></td>
-                                                <td><?= number_format($reimbursement['amount_to_reimburse'], 2) ?>€</td>
-                                                <td><?= number_format($reimbursement['reimbursement_amount'], 2) ?>€</td>
-                                                <td>
-                                                    <?php
-                                                    $paymentMethods = [
-                                                        'carte_recharge' => 'Carte de recharge',
-                                                        'code_rechargement' => 'Code de rechargement',
-                                                        'carte_bancaire' => 'Carte bancaire'
-                                                    ];
-                                                    echo $paymentMethods[$reimbursement['payment_method']] ?? $reimbursement['payment_method'];
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <span class="status-badge status-<?= $reimbursement['status'] ?>">
-                                                        <?= ucfirst(str_replace('_', ' ', $reimbursement['status'])) ?>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <a href="remboursements.php?id=<?= $reimbursement['id'] ?>" class="btn btn-glass btn-sm">
-                                                        <i class="bi bi-eye"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <?php endif; ?>
                     </div>
                 </div>
-            </main>
+                
+                <!-- Répartition par statut -->
+                <div class="col-lg-4">
+                    <div class="glass p-4 rounded-3 mb-4">
+                        <h4 class="text-white mb-4">
+                            <i class="bi bi-pie-chart me-2"></i>Répartition par Statut
+                        </h4>
+                        <div class="chart-container">
+                            <canvas id="statusChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Reimbursements -->
+            <div class="glass p-4 rounded-3">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="text-white mb-0">
+                        <i class="bi bi-clock-history me-2"></i>Derniers Remboursements
+                    </h4>
+                    <a href="remboursements.php" class="btn btn-glass">
+                        <i class="bi bi-eye me-2"></i>Voir tout
+                    </a>
+                </div>
+                
+                <?php if (empty($recentReimbursements)): ?>
+                    <div class="text-center py-5">
+                        <i class="bi bi-inbox" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
+                        <p class="text-white-50 mt-3">Aucun remboursement pour le moment</p>
+                    </div>
+                <?php else: ?>
+                    <div class="table-responsive">
+                        <table class="table table-glass">
+                            <thead>
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Date</th>
+                                    <th>Montant</th>
+                                    <th>Remboursement</th>
+                                    <th>Moyen de paiement</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($recentReimbursements as $reimbursement): ?>
+                                    <tr>
+                                        <td>
+                                            <?= htmlspecialchars($reimbursement['firstName'] . ' ' . $reimbursement['lastName']) ?>
+                                            <br><small class="text-white-50"><?= htmlspecialchars($reimbursement['email']) ?></small>
+                                        </td>
+                                        <td><?= date('d/m/Y H:i', strtotime($reimbursement['created_at'])) ?></td>
+                                        <td><?= number_format($reimbursement['amount_to_reimburse'], 2) ?>€</td>
+                                        <td><?= number_format($reimbursement['reimbursement_amount'], 2) ?>€</td>
+                                        <td>
+                                            <?php
+                                            $paymentMethods = [
+                                                'carte_recharge' => 'Carte de recharge',
+                                                'code_rechargement' => 'Code de rechargement',
+                                                'carte_bancaire' => 'Carte bancaire'
+                                            ];
+                                            echo $paymentMethods[$reimbursement['payment_method']] ?? $reimbursement['payment_method'];
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <span class="status-badge status-<?= $reimbursement['status'] ?>">
+                                                <?= ucfirst(str_replace('_', ' ', $reimbursement['status'])) ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="remboursements.php?id=<?= $reimbursement['id'] ?>" class="btn btn-glass btn-sm">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 
