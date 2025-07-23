@@ -75,8 +75,261 @@ try {
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <!-- Custom CSS -->
-    <link href="../assets/css/style.css" rel="stylesheet">
+    <!-- CSS INTÉGRÉ -->
+    <style>
+        html, body {
+            background: #0f172a !important;
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            min-height: 100vh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        * {
+            color: #ffffff !important;
+        }
+
+        .container, .container-fluid, .row, .col, [class*="col-"] {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+        /* Navigation */
+        .navbar, .navbar-glass {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #60a5fa !important;
+        }
+
+        /* Sidebar */
+        .dashboard-sidebar {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+            min-height: 100vh !important;
+        }
+
+        .sidebar-item {
+            color: #ffffff !important;
+            background: transparent !important;
+            padding: 12px 20px !important;
+            margin: 5px 15px !important;
+            border-radius: 8px !important;
+            text-decoration: none !important;
+            display: block !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .sidebar-item:hover, .sidebar-item.active {
+            background: rgba(59, 130, 246, 0.2) !important;
+            color: #ffffff !important;
+        }
+
+        /* Cards glassmorphism */
+        .glass, .stats-card, .form-glass {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 16px !important;
+            padding: 1.5rem !important;
+            backdrop-filter: blur(20px) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+            color: #ffffff !important;
+            margin-bottom: 1rem !important;
+        }
+
+        /* Titres */
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+        }
+
+        /* Stats cards */
+        .stats-value {
+            font-size: 2rem !important;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .stats-label {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-size: 0.9rem !important;
+        }
+
+        /* Boutons */
+        .btn {
+            border-radius: 10px !important;
+            padding: 10px 20px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+            border: none !important;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
+        }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%) !important;
+            color: #ffffff !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+        }
+
+        .btn-success {
+            background: #10b981 !important;
+            color: #ffffff !important;
+        }
+
+        .btn-danger {
+            background: #ef4444 !important;
+            color: #ffffff !important;
+        }
+
+        .btn-warning {
+            background: #f59e0b !important;
+            color: #ffffff !important;
+        }
+
+        /* Tables */
+        .table {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+        .table th {
+            background: rgba(15, 23, 42, 0.8) !important;
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            font-weight: 600 !important;
+        }
+
+        .table td {
+            background: transparent !important;
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .table-glass {
+            background: rgba(15, 23, 42, 0.6) !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+        }
+
+        /* Status badges */
+        .status-badge {
+            padding: 4px 12px !important;
+            border-radius: 20px !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+        }
+
+        .status-en_attente, .status-en-attente {
+            background: rgba(245, 158, 11, 0.2) !important;
+            color: #fbbf24 !important;
+            border: 1px solid rgba(245, 158, 11, 0.4) !important;
+        }
+
+        .status-validé {
+            background: rgba(16, 185, 129, 0.2) !important;
+            color: #34d399 !important;
+            border: 1px solid rgba(16, 185, 129, 0.4) !important;
+        }
+
+        .status-refusé {
+            background: rgba(239, 68, 68, 0.2) !important;
+            color: #f87171 !important;
+            border: 1px solid rgba(239, 68, 68, 0.4) !important;
+        }
+
+        /* Alertes */
+        .alert {
+            border-radius: 10px !important;
+            border: none !important;
+            padding: 1rem 1.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .alert-success {
+            background: rgba(34, 197, 94, 0.2) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(34, 197, 94, 0.4) !important;
+        }
+
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.2) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(239, 68, 68, 0.4) !important;
+        }
+
+        /* Badges */
+        .badge {
+            color: #ffffff !important;
+        }
+
+        .bg-primary {
+            background: #3b82f6 !important;
+        }
+
+        .bg-danger {
+            background: #ef4444 !important;
+        }
+
+        .bg-success {
+            background: #10b981 !important;
+        }
+
+        /* Chart container */
+        .chart-container {
+            background: rgba(15, 23, 42, 0.6) !important;
+            border-radius: 8px !important;
+            padding: 1rem !important;
+            height: 400px !important;
+        }
+
+        /* Liens */
+        a {
+            color: #60a5fa !important;
+        }
+
+        a:hover {
+            color: #93c5fd !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-value {
+                font-size: 1.5rem !important;
+            }
+            
+            .container, .container-fluid {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -366,15 +619,15 @@ try {
                 datasets: [{
                     label: 'Nombre de remboursements',
                     data: chartData.map(item => item.count),
-                    borderColor: 'rgba(102, 126, 234, 1)',
-                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
                     tension: 0.4,
                     fill: true
                 }, {
                     label: 'Montant (€)',
                     data: chartData.map(item => item.amount),
-                    borderColor: 'rgba(118, 75, 162, 1)',
-                    backgroundColor: 'rgba(118, 75, 162, 0.1)',
+                    borderColor: 'rgba(139, 92, 246, 1)',
+                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
                     tension: 0.4,
                     fill: true,
                     yAxisID: 'y1'
@@ -422,14 +675,14 @@ try {
                 datasets: [{
                     data: [stats.pending_count, stats.validated_count, stats.refused_count],
                     backgroundColor: [
-                        'rgba(255, 193, 7, 0.8)',
-                        'rgba(40, 167, 69, 0.8)',
-                        'rgba(220, 53, 69, 0.8)'
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(16, 185, 129, 0.8)',
+                        'rgba(239, 68, 68, 0.8)'
                     ],
                     borderColor: [
-                        'rgba(255, 193, 7, 1)',
-                        'rgba(40, 167, 69, 1)',
-                        'rgba(220, 53, 69, 1)'
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(239, 68, 68, 1)'
                     ],
                     borderWidth: 2
                 }]
