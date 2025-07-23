@@ -463,7 +463,97 @@ try {
         </div>
     </div>
 
+    <!-- Widget météo -->
+    <div id="weather-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <div class="glass p-3 rounded-3" style="min-width: 200px;">
+            <h6 class="text-white mb-2"><i class="bi bi-cloud-sun me-2"></i>Météo</h6>
+            <div id="weather-info" class="text-white-50 small">
+                <div>Paris, France</div>
+                <div>🌤️ 22°C - Partiellement nuageux</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Raccourcis clavier -->
+    <div id="shortcuts-help" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; display: none;">
+        <div class="glass p-3 rounded-3">
+            <h6 class="text-white mb-2"><i class="bi bi-keyboard me-2"></i>Raccourcis</h6>
+            <div class="text-white-50 small">
+                <div><kbd>Ctrl + N</kbd> Nouveau remboursement</div>
+                <div><kbd>Ctrl + H</kbd> Historique</div>
+                <div><kbd>Ctrl + P</kbd> Profil</div>
+                <div><kbd>?</kbd> Aide</div>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Raccourcis clavier
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey) {
+                switch(e.key) {
+                    case 'n':
+                        e.preventDefault();
+                        window.location.href = 'remboursement.php';
+                        break;
+                    case 'h':
+                        e.preventDefault();
+                        window.location.href = 'historique.php';
+                        break;
+                    case 'p':
+                        e.preventDefault();
+                        window.location.href = 'profil.php';
+                        break;
+                }
+            } else if (e.key === '?') {
+                const help = document.getElementById('shortcuts-help');
+                help.style.display = help.style.display === 'none' ? 'block' : 'none';
+            }
+        });
+
+        // Animation des statistiques au chargement
+        function animateStats() {
+            document.querySelectorAll('.stats-value').forEach(stat => {
+                const finalValue = parseInt(stat.textContent);
+                let currentValue = 0;
+                const increment = finalValue / 50;
+                
+                const timer = setInterval(() => {
+                    currentValue += increment;
+                    if (currentValue >= finalValue) {
+                        stat.textContent = finalValue;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(currentValue);
+                    }
+                }, 30);
+            });
+        }
+
+        // Effet de pulsation sur les boutons d'action
+        function addPulseEffect() {
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+                    70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+                }
+                
+                .btn-gradient:hover {
+                    animation: pulse 2s infinite !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Initialiser les effets
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(animateStats, 500);
+            addPulseEffect();
+        });
+    </script>
 </body>
 </html>

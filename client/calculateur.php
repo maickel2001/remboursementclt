@@ -388,9 +388,14 @@ $currentUser = getCurrentUser();
                             <h4 class="text-white mb-0">
                                 <i class="bi bi-clock-history me-2"></i>Historique des Simulations
                             </h4>
-                            <button class="btn btn-glass btn-sm" onclick="clearHistory()">
+                            <div>
+                                <button class="btn btn-glass btn-sm me-2" onclick="exportHistory()">
+                                    <i class="bi bi-download me-2"></i>Exporter
+                                </button>
+                                <button class="btn btn-glass btn-sm" onclick="clearHistory()">
                                 <i class="bi bi-trash me-2"></i>Vider l'historique
-                            </button>
+                                </button>
+                            </div>
                         </div>
                         
                         <div id="simulationHistory">
@@ -399,6 +404,12 @@ $currentUser = getCurrentUser();
                                 <p class="text-white-50 mt-2">Aucune simulation sauvegardée</p>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- Conseils intelligents -->
+                    <div class="glass p-4 rounded-3 mt-4" id="smartTips">
+                        <h4 class="text-white mb-3"><i class="bi bi-lightbulb me-2"></i>Conseil Intelligent</h4>
+                        <p class="text-white-50" id="tipContent">Calculez différents scénarios pour optimiser vos remboursements.</p>
                     </div>
                 </div>
             </main>
@@ -410,6 +421,7 @@ $currentUser = getCurrentUser();
     
     <script>
         let chart = null;
+        let tipIndex = 0;
         
         // Calcul automatique et mise à jour du graphique
         function updateCalculator() {
@@ -426,6 +438,7 @@ $currentUser = getCurrentUser();
                 document.getElementById('calculatorResult').style.display = 'block';
                 
                 updateChart(reimbursementAmount, remainingAmount);
+                showSmartTip(totalAmount, reimbursementAmount, remainingAmount);
             } else {
                 document.getElementById('calculatorResult').style.display = 'none';
                 if (chart) {
@@ -433,6 +446,32 @@ $currentUser = getCurrentUser();
                     chart = null;
                 }
             }
+        }
+
+        // Conseils intelligents basés sur les calculs
+        function showSmartTip(total, reimbursement, remaining) {
+            const tips = [
+                remaining === 0 ? "✅ Excellent ! Remboursement complet effectué." : 
+                remaining < total * 0.3 ? "👍 Bon remboursement ! Il reste moins de 30% à rembourser." :
+                remaining > total * 0.7 ? "⚠️ Remboursement partiel. Considérez augmenter le montant." :
+                "💡 Remboursement équilibré. Vous êtes sur la bonne voie.",
+                
+                total > 500 ? "💰 Montant élevé détecté. Vérifiez les conditions de remboursement." :
+                total < 50 ? "📝 Petit montant. Le traitement sera rapide." :
+                "💼 Montant standard. Traitement habituel prévu.",
+                
+                reimbursement === total ? "🎯 Remboursement intégral ! Parfait." :
+                reimbursement > total * 0.8 ? "📈 Remboursement quasi-complet. Très bien !" :
+                "📊 Remboursement partiel. Planifiez le reste si nécessaire."
+            ];
+            
+            const randomTip = tips[Math.floor(Math.random() * tips.length)];
+            document.getElementById('tipContent').textContent = randomTip;
+            
+            // Animation du conseil
+            const tipElement = document.getElementById('smartTips');
+            tipElement.style.animation = 'none';
+            setTimeout(() => tipElement.style.animation = 'pulse 2s ease-in-out', 100);
         }
 
         // Mise à jour du graphique
@@ -569,6 +608,27 @@ $currentUser = getCurrentUser();
                 localStorage.setItem('simulationHistory', JSON.stringify(history));
                 loadHistory();
             }
+        }
+
+        // Exporter l'historique
+        function exportHistory() {
+            const history = JSON.parse(localStorage.getItem('simulationHistory') || '[]');
+            if (history.length === 0) {
+                alert('Aucune simulation à exporter');
+                return;
+            }
+            
+            const csvContent = "data:text/csv;charset=utf-8," 
+                + "Date,Total,Remboursement,Reste\n"
+                + history.map(sim => `${sim.date},${sim.totalAmount},${sim.reimbursementAmount},${sim.remainingAmount}`).join('\n');
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', 'historique_simulations.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         // Vider l'historique
