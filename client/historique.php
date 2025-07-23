@@ -67,8 +67,233 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link href="../assets/css/style.css" rel="stylesheet">
+    <!-- CSS INTÉGRÉ -->
+    <style>
+        html, body {
+            background: #0f172a !important;
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            min-height: 100vh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        * {
+            color: #ffffff !important;
+        }
+
+        .container, .container-fluid, .row, .col, [class*="col-"] {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+        /* Navigation */
+        .navbar, .navbar-glass {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #60a5fa !important;
+        }
+
+        /* Sidebar */
+        .dashboard-sidebar {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+            min-height: 100vh !important;
+        }
+
+        .sidebar-item {
+            color: #ffffff !important;
+            background: transparent !important;
+            padding: 12px 20px !important;
+            margin: 5px 15px !important;
+            border-radius: 8px !important;
+            text-decoration: none !important;
+            display: block !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .sidebar-item:hover, .sidebar-item.active {
+            background: rgba(59, 130, 246, 0.2) !important;
+            color: #ffffff !important;
+        }
+
+        /* Cards glassmorphism */
+        .glass {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 16px !important;
+            padding: 1.5rem !important;
+            backdrop-filter: blur(20px) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+            color: #ffffff !important;
+            margin-bottom: 1rem !important;
+        }
+
+        /* Titres */
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+        }
+
+        /* Textes */
+        p, span, div, label, small {
+            color: #ffffff !important;
+        }
+
+        .text-white-50 {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        /* Formulaires */
+        .form-control, .form-select, input, textarea, select {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+            border-radius: 10px !important;
+            padding: 12px 16px !important;
+        }
+
+        .form-control:focus, .form-select:focus, input:focus, textarea:focus, select:focus {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border-color: #3b82f6 !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25) !important;
+        }
+
+        .form-label {
+            color: #ffffff !important;
+            font-weight: 500 !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        /* Boutons */
+        .btn {
+            border-radius: 10px !important;
+            padding: 10px 20px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+            border: none !important;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
+        }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%) !important;
+            color: #ffffff !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+        }
+
+        /* Tables */
+        .table {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+        .table th {
+            background: rgba(15, 23, 42, 0.8) !important;
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            font-weight: 600 !important;
+        }
+
+        .table td {
+            background: transparent !important;
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .table-glass {
+            background: rgba(15, 23, 42, 0.6) !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+        }
+
+        /* Status badges */
+        .status-badge {
+            padding: 4px 12px !important;
+            border-radius: 20px !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+        }
+
+        .status-en_attente, .status-en-attente {
+            background: rgba(245, 158, 11, 0.2) !important;
+            color: #fbbf24 !important;
+            border: 1px solid rgba(245, 158, 11, 0.4) !important;
+        }
+
+        .status-validé {
+            background: rgba(16, 185, 129, 0.2) !important;
+            color: #34d399 !important;
+            border: 1px solid rgba(16, 185, 129, 0.4) !important;
+        }
+
+        .status-refusé {
+            background: rgba(239, 68, 68, 0.2) !important;
+            color: #f87171 !important;
+            border: 1px solid rgba(239, 68, 68, 0.4) !important;
+        }
+
+        /* Pagination */
+        .page-link {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+        }
+
+        .page-link:hover {
+            background: rgba(59, 130, 246, 0.3) !important;
+            color: #ffffff !important;
+        }
+
+        .page-item.active .page-link {
+            background: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+            color: #ffffff !important;
+        }
+
+        /* Liens */
+        a {
+            color: #60a5fa !important;
+        }
+
+        a:hover {
+            color: #93c5fd !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container, .container-fluid {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -145,10 +370,10 @@ try {
                     <div class="glass p-3 rounded-3 mb-4">
                         <form method="GET" action="" class="row g-3 align-items-end">
                             <div class="col-md-4">
-                                <label for="status" class="form-label text-white">
+                                <label for="status" class="form-label">
                                     <i class="bi bi-funnel me-2"></i>Filtrer par statut
                                 </label>
-                                <select class="form-control form-control-glass" id="status" name="status">
+                                <select class="form-control" id="status" name="status">
                                     <option value="">Tous les statuts</option>
                                     <option value="en_attente" <?= $statusFilter === 'en_attente' ? 'selected' : '' ?>>En attente</option>
                                     <option value="validé" <?= $statusFilter === 'validé' ? 'selected' : '' ?>>Validé</option>
@@ -249,7 +474,7 @@ try {
                                     <ul class="pagination justify-content-center">
                                         <?php if ($page > 1): ?>
                                             <li class="page-item">
-                                                <a class="page-link bg-transparent border-white text-white" 
+                                                <a class="page-link" 
                                                    href="?page=<?= $page - 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?>">
                                                     <i class="bi bi-chevron-left"></i>
                                                 </a>
@@ -258,7 +483,7 @@ try {
                                         
                                         <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++): ?>
                                             <li class="page-item <?= $i === $page ? 'active' : '' ?>">
-                                                <a class="page-link bg-transparent border-white text-white" 
+                                                <a class="page-link" 
                                                    href="?page=<?= $i ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?>">
                                                     <?= $i ?>
                                                 </a>
@@ -267,7 +492,7 @@ try {
                                         
                                         <?php if ($page < $totalPages): ?>
                                             <li class="page-item">
-                                                <a class="page-link bg-transparent border-white text-white" 
+                                                <a class="page-link" 
                                                    href="?page=<?= $page + 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?>">
                                                     <i class="bi bi-chevron-right"></i>
                                                 </a>
