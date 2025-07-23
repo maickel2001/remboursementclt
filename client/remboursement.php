@@ -131,6 +131,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <!-- Custom CSS -->
     <link href="../assets/css/style.css" rel="stylesheet">
+    
+    <!-- CSS MINIMAL POUR LISIBILITÉ UNIQUEMENT -->
+    <style>
+        body {
+            background: #0f172a !important;
+            color: #ffffff !important;
+        }
+        
+        h1, h2, h3, h4, h5, h6, p, span, div, label, small, li {
+            color: #ffffff !important;
+        }
+        
+        .form-control, .form-select {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border-color: #3b82f6 !important;
+            color: #ffffff !important;
+        }
+        
+        .alert {
+            color: #ffffff !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
