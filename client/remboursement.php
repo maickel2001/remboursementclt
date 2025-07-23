@@ -143,6 +143,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #ffffff !important;
         }
         
+        /* Champs conditionnels - cachés par défaut mais affichables */
+        .payment-fields {
+            display: none !important;
+        }
+        
+        .payment-fields.show {
+            display: block !important;
+        }
+        
         .container, .container-fluid, .row, .col, [class*="col-"] {
             background: transparent !important;
             color: #ffffff !important;
