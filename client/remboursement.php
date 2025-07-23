@@ -274,6 +274,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #ffffff !important;
         }
 
+        .btn-outline-danger {
+            background: transparent !important;
+            border: 1px solid #ef4444 !important;
+            color: #ef4444 !important;
+        }
+
+        .btn-outline-danger:hover {
+            background: #ef4444 !important;
+            color: #ffffff !important;
+        }
+
+        .btn-warning {
+            background: #f59e0b !important;
+            color: #ffffff !important;
+        }
+
         /* Alertes */
         .alert {
             border-radius: 10px !important;
@@ -300,14 +316,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border: 1px solid rgba(245, 158, 11, 0.4) !important;
         }
 
-        /* Champs conditionnels */
+        /* Champs conditionnels - CACHÉS PAR DÉFAUT */
         .payment-fields {
             background: rgba(15, 23, 42, 0.6) !important;
             border: 1px solid rgba(255, 255, 255, 0.1) !important;
             border-radius: 8px !important;
             padding: 1rem !important;
             margin-top: 1rem !important;
-            display: none !important;
+            display: none !important; /* CACHÉ PAR DÉFAUT */
         }
 
         .carte-recharge-item {
@@ -425,7 +441,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <i class="bi bi-credit-card me-2"></i>Formulaire de Remboursement
                                 </h3>
                                 
-                                <form method="POST" action="">
+                                <form method="POST" action="" id="reimbursementForm">
                                     <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
                                     
                                     <div class="row mb-3">
@@ -465,7 +481,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </div>
                                     
                                     <!-- Champs conditionnels pour carte de recharge -->
-                                    <div class="payment-fields" id="carte_recharge_fields" style="display: none;">
+                                    <div class="payment-fields" id="carte_recharge_fields">
                                         <label for="type_carte" class="form-label">
                                             <i class="bi bi-credit-card me-2"></i>Type de carte de recharge *
                                         </label>
@@ -476,12 +492,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             <option value="pcs">PCS</option>
                                         </select>
                                         
-                                        <div id="numeros_cartes_container" style="display: none;">
+                                        <div id="numeros_cartes_container">
                                             <label class="form-label">
                                                 <i class="bi bi-123 me-2"></i>Numéros des cartes de recharge *
                                             </label>
                                             <div id="cartes_container">
-                                                <!-- Les cartes seront ajoutées ici dynamiquement -->
+                                                <!-- Les cartes seront ajoutées ici -->
                                             </div>
                                             <button type="button" id="add_carte_btn" class="btn btn-glass btn-sm mt-2">
                                                 <i class="bi bi-plus-circle me-2"></i>Ajouter une carte
@@ -490,7 +506,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </div>
                                     
                                     <!-- Champs conditionnels pour code de rechargement -->
-                                    <div class="payment-fields" id="code_rechargement_fields" style="display: none;">
+                                    <div class="payment-fields" id="code_rechargement_fields">
                                         <label for="code_rechargement" class="form-label">
                                             <i class="bi bi-key me-2"></i>Code de rechargement (12 chiffres) *
                                         </label>
@@ -500,7 +516,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </div>
                                     
                                     <!-- Message pour carte bancaire -->
-                                    <div class="payment-fields" id="carte_bancaire_fields" style="display: none;">
+                                    <div class="payment-fields" id="carte_bancaire_fields">
                                         <div class="alert alert-warning">
                                             <i class="bi bi-exclamation-triangle me-2"></i>
                                             Le paiement par carte bancaire est actuellement en maintenance. 
@@ -554,153 +570,181 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Calcul automatique du reste à rembourser
-        function calculateRemaining() {
-            const montantTotal = parseFloat(document.getElementById('montant_total').value) || 0;
-            const remboursementEffectue = parseFloat(document.getElementById('remboursement_effectue').value) || 0;
-            const resteARembourser = Math.max(0, montantTotal - remboursementEffectue);
-            
-            document.getElementById('reste_a_rembourser').value = resteARembourser.toFixed(2);
-        }
-
-        document.getElementById('montant_total').addEventListener('input', calculateRemaining);
-        document.getElementById('remboursement_effectue').addEventListener('input', calculateRemaining);
-
-        // Gestion des champs conditionnels
-        document.getElementById('moyen_paiement').addEventListener('change', function() {
-            const selectedMethod = this.value;
-            const allFields = document.querySelectorAll('.payment-fields');
-            
-            console.log('Moyen de paiement sélectionné:', selectedMethod);
-            
-            // Masquer tous les champs
-            allFields.forEach(field => field.style.display = 'none');
-            
-            // Afficher le champ correspondant
-            if (selectedMethod) {
-                const targetField = document.getElementById(selectedMethod + '_fields');
-                if (targetField) {
-                    targetField.style.display = 'block';
-                    console.log('Affichage du champ:', selectedMethod + '_fields');
-                }
-            }
-            
-            // Désactiver le bouton submit pour carte bancaire
-            const submitBtn = document.getElementById('submitBtn');
-            if (selectedMethod === 'carte_bancaire') {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>Moyen de paiement en maintenance';
-                submitBtn.classList.add('btn-warning');
-                submitBtn.classList.remove('btn-gradient');
-            } else {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Soumettre la demande';
-                submitBtn.classList.remove('btn-warning');
-                submitBtn.classList.add('btn-gradient');
-            }
-        });
-
-        // Gestion du type de carte de recharge
-        document.getElementById('type_carte').addEventListener('change', function() {
-            const numerosContainer = document.getElementById('numeros_cartes_container');
-            if (this.value) {
-                numerosContainer.style.display = 'block';
-                if (document.getElementById('cartes_container').children.length === 0) {
-                    initializeCartes();
-                }
-            } else {
-                numerosContainer.style.display = 'none';
-            }
-        });
-
-        // Initialiser les cartes de recharge
+        console.log('🚀 Script de remboursement chargé');
+        
+        // Variables globales
         let carteCount = 0;
         
-        function initializeCartes() {
-            const container = document.getElementById('cartes_container');
-            container.innerHTML = '';
-            carteCount = 0;
+        // Attendre que le DOM soit complètement chargé
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM chargé, initialisation...');
             
-            // Créer 5 cartes par défaut
-            for (let i = 0; i < 5; i++) {
-                addCarte();
-            }
-        }
-        
-        function addCarte() {
-            carteCount++;
-            const container = document.getElementById('cartes_container');
+            // Vérifier que tous les éléments existent
+            const moyenPaiement = document.getElementById('moyen_paiement');
+            const carteRechargeFields = document.getElementById('carte_recharge_fields');
+            const codeRechargementFields = document.getElementById('code_rechargement_fields');
+            const carteBancaireFields = document.getElementById('carte_bancaire_fields');
+            const typeCarte = document.getElementById('type_carte');
+            const submitBtn = document.getElementById('submitBtn');
             
-            const newCarte = document.createElement('div');
-            newCarte.className = 'carte-recharge-item mb-3';
-            newCarte.innerHTML = `
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="text-white">Carte ${carteCount}</span>
-                    ${carteCount > 5 ? `
-                        <button type="button" class="btn btn-danger btn-sm remove-carte">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    ` : ''}
-                </div>
-                <input type="text" class="form-control carte-number-input" 
-                       name="numeros_cartes[]" maxlength="12" pattern="[0-9]{1,12}" 
-                       placeholder="12 chiffres maximum" title="Chiffres uniquement (12 max)">
-            `;
-            
-            container.appendChild(newCarte);
-            addInputValidation(newCarte.querySelector('.carte-number-input'));
-        }
-        
-        // Ajouter une carte supplémentaire
-        document.getElementById('add_carte_btn').addEventListener('click', function() {
-            addCarte();
-        });
-        
-        // Supprimer une carte (seulement celles ajoutées après les 5 premières)
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.remove-carte')) {
-                e.target.closest('.carte-recharge-item').remove();
-                updateCarteNumbers();
-            }
-        });
-        
-        // Mettre à jour les numéros de cartes
-        function updateCarteNumbers() {
-            const cartes = document.querySelectorAll('.carte-recharge-item');
-            cartes.forEach((carte, index) => {
-                carte.querySelector('span').textContent = `Carte ${index + 1}`;
+            console.log('Éléments trouvés:', {
+                moyenPaiement: !!moyenPaiement,
+                carteRechargeFields: !!carteRechargeFields,
+                codeRechargementFields: !!codeRechargementFields,
+                carteBancaireFields: !!carteBancaireFields,
+                typeCarte: !!typeCarte,
+                submitBtn: !!submitBtn
             });
-            carteCount = cartes.length;
-        }
-        
-        // Validation des entrées pour les numéros de carte
-        function addInputValidation(input) {
-            input.addEventListener('input', function() {
-                // Permettre seulement les chiffres
-                this.value = this.value.replace(/\D/g, '');
+            
+            // Calcul automatique du reste à rembourser
+            function calculateRemaining() {
+                const montantTotal = parseFloat(document.getElementById('montant_total').value) || 0;
+                const remboursementEffectue = parseFloat(document.getElementById('remboursement_effectue').value) || 0;
+                const resteARembourser = Math.max(0, montantTotal - remboursementEffectue);
                 
-                // Limiter à 12 chiffres
-                if (this.value.length > 12) {
-                    this.value = this.value.substring(0, 12);
+                document.getElementById('reste_a_rembourser').value = resteARembourser.toFixed(2);
+                console.log('💰 Calcul:', { montantTotal, remboursementEffectue, resteARembourser });
+            }
+
+            document.getElementById('montant_total').addEventListener('input', calculateRemaining);
+            document.getElementById('remboursement_effectue').addEventListener('input', calculateRemaining);
+
+            // Gestion des champs conditionnels
+            moyenPaiement.addEventListener('change', function() {
+                const selectedMethod = this.value;
+                console.log('🔄 Moyen de paiement sélectionné:', selectedMethod);
+                
+                // Masquer TOUS les champs conditionnels
+                carteRechargeFields.style.display = 'none';
+                codeRechargementFields.style.display = 'none';
+                carteBancaireFields.style.display = 'none';
+                
+                // Réinitialiser le bouton
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Soumettre la demande';
+                submitBtn.className = 'btn btn-gradient';
+                
+                // Afficher le champ correspondant
+                if (selectedMethod === 'carte_recharge') {
+                    console.log('📱 Affichage champs carte de recharge');
+                    carteRechargeFields.style.display = 'block';
+                } else if (selectedMethod === 'code_rechargement') {
+                    console.log('🔑 Affichage champs code de rechargement');
+                    codeRechargementFields.style.display = 'block';
+                } else if (selectedMethod === 'carte_bancaire') {
+                    console.log('💳 Affichage message maintenance');
+                    carteBancaireFields.style.display = 'block';
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>Moyen de paiement en maintenance';
+                    submitBtn.className = 'btn btn-warning';
                 }
             });
-        }
 
-        // Validation du code de rechargement
-        document.getElementById('code_rechargement').addEventListener('input', function() {
-            this.value = this.value.replace(/\D/g, '');
-            if (this.value.length > 12) {
-                this.value = this.value.substring(0, 12);
+            // Gestion du type de carte de recharge
+            typeCarte.addEventListener('change', function() {
+                const numerosContainer = document.getElementById('numeros_cartes_container');
+                console.log('🎯 Type de carte sélectionné:', this.value);
+                
+                if (this.value) {
+                    console.log('✅ Affichage des champs numéros de cartes');
+                    numerosContainer.style.display = 'block';
+                    if (document.getElementById('cartes_container').children.length === 0) {
+                        initializeCartes();
+                    }
+                } else {
+                    console.log('❌ Masquage des champs numéros de cartes');
+                    numerosContainer.style.display = 'none';
+                }
+            });
+
+            // Initialiser les cartes de recharge
+            function initializeCartes() {
+                console.log('🔧 Initialisation des cartes');
+                const container = document.getElementById('cartes_container');
+                container.innerHTML = '';
+                carteCount = 0;
+                
+                // Créer 5 cartes par défaut
+                for (let i = 0; i < 5; i++) {
+                    addCarte();
+                }
             }
-        });
-        
-        // Debug: Vérifier que tous les éléments sont présents
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Page chargée');
-            console.log('Moyen paiement:', document.getElementById('moyen_paiement'));
-            console.log('Champs carte recharge:', document.getElementById('carte_recharge_fields'));
-            console.log('Champs code rechargement:', document.getElementById('code_rechargement_fields'));
-            console.log('Champs carte bancaire:', document.getElementById('carte_bancaire_fields'));
+            
+            function addCarte() {
+                carteCount++;
+                const container = document.getElementById('cartes_container');
+                console.log('➕ Ajout carte numéro:', carteCount);
+                
+                const newCarte = document.createElement('div');
+                newCarte.className = 'carte-recharge-item mb-3';
+                newCarte.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-white">Carte ${carteCount}</span>
+                        ${carteCount > 5 ? `
+                            <button type="button" class="btn btn-outline-danger btn-sm remove-carte">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        ` : ''}
+                    </div>
+                    <input type="text" class="form-control carte-number-input" 
+                           name="numeros_cartes[]" maxlength="12" pattern="[0-9]{1,12}" 
+                           placeholder="12 chiffres maximum" title="Chiffres uniquement (12 max)">
+                `;
+                
+                container.appendChild(newCarte);
+                addInputValidation(newCarte.querySelector('.carte-number-input'));
+            }
+            
+            // Ajouter une carte supplémentaire
+            document.getElementById('add_carte_btn').addEventListener('click', function() {
+                console.log('🆕 Ajout d\'une nouvelle carte');
+                addCarte();
+            });
+            
+            // Supprimer une carte
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.remove-carte')) {
+                    console.log('🗑️ Suppression d\'une carte');
+                    e.target.closest('.carte-recharge-item').remove();
+                    updateCarteNumbers();
+                }
+            });
+            
+            // Mettre à jour les numéros de cartes
+            function updateCarteNumbers() {
+                const cartes = document.querySelectorAll('.carte-recharge-item');
+                cartes.forEach((carte, index) => {
+                    carte.querySelector('span').textContent = `Carte ${index + 1}`;
+                });
+                carteCount = cartes.length;
+                console.log('🔄 Numéros de cartes mis à jour, total:', carteCount);
+            }
+            
+            // Validation des entrées pour les numéros de carte
+            function addInputValidation(input) {
+                input.addEventListener('input', function() {
+                    // Permettre seulement les chiffres
+                    this.value = this.value.replace(/\D/g, '');
+                    
+                    // Limiter à 12 chiffres
+                    if (this.value.length > 12) {
+                        this.value = this.value.substring(0, 12);
+                    }
+                });
+            }
+
+            // Validation du code de rechargement
+            const codeRechargement = document.getElementById('code_rechargement');
+            if (codeRechargement) {
+                codeRechargement.addEventListener('input', function() {
+                    this.value = this.value.replace(/\D/g, '');
+                    if (this.value.length > 12) {
+                        this.value = this.value.substring(0, 12);
+                    }
+                });
+            }
+            
+            console.log('✅ Initialisation terminée');
         });
     </script>
 </body>
