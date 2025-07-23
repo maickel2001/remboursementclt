@@ -1,51 +1,46 @@
-/* RemboursePRO - CSS Complètement Refait pour Lisibilité Maximale */
+/* RemboursePRO - CSS Renforcé pour Hostinger */
 
-/* Reset et base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* FORCE L'ARRIÈRE-PLAN SOMBRE PARTOUT */
+html {
+    background: #1a1a2e !important;
+    background-color: #1a1a2e !important;
 }
 
-/* Force l'arrière-plan sombre partout */
-html, body {
+body {
     background: #1a1a2e !important;
+    background-color: #1a1a2e !important;
     color: #ffffff !important;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
     min-height: 100vh !important;
 }
 
-/* Force tous les textes en blanc */
-*, *::before, *::after {
-    color: #ffffff !important;
-}
-
-/* Conteneurs principaux */
-.container, .container-fluid {
+/* Force tous les conteneurs principaux */
+.container, .container-fluid, .row, .col, .col-12, .col-md-6, .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-10 {
     background: transparent !important;
+    background-color: transparent !important;
     color: #ffffff !important;
 }
 
-/* Navigation */
+/* Navigation avec arrière-plan sombre */
 .navbar {
     background: rgba(26, 26, 46, 0.95) !important;
+    background-color: rgba(26, 26, 46, 0.95) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
 }
 
-.navbar-brand {
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    font-size: 1.5rem !important;
-}
-
-.navbar-nav .nav-link {
+.navbar-brand, .nav-link, .navbar-nav .nav-link {
     color: #ffffff !important;
 }
 
-/* Sidebar */
+.navbar-brand:hover, .nav-link:hover {
+    color: #ffffff !important;
+}
+
+/* Sidebar sombre */
 .dashboard-sidebar {
     background: rgba(26, 26, 46, 0.9) !important;
+    background-color: rgba(26, 26, 46, 0.9) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
     min-height: 100vh !important;
 }
@@ -53,6 +48,7 @@ html, body {
 .sidebar-item {
     color: #ffffff !important;
     background: transparent !important;
+    background-color: transparent !important;
     padding: 12px 20px !important;
     margin: 5px 15px !important;
     border-radius: 8px !important;
@@ -61,37 +57,64 @@ html, body {
     transition: all 0.3s ease !important;
 }
 
-.sidebar-item:hover,
-.sidebar-item.active {
+.sidebar-item:hover, .sidebar-item.active {
     background: rgba(79, 70, 229, 0.2) !important;
+    background-color: rgba(79, 70, 229, 0.2) !important;
     color: #ffffff !important;
 }
 
-/* Cards et conteneurs glass */
-.glass, .form-glass, .stats-card, .feature-card {
+/* Cards et conteneurs glass avec arrière-plan sombre */
+.glass, .form-glass, .stats-card, .feature-card, .calculator-card {
     background: rgba(26, 26, 46, 0.8) !important;
+    background-color: rgba(26, 26, 46, 0.8) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 12px !important;
     padding: 1.5rem !important;
     backdrop-filter: blur(10px) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important;
 }
 
-/* Titres */
-h1, h2, h3, h4, h5, h6 {
+/* Hero section avec gradient sombre */
+.hero-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%) !important;
+    background-color: #1a1a2e !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #ffffff !important;
+}
+
+/* Tous les titres en blanc */
+h1, h2, h3, h4, h5, h6, .hero-title, .hero-subtitle {
     color: #ffffff !important;
     font-weight: 600 !important;
     margin-bottom: 1rem !important;
 }
 
-/* Paragraphes et textes */
-p, span, div, td, th, label, small {
+.hero-title {
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+}
+
+.hero-subtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 1.2rem !important;
+}
+
+/* Tous les textes en blanc */
+p, span, div, td, th, label, small, .text-muted, .text-secondary {
     color: #ffffff !important;
 }
 
-/* Formulaires */
-.form-control, .form-select, input, textarea, select {
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Formulaires avec arrière-plan sombre */
+.form-control, .form-select, input, textarea, select, .form-control-glass {
     background: rgba(26, 26, 46, 0.8) !important;
+    background-color: rgba(26, 26, 46, 0.8) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: #ffffff !important;
     border-radius: 8px !important;
@@ -100,6 +123,7 @@ p, span, div, td, th, label, small {
 
 .form-control:focus, .form-select:focus, input:focus, textarea:focus, select:focus {
     background: rgba(26, 26, 46, 0.9) !important;
+    background-color: rgba(26, 26, 46, 0.9) !important;
     border-color: #4f46e5 !important;
     color: #ffffff !important;
     box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25) !important;
@@ -112,7 +136,6 @@ p, span, div, td, th, label, small {
 .form-label {
     color: #ffffff !important;
     font-weight: 500 !important;
-    margin-bottom: 0.5rem !important;
 }
 
 /* Boutons */
@@ -121,56 +144,66 @@ p, span, div, td, th, label, small {
     padding: 10px 20px !important;
     font-weight: 500 !important;
     transition: all 0.3s ease !important;
+    color: #ffffff !important;
 }
 
 .btn-primary, .btn-gradient {
     background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+    background-color: #4f46e5 !important;
     border: none !important;
     color: #ffffff !important;
 }
 
 .btn-primary:hover, .btn-gradient:hover {
     background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%) !important;
+    background-color: #4338ca !important;
     color: #ffffff !important;
 }
 
 .btn-glass {
     background: rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: #ffffff !important;
 }
 
 .btn-glass:hover {
     background: rgba(255, 255, 255, 0.2) !important;
+    background-color: rgba(255, 255, 255, 0.2) !important;
     color: #ffffff !important;
 }
 
 .btn-success {
     background: #10b981 !important;
+    background-color: #10b981 !important;
     border-color: #10b981 !important;
     color: #ffffff !important;
 }
 
 .btn-danger {
     background: #ef4444 !important;
+    background-color: #ef4444 !important;
     border-color: #ef4444 !important;
     color: #ffffff !important;
 }
 
 .btn-warning {
     background: #f59e0b !important;
+    background-color: #f59e0b !important;
     border-color: #f59e0b !important;
     color: #ffffff !important;
 }
 
-/* Tables */
+/* Tables avec arrière-plan sombre */
 .table {
     background: transparent !important;
+    background-color: transparent !important;
     color: #ffffff !important;
 }
 
 .table th {
     background: rgba(26, 26, 46, 0.8) !important;
+    background-color: rgba(26, 26, 46, 0.8) !important;
     color: #ffffff !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
     font-weight: 600 !important;
@@ -178,12 +211,14 @@ p, span, div, td, th, label, small {
 
 .table td {
     background: transparent !important;
+    background-color: transparent !important;
     color: #ffffff !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .table-glass {
     background: rgba(26, 26, 46, 0.6) !important;
+    background-color: rgba(26, 26, 46, 0.6) !important;
     border-radius: 12px !important;
     overflow: hidden !important;
 }
@@ -211,47 +246,58 @@ p, span, div, td, th, label, small {
 
 .status-en_attente, .status-en-attente {
     background: rgba(245, 158, 11, 0.2) !important;
+    background-color: rgba(245, 158, 11, 0.2) !important;
     color: #fbbf24 !important;
     border: 1px solid rgba(245, 158, 11, 0.4) !important;
 }
 
 .status-validé {
     background: rgba(16, 185, 129, 0.2) !important;
+    background-color: rgba(16, 185, 129, 0.2) !important;
     color: #34d399 !important;
     border: 1px solid rgba(16, 185, 129, 0.4) !important;
 }
 
 .status-refusé {
     background: rgba(239, 68, 68, 0.2) !important;
+    background-color: rgba(239, 68, 68, 0.2) !important;
     color: #f87171 !important;
     border: 1px solid rgba(239, 68, 68, 0.4) !important;
 }
 
-/* Alertes */
+/* Alertes avec arrière-plan sombre */
 .alert {
     border-radius: 8px !important;
     border: none !important;
     color: #ffffff !important;
 }
 
-.alert-success {
+.alert-success, .alert-glass.alert-success {
     background: rgba(16, 185, 129, 0.2) !important;
+    background-color: rgba(16, 185, 129, 0.2) !important;
     color: #ffffff !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
 }
 
-.alert-danger {
+.alert-danger, .alert-glass.alert-danger {
     background: rgba(239, 68, 68, 0.2) !important;
+    background-color: rgba(239, 68, 68, 0.2) !important;
     color: #ffffff !important;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important;
 }
 
-.alert-warning {
+.alert-warning, .alert-glass.alert-warning {
     background: rgba(245, 158, 11, 0.2) !important;
+    background-color: rgba(245, 158, 11, 0.2) !important;
     color: #ffffff !important;
+    border: 1px solid rgba(245, 158, 11, 0.4) !important;
 }
 
-.alert-info {
+.alert-info, .alert-glass.alert-info {
     background: rgba(59, 130, 246, 0.2) !important;
+    background-color: rgba(59, 130, 246, 0.2) !important;
     color: #ffffff !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
 }
 
 /* Badges */
@@ -261,23 +307,28 @@ p, span, div, td, th, label, small {
 
 .bg-primary {
     background: #4f46e5 !important;
+    background-color: #4f46e5 !important;
 }
 
 .bg-danger {
     background: #ef4444 !important;
+    background-color: #ef4444 !important;
 }
 
 .bg-success {
     background: #10b981 !important;
+    background-color: #10b981 !important;
 }
 
 .bg-warning {
     background: #f59e0b !important;
+    background-color: #f59e0b !important;
 }
 
-/* Modal */
+/* Modal avec arrière-plan sombre */
 .modal-content {
     background: rgba(26, 26, 46, 0.95) !important;
+    background-color: rgba(26, 26, 46, 0.95) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     color: #ffffff !important;
 }
@@ -301,17 +352,20 @@ p, span, div, td, th, label, small {
 /* Pagination */
 .page-link {
     background: rgba(26, 26, 46, 0.8) !important;
+    background-color: rgba(26, 26, 46, 0.8) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: #ffffff !important;
 }
 
 .page-link:hover {
     background: rgba(79, 70, 229, 0.3) !important;
+    background-color: rgba(79, 70, 229, 0.3) !important;
     color: #ffffff !important;
 }
 
 .page-item.active .page-link {
     background: #4f46e5 !important;
+    background-color: #4f46e5 !important;
     border-color: #4f46e5 !important;
     color: #ffffff !important;
 }
@@ -319,6 +373,7 @@ p, span, div, td, th, label, small {
 /* Champs spéciaux */
 .payment-fields {
     background: rgba(26, 26, 46, 0.6) !important;
+    background-color: rgba(26, 26, 46, 0.6) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 8px !important;
     padding: 1rem !important;
@@ -327,89 +382,22 @@ p, span, div, td, th, label, small {
 
 .carte-recharge-item {
     background: rgba(26, 26, 46, 0.8) !important;
+    background-color: rgba(26, 26, 46, 0.8) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 8px !important;
     padding: 1rem !important;
     margin-bottom: 1rem !important;
 }
 
-/* Hero section */
-.hero-section {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%) !important;
-    min-height: 100vh !important;
-    display: flex !important;
-    align-items: center !important;
-}
-
-.hero-title {
-    color: #ffffff !important;
-    font-size: 3rem !important;
-    font-weight: 700 !important;
-    margin-bottom: 1.5rem !important;
-}
-
-.hero-subtitle {
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-size: 1.2rem !important;
-    margin-bottom: 2rem !important;
-}
-
-/* Surcharge Bootstrap */
-.text-muted {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.text-secondary {
-    color: rgba(255, 255, 255, 0.8) !important;
-}
-
-.bg-light {
-    background: rgba(26, 26, 46, 0.8) !important;
-}
-
-.bg-white {
-    background: rgba(26, 26, 46, 0.8) !important;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem !important;
-    }
-    
-    .stats-value {
-        font-size: 1.5rem !important;
-    }
-}
-
-/* Force sur tous les éléments */
-body * {
-    color: #ffffff !important;
-}
-
-/* Liens */
-a {
-    color: #60a5fa !important;
-}
-
-a:hover {
-    color: #93c5fd !important;
-}
-
 /* Calculateur */
-.calculator-card {
-    background: rgba(26, 26, 46, 0.8) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 12px !important;
-    padding: 2rem !important;
-}
-
 .calculator-result {
     background: rgba(16, 185, 129, 0.2) !important;
+    background-color: rgba(16, 185, 129, 0.2) !important;
     border: 1px solid rgba(16, 185, 129, 0.4) !important;
     border-radius: 8px !important;
     padding: 1rem !important;
     margin-top: 1rem !important;
+    color: #ffffff !important;
 }
 
 /* Profile */
@@ -429,6 +417,7 @@ a:hover {
     width: 100% !important;
     height: 100% !important;
     background: rgba(0, 0, 0, 0.6) !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
     border-radius: 50% !important;
     display: flex !important;
     align-items: center !important;
@@ -445,7 +434,83 @@ a:hover {
 /* Chart container */
 .chart-container {
     background: rgba(26, 26, 46, 0.6) !important;
+    background-color: rgba(26, 26, 46, 0.6) !important;
     border-radius: 8px !important;
     padding: 1rem !important;
     height: 400px !important;
+}
+
+/* Feature icons */
+.feature-icon {
+    font-size: 3rem !important;
+    color: #4f46e5 !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Surcharge Bootstrap pour forcer les couleurs */
+.bg-light, .bg-white {
+    background: rgba(26, 26, 46, 0.8) !important;
+    background-color: rgba(26, 26, 46, 0.8) !important;
+}
+
+/* Footer */
+footer {
+    background: rgba(26, 26, 46, 0.9) !important;
+    background-color: rgba(26, 26, 46, 0.9) !important;
+    color: #ffffff !important;
+    padding: 2rem 0 !important;
+    margin-top: 4rem !important;
+}
+
+/* Liens */
+a {
+    color: #60a5fa !important;
+}
+
+a:hover {
+    color: #93c5fd !important;
+}
+
+/* Force sur TOUS les éléments */
+* {
+    color: #ffffff !important;
+}
+
+*:not(.btn):not(.badge):not(.alert) {
+    background-color: transparent !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem !important;
+    }
+    
+    .stats-value {
+        font-size: 1.5rem !important;
+    }
+    
+    .container, .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+/* Assurer que le body prend toute la hauteur */
+html, body {
+    height: 100% !important;
+    min-height: 100vh !important;
+}
+
+/* Navbar fixed */
+.navbar.fixed-top {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 1030 !important;
+}
+
+/* Ajuster le padding du body quand navbar fixed */
+body {
+    padding-top: 76px !important;
 }
