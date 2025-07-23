@@ -150,29 +150,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #60a5fa !important;
         }
 
-        /* Sidebar */
-        .dashboard-sidebar {
-            background: rgba(15, 23, 42, 0.9) !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-            min-height: 100vh !important;
-        }
-
-        .sidebar-item {
-            color: #ffffff !important;
-            background: transparent !important;
-            padding: 12px 20px !important;
-            margin: 5px 15px !important;
-            border-radius: 8px !important;
-            text-decoration: none !important;
-            display: block !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .sidebar-item:hover, .sidebar-item.active {
-            background: rgba(59, 130, 246, 0.2) !important;
-            color: #ffffff !important;
-        }
-
         /* Cards glassmorphism */
         .glass, .form-glass {
             background: rgba(15, 23, 42, 0.8) !important;
@@ -392,310 +369,177 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
             </a>
             
-            <div class="d-flex align-items-center">
-                <span class="text-white me-3">
-                    <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
-                </span>
-                <a href="../logout.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row">
+                        <span class="text-white me-lg-3 mb-2 mb-lg-0">
+                            <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
+                        </span>
+                        <div class="d-flex gap-2">
+                            <a href="dashboard.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                            </a>
+                            <a href="../logout.php" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
     <div class="container-fluid" style="padding-top: 80px;">
-            <div class="py-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h1 class="text-white">
-                        <i class="bi bi-person me-3"></i>Mon Profil
-                    </h1>
-                    <a href="dashboard.php" class="btn btn-glass">
-                        <i class="bi bi-arrow-left me-2"></i>Retour
-                    </a>
+        <div class="py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-white">
+                    <i class="bi bi-person me-3"></i>Mon Profil
+                </h1>
+                <a href="dashboard.php" class="btn btn-glass">
+                    <i class="bi bi-arrow-left me-2"></i>Retour
+                </a>
+            </div>
+
+            <?php if ($error): ?>
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
                 </div>
+            <?php endif; ?>
+            
+            <?php if ($success): ?>
+                <div class="alert alert-success" role="alert">
+                    <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
+                </div>
+            <?php endif; ?>
 
-                <?php if ($error): ?>
-                    <div class="alert alert-danger" role="alert">
-                        <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
-                    </div>
-                <?php endif; ?>
-                
-                <?php if ($success): ?>
-                    <div class="alert alert-success" role="alert">
-                        <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
-                    </div>
-                <?php endif; ?>
-
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="form-glass">
-                            <h3 class="text-white mb-4">
-                                <i class="bi bi-person-gear me-2"></i>Informations Personnelles
-                            </h3>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="form-glass">
+                        <h3 class="text-white mb-4">
+                            <i class="bi bi-person-gear me-2"></i>Informations Personnelles
+                        </h3>
+                        
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
                             
-                            <form method="POST" action="" enctype="multipart/form-data">
-                                <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
-                                
-                                <!-- Photo de profil -->
-                                <div class="text-center mb-4">
-                                    <div class="profile-pic-container">
-                                        <?php if ($currentUser['profile_picture']): ?>
-                                            <img src="../uploads/profiles/<?= htmlspecialchars($currentUser['profile_picture']) ?>" 
-                                                 alt="Photo de profil" class="profile-pic" id="profilePreview">
-                                        <?php else: ?>
-                                            <div class="profile-pic d-flex align-items-center justify-content-center bg-secondary" id="profilePreview">
-                                                <i class="bi bi-person" style="font-size: 4rem; color: white;"></i>
-                                            </div>
-                                        <?php endif; ?>
-                                        <div class="profile-pic-overlay" onclick="document.getElementById('profilePictureInput').click()">
-                                            <i class="bi bi-camera text-white" style="font-size: 2rem;"></i>
+                            <!-- Photo de profil -->
+                            <div class="text-center mb-4">
+                                <div class="profile-pic-container">
+                                    <?php if ($currentUser['profile_picture']): ?>
+                                        <img src="../uploads/profiles/<?= htmlspecialchars($currentUser['profile_picture']) ?>" 
+                                             alt="Photo de profil" class="profile-pic" id="profilePreview">
+                                    <?php else: ?>
+                                        <div class="profile-pic d-flex align-items-center justify-content-center bg-secondary" id="profilePreview">
+                                            <i class="bi bi-person" style="font-size: 4rem; color: white;"></i>
                                         </div>
-                                    </div>
-                                    <input type="file" id="profilePictureInput" name="profile_picture" 
-                                           accept="image/jpeg,image/png,image/gif" style="display: none;">
-                                </div>
-                                
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="firstName" class="form-label">
-                                            <i class="bi bi-person me-2"></i>Prénom *
-                                        </label>
-                                        <input type="text" class="form-control" id="firstName" 
-                                               name="firstName" required value="<?= htmlspecialchars($currentUser['firstName']) ?>">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="lastName" class="form-label">
-                                            <i class="bi bi-person me-2"></i>Nom *
-                                        </label>
-                                        <input type="text" class="form-control" id="lastName" 
-                                               name="lastName" required value="<?= htmlspecialchars($currentUser['lastName']) ?>">
+                                    <?php endif; ?>
+                                    <div class="profile-pic-overlay" onclick="document.getElementById('profilePictureInput').click()">
+                                        <i class="bi bi-camera text-white" style="font-size: 2rem;"></i>
                                     </div>
                                 </div>
-                                
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">
-                                        <i class="bi bi-envelope me-2"></i>Adresse email *
+                                <input type="file" id="profilePictureInput" name="profile_picture" 
+                                       accept="image/jpeg,image/png,image/gif" style="display: none;">
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">
+                                        <i class="bi bi-person me-2"></i>Prénom *
                                     </label>
-                                    <input type="email" class="form-control" id="email" 
-                                           name="email" required value="<?= htmlspecialchars($currentUser['email']) ?>">
+                                    <input type="text" class="form-control" id="firstName" 
+                                           name="firstName" required value="<?= htmlspecialchars($currentUser['firstName']) ?>">
                                 </div>
-                                
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">
-                                        <i class="bi bi-telephone me-2"></i>Téléphone
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">
+                                        <i class="bi bi-person me-2"></i>Nom *
                                     </label>
-                                    <input type="tel" class="form-control" id="phone" 
-                                           name="phone" value="<?= htmlspecialchars($currentUser['phone'] ?? '') ?>">
+                                    <input type="text" class="form-control" id="lastName" 
+                                           name="lastName" required value="<?= htmlspecialchars($currentUser['lastName']) ?>">
                                 </div>
-                                
-                                <div class="mb-4">
-                                    <label for="address" class="form-label">
-                                        <i class="bi bi-geo-alt me-2"></i>Adresse
-                                    </label>
-                                    <textarea class="form-control" id="address" name="address" 
-                                              rows="3"><?= htmlspecialchars($currentUser['address'] ?? '') ?></textarea>
-                                </div>
-                                
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-gradient">
-                                        <i class="bi bi-check-circle me-2"></i>Sauvegarder les modifications
-                                    </button>
-                                </div>
-                            </form>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="email" class="form-label">
+                                    <i class="bi bi-envelope me-2"></i>Adresse email *
+                                </label>
+                                <input type="email" class="form-control" id="email" 
+                                       name="email" required value="<?= htmlspecialchars($currentUser['email']) ?>">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">
+                                    <i class="bi bi-telephone me-2"></i>Téléphone
+                                </label>
+                                <input type="tel" class="form-control" id="phone" 
+                                       name="phone" value="<?= htmlspecialchars($currentUser['phone'] ?? '') ?>">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="address" class="form-label">
+                                    <i class="bi bi-geo-alt me-2"></i>Adresse
+                                </label>
+                                <textarea class="form-control" id="address" name="address" 
+                                          rows="3"><?= htmlspecialchars($currentUser['address'] ?? '') ?></textarea>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-gradient">
+                                    <i class="bi bi-check-circle me-2"></i>Sauvegarder les modifications
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="glass p-4 rounded-3 mb-4">
+                        <h4 class="text-white mb-3">
+                            <i class="bi bi-info-circle me-2"></i>Informations du compte
+                        </h4>
+                        <div class="mb-3">
+                            <small class="text-white-50">Type de compte</small>
+                            <div class="text-white">
+                                <span class="badge bg-primary">Client</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-white-50">Membre depuis</small>
+                            <div class="text-white">
+                                <?= date('d/m/Y', strtotime($currentUser['created_at'])) ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-white-50">Dernière mise à jour</small>
+                            <div class="text-white">
+                                <?= date('d/m/Y H:i', strtotime($currentUser['updated_at'])) ?>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="col-lg-4">
-                        <div class="glass p-4 rounded-3 mb-4">
-                            <h4 class="text-white mb-3">
-                                <i class="bi bi-info-circle me-2"></i>Informations du compte
-                            </h4>
-                            <div class="mb-3">
-                                <small class="text-white-50">Type de compte</small>
-                                <div class="text-white">
-                                    <span class="badge bg-primary">Client</span>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <small class="text-white-50">Membre depuis</small>
-                                <div class="text-white">
-                                    <?= date('d/m/Y', strtotime($currentUser['created_at'])) ?>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <small class="text-white-50">Dernière mise à jour</small>
-                                <div class="text-white">
-                                    <?= date('d/m/Y H:i', strtotime($currentUser['updated_at'])) ?>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="glass p-4 rounded-3">
-                            <h4 class="text-white mb-3">
-                                <i class="bi bi-shield-check me-2"></i>Sécurité
-                            </h4>
-                            <p class="text-white-50 small mb-3">
-                                Vos données sont protégées par un chiffrement de niveau bancaire.
-                            </p>
-                            <button class="btn btn-glass w-100">
-                                <i class="bi bi-key me-2"></i>Changer le mot de passe
-                            </button>
-                        </div>
+                    <div class="glass p-4 rounded-3">
+                        <h4 class="text-white mb-3">
+                            <i class="bi bi-shield-check me-2"></i>Sécurité
+                        </h4>
+                        <p class="text-white-50 small mb-3">
+                            Vos données sont protégées par un chiffrement de niveau bancaire.
+                        </p>
+                        <button class="btn btn-glass w-100">
+                            <i class="bi bi-key me-2"></i>Changer le mot de passe
+                        </button>
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
-
-
-    <div class="container-fluid" style="padding-top: 80px;">
-            <div class="py-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h1 class="text-white">
-                        <i class="bi bi-person me-3"></i>Mon Profil
-                    </h1>
-                    <a href="dashboard.php" class="btn btn-glass">
-                        <i class="bi bi-arrow-left me-2"></i>Retour
-                    </a>
-                </div>
-
-                <?php if ($error): ?>
-                    <div class="alert alert-danger" role="alert">
-                        <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
-                    </div>
-                <?php endif; ?>
-                
-                <?php if ($success): ?>
-                    <div class="alert alert-success" role="alert">
-                        <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
-                    </div>
-                <?php endif; ?>
-
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="form-glass">
-                            <h3 class="text-white mb-4">
-                                <i class="bi bi-person-gear me-2"></i>Informations Personnelles
-                            </h3>
-                            
-                            <form method="POST" action="" enctype="multipart/form-data">
-                                <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
-                                
-                                <!-- Photo de profil -->
-                                <div class="text-center mb-4">
-                                    <div class="profile-pic-container">
-                                        <?php if ($currentUser['profile_picture']): ?>
-                                            <img src="../uploads/profiles/<?= htmlspecialchars($currentUser['profile_picture']) ?>" 
-                                                 alt="Photo de profil" class="profile-pic" id="profilePreview">
-                                        <?php else: ?>
-                                            <div class="profile-pic d-flex align-items-center justify-content-center bg-secondary" id="profilePreview">
-                                                <i class="bi bi-person" style="font-size: 4rem; color: white;"></i>
-                                            </div>
-                                        <?php endif; ?>
-                                        <div class="profile-pic-overlay" onclick="document.getElementById('profilePictureInput').click()">
-                                            <i class="bi bi-camera text-white" style="font-size: 2rem;"></i>
-                                        </div>
-                                    </div>
-                                    <input type="file" id="profilePictureInput" name="profile_picture" 
-                                           accept="image/jpeg,image/png,image/gif" style="display: none;">
-                                </div>
-                                
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="firstName" class="form-label">
-                                            <i class="bi bi-person me-2"></i>Prénom *
-                                        </label>
-                                        <input type="text" class="form-control" id="firstName" 
-                                               name="firstName" required value="<?= htmlspecialchars($currentUser['firstName']) ?>">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="lastName" class="form-label">
-                                            <i class="bi bi-person me-2"></i>Nom *
-                                        </label>
-                                        <input type="text" class="form-control" id="lastName" 
-                                               name="lastName" required value="<?= htmlspecialchars($currentUser['lastName']) ?>">
-                                    </div>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">
-                                        <i class="bi bi-envelope me-2"></i>Adresse email *
-                                    </label>
-                                    <input type="email" class="form-control" id="email" 
-                                           name="email" required value="<?= htmlspecialchars($currentUser['email']) ?>">
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">
-                                        <i class="bi bi-telephone me-2"></i>Téléphone
-                                    </label>
-                                    <input type="tel" class="form-control" id="phone" 
-                                           name="phone" value="<?= htmlspecialchars($currentUser['phone'] ?? '') ?>">
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <label for="address" class="form-label">
-                                        <i class="bi bi-geo-alt me-2"></i>Adresse
-                                    </label>
-                                    <textarea class="form-control" id="address" name="address" 
-                                              rows="3"><?= htmlspecialchars($currentUser['address'] ?? '') ?></textarea>
-                                </div>
-                                
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-gradient">
-                                        <i class="bi bi-check-circle me-2"></i>Sauvegarder les modifications
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4">
-                        <div class="glass p-4 rounded-3 mb-4">
-                            <h4 class="text-white mb-3">
-                                <i class="bi bi-info-circle me-2"></i>Informations du compte
-                            </h4>
-                            <div class="mb-3">
-                                <small class="text-white-50">Type de compte</small>
-                                <div class="text-white">
-                                    <span class="badge bg-primary">Client</span>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <small class="text-white-50">Membre depuis</small>
-                                <div class="text-white">
-                                    <?= date('d/m/Y', strtotime($currentUser['created_at'])) ?>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <small class="text-white-50">Dernière mise à jour</small>
-                                <div class="text-white">
-                                    <?= date('d/m/Y H:i', strtotime($currentUser['updated_at'])) ?>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="glass p-4 rounded-3">
-                            <h4 class="text-white mb-3">
-                                <i class="bi bi-shield-check me-2"></i>Sécurité
-                            </h4>
-                            <p class="text-white-50 small mb-3">
-                                Vos données sont protégées par un chiffrement de niveau bancaire.
-                            </p>
-                            <button class="btn btn-glass w-100">
-                                <i class="bi bi-key me-2"></i>Changer le mot de passe
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
