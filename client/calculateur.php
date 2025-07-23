@@ -53,29 +53,6 @@ $currentUser = getCurrentUser();
             color: #60a5fa !important;
         }
 
-        /* Sidebar */
-        .dashboard-sidebar {
-            background: rgba(15, 23, 42, 0.9) !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-            min-height: 100vh !important;
-        }
-
-        .sidebar-item {
-            color: #ffffff !important;
-            background: transparent !important;
-            padding: 12px 20px !important;
-            margin: 5px 15px !important;
-            border-radius: 8px !important;
-            text-decoration: none !important;
-            display: block !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .sidebar-item:hover, .sidebar-item.active {
-            background: rgba(59, 130, 246, 0.2) !important;
-            color: #ffffff !important;
-        }
-
         /* Cards glassmorphism */
         .glass, .calculator-card {
             background: rgba(15, 23, 42, 0.8) !important;
@@ -273,201 +250,165 @@ $currentUser = getCurrentUser();
             .navbar-brand {
                 font-size: 1.5rem !important;
             }
-            
-            .d-flex.align-items-center span {
-                font-size: 0.9rem !important;
-            }
-            
-            .btn-outline-light.btn-sm {
-                padding: 6px 12px !important;
-            }
-            
-            .dashboard-sidebar {
-                display: none !important;
-            }
-            
-            .col-md-9.ms-sm-auto.col-lg-10 {
-                margin-left: 0 !important;
-                max-width: 100% !important;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
             </a>
             
-            <div class="d-flex align-items-center">
-                <span class="text-white me-3">
-                    <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
-                </span>
-                <a href="../logout.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row">
+                        <span class="text-white me-lg-3 mb-2 mb-lg-0">
+                            <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
+                        </span>
+                        <div class="d-flex gap-2 flex-wrap justify-content-center">
+                            <a href="dashboard.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                            </a>
+                            <a href="remboursement.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-credit-card me-1"></i>Remboursement
+                            </a>
+                            <a href="historique.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-clock-history me-1"></i>Historique
+                            </a>
+                            <a href="../logout.php" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block dashboard-sidebar">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="dashboard.php">
-                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="profil.php">
-                                <i class="bi bi-person me-2"></i>Mon Profil
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="remboursement.php">
-                                <i class="bi bi-credit-card me-2"></i>Nouveau Remboursement
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="historique.php">
-                                <i class="bi bi-clock-history me-2"></i>Historique
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item active" href="calculateur.php">
-                                <i class="bi bi-calculator me-2"></i>Calculateur
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <div class="container-fluid" style="padding-top: 80px;">
+        <div class="py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-white">
+                    <i class="bi bi-calculator me-3"></i>Calculateur Avancé
+                </h1>
+                <a href="dashboard.php" class="btn btn-glass">
+                    <i class="bi bi-arrow-left me-2"></i>Retour
+                </a>
+            </div>
 
-            <!-- Main content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="py-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h1 class="text-white">
-                            <i class="bi bi-calculator me-3"></i>Calculateur Avancé
-                        </h1>
-                        <a href="dashboard.php" class="btn btn-glass">
-                            <i class="bi bi-arrow-left me-2"></i>Retour
-                        </a>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="calculator-card">
-                                <h3 class="text-center text-white mb-4">
-                                    <i class="bi bi-calculator me-2"></i>Simulation de Remboursement
-                                </h3>
-                                
-                                <div class="mb-3">
-                                    <label for="totalAmount" class="form-label">
-                                        <i class="bi bi-currency-euro me-2"></i>Montant total à rembourser (€)
-                                    </label>
-                                    <input type="number" class="form-control" id="totalAmount" 
-                                           placeholder="0.00" min="0" step="0.01">
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="reimbursementAmount" class="form-label">
-                                        <i class="bi bi-cash me-2"></i>Remboursement à effectuer (€)
-                                    </label>
-                                    <input type="number" class="form-control" id="reimbursementAmount" 
-                                           placeholder="0.00" min="0" step="0.01">
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <label for="remainingAmount" class="form-label">
-                                        <i class="bi bi-calculator me-2"></i>Reste à rembourser (€)
-                                    </label>
-                                    <input type="number" class="form-control" id="remainingAmount" 
-                                           placeholder="0.00" readonly>
-                                </div>
-                                
-                                <div class="calculator-result" id="calculatorResult" style="display: none;">
-                                    <h4 class="mb-3">Résultat de la simulation</h4>
-                                    <div class="row g-3">
-                                        <div class="col-4">
-                                            <div class="text-center">
-                                                <div class="h5 mb-1" id="displayTotal">0.00 €</div>
-                                                <small>Total</small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="text-center">
-                                                <div class="h5 mb-1" id="displayReimbursement">0.00 €</div>
-                                                <small>Remboursement</small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="text-center">
-                                                <div class="h5 mb-1" id="displayRemaining">0.00 €</div>
-                                                <small>Reste</small>
-                                            </div>
-                                        </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="calculator-card">
+                        <h3 class="text-center text-white mb-4">
+                            <i class="bi bi-calculator me-2"></i>Simulation de Remboursement
+                        </h3>
+                        
+                        <div class="mb-3">
+                            <label for="totalAmount" class="form-label">
+                                <i class="bi bi-currency-euro me-2"></i>Montant total à rembourser (€)
+                            </label>
+                            <input type="number" class="form-control" id="totalAmount" 
+                                   placeholder="0.00" min="0" step="0.01">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="reimbursementAmount" class="form-label">
+                                <i class="bi bi-cash me-2"></i>Remboursement à effectuer (€)
+                            </label>
+                            <input type="number" class="form-control" id="reimbursementAmount" 
+                                   placeholder="0.00" min="0" step="0.01">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="remainingAmount" class="form-label">
+                                <i class="bi bi-calculator me-2"></i>Reste à rembourser (€)
+                            </label>
+                            <input type="number" class="form-control" id="remainingAmount" 
+                                   placeholder="0.00" readonly>
+                        </div>
+                        
+                        <div class="calculator-result" id="calculatorResult" style="display: none;">
+                            <h4 class="mb-3">Résultat de la simulation</h4>
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <div class="text-center">
+                                        <div class="h5 mb-1" id="displayTotal">0.00 €</div>
+                                        <small>Total</small>
                                     </div>
                                 </div>
-                                
-                                <div class="d-grid gap-2 mt-4">
-                                    <button class="btn btn-gradient" onclick="saveSimulation()">
-                                        <i class="bi bi-bookmark me-2"></i>Sauvegarder la simulation
-                                    </button>
-                                    <a href="remboursement.php" class="btn btn-glass">
-                                        <i class="bi bi-credit-card me-2"></i>Effectuer ce remboursement
-                                    </a>
+                                <div class="col-4">
+                                    <div class="text-center">
+                                        <div class="h5 mb-1" id="displayReimbursement">0.00 €</div>
+                                        <small>Remboursement</small>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-center">
+                                        <div class="h5 mb-1" id="displayRemaining">0.00 €</div>
+                                        <small>Reste</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="col-lg-6">
-                            <div class="glass p-4 rounded-3 mb-4">
-                                <h4 class="text-white mb-3">
-                                    <i class="bi bi-pie-chart me-2"></i>Répartition Visuelle
-                                </h4>
-                                <div class="chart-container">
-                                    <canvas id="reimbursementChart"></canvas>
-                                </div>
-                            </div>
+                        <div class="d-grid gap-2 mt-4">
+                            <button class="btn btn-gradient" onclick="saveSimulation()">
+                                <i class="bi bi-bookmark me-2"></i>Sauvegarder la simulation
+                            </button>
+                            <a href="remboursement.php" class="btn btn-glass">
+                                <i class="bi bi-credit-card me-2"></i>Effectuer ce remboursement
+                            </a>
                         </div>
-                    </div>
-                    
-                    <!-- Historique des simulations -->
-                    <div class="glass p-4 rounded-3 mt-4">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-white mb-0">
-                                <i class="bi bi-clock-history me-2"></i>Historique des Simulations
-                            </h4>
-                            <div>
-                                <button class="btn btn-glass btn-sm me-2" onclick="exportHistory()">
-                                    <i class="bi bi-download me-2"></i>Exporter
-                                </button>
-                                <button class="btn btn-glass btn-sm" onclick="clearHistory()">
-                                <i class="bi bi-trash me-2"></i>Vider l'historique
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div id="simulationHistory">
-                            <div class="text-center py-4">
-                                <i class="bi bi-inbox" style="font-size: 3rem; color: rgba(255,255,255,0.3);"></i>
-                                <p class="text-white-50 mt-2">Aucune simulation sauvegardée</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Conseils intelligents -->
-                    <div class="glass p-4 rounded-3 mt-4" id="smartTips">
-                        <h4 class="text-white mb-3"><i class="bi bi-lightbulb me-2"></i>Conseil Intelligent</h4>
-                        <p class="text-white-50" id="tipContent">Calculez différents scénarios pour optimiser vos remboursements.</p>
                     </div>
                 </div>
-            </main>
+                
+                <div class="col-lg-6">
+                    <div class="glass p-4 rounded-3 mb-4">
+                        <h4 class="text-white mb-3">
+                            <i class="bi bi-pie-chart me-2"></i>Répartition Visuelle
+                        </h4>
+                        <div class="chart-container">
+                            <canvas id="reimbursementChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Historique des simulations -->
+            <div class="glass p-4 rounded-3 mt-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-white mb-0">
+                        <i class="bi bi-clock-history me-2"></i>Historique des Simulations
+                    </h4>
+                    <div>
+                        <button class="btn btn-glass btn-sm me-2" onclick="exportHistory()">
+                            <i class="bi bi-download me-2"></i>Exporter
+                        </button>
+                        <button class="btn btn-glass btn-sm" onclick="clearHistory()">
+                        <i class="bi bi-trash me-2"></i>Vider l'historique
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="simulationHistory">
+                    <div class="text-center py-4">
+                        <i class="bi bi-inbox" style="font-size: 3rem; color: rgba(255,255,255,0.3);"></i>
+                        <p class="text-white-50 mt-2">Aucune simulation sauvegardée</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Conseils intelligents -->
+            <div class="glass p-4 rounded-3 mt-4" id="smartTips">
+                <h4 class="text-white mb-3"><i class="bi bi-lightbulb me-2"></i>Conseil Intelligent</h4>
+                <p class="text-white-50" id="tipContent">Calculez différents scénarios pour optimiser vos remboursements.</p>
+            </div>
         </div>
     </div>
 

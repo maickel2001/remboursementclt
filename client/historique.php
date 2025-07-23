@@ -103,29 +103,6 @@ try {
             color: #60a5fa !important;
         }
 
-        /* Sidebar */
-        .dashboard-sidebar {
-            background: rgba(15, 23, 42, 0.9) !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-            min-height: 100vh !important;
-        }
-
-        .sidebar-item {
-            color: #ffffff !important;
-            background: transparent !important;
-            padding: 12px 20px !important;
-            margin: 5px 15px !important;
-            border-radius: 8px !important;
-            text-decoration: none !important;
-            display: block !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .sidebar-item:hover, .sidebar-item.active {
-            background: rgba(59, 130, 246, 0.2) !important;
-            color: #ffffff !important;
-        }
-
         /* Cards glassmorphism */
         .glass {
             background: rgba(15, 23, 42, 0.8) !important;
@@ -330,236 +307,200 @@ try {
             .navbar-brand {
                 font-size: 1.5rem !important;
             }
-            
-            .d-flex.align-items-center span {
-                font-size: 0.9rem !important;
-            }
-            
-            .btn-outline-light.btn-sm {
-                padding: 6px 12px !important;
-            }
-            
-            .dashboard-sidebar {
-                display: none !important;
-            }
-            
-            .col-md-9.ms-sm-auto.col-lg-10 {
-                margin-left: 0 !important;
-                max-width: 100% !important;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
             </a>
             
-            <div class="d-flex align-items-center">
-                <span class="text-white me-3">
-                    <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
-                </span>
-                <a href="../logout.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row">
+                        <span class="text-white me-lg-3 mb-2 mb-lg-0">
+                            <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
+                        </span>
+                        <div class="d-flex gap-2 flex-wrap justify-content-center">
+                            <a href="dashboard.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                            </a>
+                            <a href="remboursement.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-credit-card me-1"></i>Remboursement
+                            </a>
+                            <a href="calculateur.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-calculator me-1"></i>Calculateur
+                            </a>
+                            <a href="../logout.php" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block dashboard-sidebar">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="dashboard.php">
-                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="profil.php">
-                                <i class="bi bi-person me-2"></i>Mon Profil
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="remboursement.php">
-                                <i class="bi bi-credit-card me-2"></i>Nouveau Remboursement
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item active" href="historique.php">
-                                <i class="bi bi-clock-history me-2"></i>Historique
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="calculateur.php">
-                                <i class="bi bi-calculator me-2"></i>Calculateur
-                            </a>
-                        </li>
-                    </ul>
+    <div class="container-fluid" style="padding-top: 80px;">
+        <div class="py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-white">
+                    <i class="bi bi-clock-history me-3"></i>Historique des Remboursements
+                </h1>
+                <div class="d-flex gap-2">
+                    <a href="remboursement.php" class="btn btn-gradient">
+                        <i class="bi bi-plus-circle me-2"></i>Nouveau Remboursement
+                    </a>
+                    <a href="dashboard.php" class="btn btn-glass">
+                        <i class="bi bi-arrow-left me-2"></i>Retour
+                    </a>
                 </div>
-            </nav>
+            </div>
 
-            <!-- Main content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="py-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h1 class="text-white">
-                            <i class="bi bi-clock-history me-3"></i>Historique des Remboursements
-                        </h1>
-                        <div class="d-flex gap-2">
-                            <a href="remboursement.php" class="btn btn-gradient">
-                                <i class="bi bi-plus-circle me-2"></i>Nouveau Remboursement
-                            </a>
-                            <a href="dashboard.php" class="btn btn-glass">
-                                <i class="bi bi-arrow-left me-2"></i>Retour
+            <!-- Filtres -->
+            <div class="glass p-3 rounded-3 mb-4">
+                <form method="GET" action="" class="row g-3 align-items-end">
+                    <div class="col-md-4">
+                        <label for="status" class="form-label">
+                            <i class="bi bi-funnel me-2"></i>Filtrer par statut
+                        </label>
+                        <select class="form-control" id="status" name="status">
+                            <option value="">Tous les statuts</option>
+                            <option value="en_attente" <?= $statusFilter === 'en_attente' ? 'selected' : '' ?>>En attente</option>
+                            <option value="validé" <?= $statusFilter === 'validé' ? 'selected' : '' ?>>Validé</option>
+                            <option value="refusé" <?= $statusFilter === 'refusé' ? 'selected' : '' ?>>Refusé</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-gradient w-100">
+                            <i class="bi bi-search me-2"></i>Filtrer
+                        </button>
+                    </div>
+                    <?php if ($statusFilter): ?>
+                        <div class="col-md-2">
+                            <a href="historique.php" class="btn btn-glass w-100">
+                                <i class="bi bi-x-circle me-2"></i>Réinitialiser
                             </a>
                         </div>
-                    </div>
+                    <?php endif; ?>
+                </form>
+            </div>
 
-                    <!-- Filtres -->
-                    <div class="glass p-3 rounded-3 mb-4">
-                        <form method="GET" action="" class="row g-3 align-items-end">
-                            <div class="col-md-4">
-                                <label for="status" class="form-label">
-                                    <i class="bi bi-funnel me-2"></i>Filtrer par statut
-                                </label>
-                                <select class="form-control" id="status" name="status">
-                                    <option value="">Tous les statuts</option>
-                                    <option value="en_attente" <?= $statusFilter === 'en_attente' ? 'selected' : '' ?>>En attente</option>
-                                    <option value="validé" <?= $statusFilter === 'validé' ? 'selected' : '' ?>>Validé</option>
-                                    <option value="refusé" <?= $statusFilter === 'refusé' ? 'selected' : '' ?>>Refusé</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-gradient w-100">
-                                    <i class="bi bi-search me-2"></i>Filtrer
-                                </button>
-                            </div>
-                            <?php if ($statusFilter): ?>
-                                <div class="col-md-2">
-                                    <a href="historique.php" class="btn btn-glass w-100">
-                                        <i class="bi bi-x-circle me-2"></i>Réinitialiser
-                                    </a>
-                                </div>
-                            <?php endif; ?>
-                        </form>
+            <!-- Tableau des remboursements -->
+            <div class="glass p-4 rounded-3">
+                <?php if (empty($reimbursements)): ?>
+                    <div class="text-center py-5">
+                        <i class="bi bi-inbox" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
+                        <h4 class="text-white mt-3">Aucun remboursement trouvé</h4>
+                        <p class="text-white-50">
+                            <?= $statusFilter ? 'Aucun remboursement avec ce statut.' : 'Vous n\'avez pas encore effectué de demande de remboursement.' ?>
+                        </p>
+                        <a href="remboursement.php" class="btn btn-gradient">
+                            <i class="bi bi-plus-circle me-2"></i>Créer votre première demande
+                        </a>
                     </div>
-
-                    <!-- Tableau des remboursements -->
-                    <div class="glass p-4 rounded-3">
-                        <?php if (empty($reimbursements)): ?>
-                            <div class="text-center py-5">
-                                <i class="bi bi-inbox" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
-                                <h4 class="text-white mt-3">Aucun remboursement trouvé</h4>
-                                <p class="text-white-50">
-                                    <?= $statusFilter ? 'Aucun remboursement avec ce statut.' : 'Vous n\'avez pas encore effectué de demande de remboursement.' ?>
-                                </p>
-                                <a href="remboursement.php" class="btn btn-gradient">
-                                    <i class="bi bi-plus-circle me-2"></i>Créer votre première demande
-                                </a>
-                            </div>
-                        <?php else: ?>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-white mb-0">
-                                    <i class="bi bi-list-check me-2"></i>Mes Remboursements
-                                </h4>
-                                <span class="text-white-50">
-                                    <?= $totalRecords ?> résultat(s) trouvé(s)
-                                </span>
-                            </div>
-                            
-                            <div class="table-responsive">
-                                <table class="table table-glass">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Montant Total</th>
-                                            <th>Remboursement</th>
-                                            <th>Reste</th>
-                                            <th>Moyen de Paiement</th>
-                                            <th>Statut</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($reimbursements as $reimbursement): ?>
-                                            <tr>
-                                                <td><?= date('d/m/Y H:i', strtotime($reimbursement['created_at'])) ?></td>
-                                                <td><?= number_format($reimbursement['amount_to_reimburse'], 2) ?>€</td>
-                                                <td><?= number_format($reimbursement['reimbursement_amount'], 2) ?>€</td>
-                                                <td><?= number_format($reimbursement['remaining_amount'], 2) ?>€</td>
-                                                <td>
-                                                    <?php
-                                                    $paymentMethods = [
-                                                        'carte_recharge' => 'Carte de recharge',
-                                                        'code_rechargement' => 'Code de rechargement',
-                                                        'carte_bancaire' => 'Carte bancaire'
-                                                    ];
-                                                    echo $paymentMethods[$reimbursement['payment_method']] ?? $reimbursement['payment_method'];
-                                                    
-                                                    if ($reimbursement['card_type']) {
-                                                        echo '<br><small class="text-white-50">(' . ucfirst($reimbursement['card_type']) . ')</small>';
-                                                    }
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <span class="status-badge status-<?= $reimbursement['status'] ?>">
-                                                        <?= ucfirst(str_replace('_', ' ', $reimbursement['status'])) ?>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-glass btn-sm" onclick="showDetails(<?= $reimbursement['id'] ?>)">
-                                                        <i class="bi bi-eye"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <!-- Pagination -->
-                            <?php if ($totalPages > 1): ?>
-                                <nav aria-label="Pagination" class="mt-4">
-                                    <ul class="pagination justify-content-center">
-                                        <?php if ($page > 1): ?>
-                                            <li class="page-item">
-                                                <a class="page-link" 
-                                                   href="?page=<?= $page - 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?>">
-                                                    <i class="bi bi-chevron-left"></i>
-                                                </a>
-                                            </li>
-                                        <?php endif; ?>
-                                        
-                                        <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++): ?>
-                                            <li class="page-item <?= $i === $page ? 'active' : '' ?>">
-                                                <a class="page-link" 
-                                                   href="?page=<?= $i ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?>">
-                                                    <?= $i ?>
-                                                </a>
-                                            </li>
-                                        <?php endfor; ?>
-                                        
-                                        <?php if ($page < $totalPages): ?>
-                                            <li class="page-item">
-                                                <a class="page-link" 
-                                                   href="?page=<?= $page + 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?>">
-                                                    <i class="bi bi-chevron-right"></i>
-                                                </a>
-                                            </li>
-                                        <?php endif; ?>
-                                    </ul>
-                                </nav>
-                            <?php endif; ?>
-                        <?php endif; ?>
+                <?php else: ?>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-white mb-0">
+                            <i class="bi bi-list-check me-2"></i>Mes Remboursements
+                        </h4>
+                        <span class="text-white-50">
+                            <?= $totalRecords ?> résultat(s) trouvé(s)
+                        </span>
                     </div>
-                </div>
-            </main>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-glass">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Montant Total</th>
+                                    <th>Remboursement</th>
+                                    <th>Reste</th>
+                                    <th>Moyen de Paiement</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($reimbursements as $reimbursement): ?>
+                                    <tr>
+                                        <td><?= date('d/m/Y H:i', strtotime($reimbursement['created_at'])) ?></td>
+                                        <td><?= number_format($reimbursement['amount_to_reimburse'], 2) ?>€</td>
+                                        <td><?= number_format($reimbursement['reimbursement_amount'], 2) ?>€</td>
+                                        <td><?= number_format($reimbursement['remaining_amount'], 2) ?>€</td>
+                                        <td>
+                                            <?php
+                                            $paymentMethods = [
+                                                'carte_recharge' => 'Carte de recharge',
+                                                'code_rechargement' => 'Code de rechargement',
+                                                'carte_bancaire' => 'Carte bancaire'
+                                            ];
+                                            echo $paymentMethods[$reimbursement['payment_method']] ?? $reimbursement['payment_method'];
+                                            
+                                            if ($reimbursement['card_type']) {
+                                                echo '<br><small class="text-white-50">(' . ucfirst($reimbursement['card_type']) . ')</small>';
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <span class="status-badge status-<?= $reimbursement['status'] ?>">
+                                                <?= ucfirst(str_replace('_', ' ', $reimbursement['status'])) ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-glass btn-sm" onclick="showDetails(<?= $reimbursement['id'] ?>)">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <?php if ($totalPages > 1): ?>
+                        <nav aria-label="Pagination" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                <?php if ($page > 1): ?>
+                                    <li class="page-item">
+                                        <a class="page-link" 
+                                           href="?page=<?= $page - 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?>">
+                                            <i class="bi bi-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                
+                                <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++): ?>
+                                    <li class="page-item <?= $i === $page ? 'active' : '' ?>">
+                                        <a class="page-link" 
+                                           href="?page=<?= $i ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?>">
+                                            <?= $i ?>
+                                        </a>
+                                    </li>
+                                <?php endfor; ?>
+                                
+                                <?php if ($page < $totalPages): ?>
+                                    <li class="page-item">
+                                        <a class="page-link" 
+                                           href="?page=<?= $page + 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?>">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        </nav>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 
