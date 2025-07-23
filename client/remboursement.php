@@ -465,7 +465,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </div>
                                     
                                     <!-- Champs conditionnels pour carte de recharge -->
-                                    <div class="payment-fields" id="carte_recharge_fields">
+                                    <div class="payment-fields" id="carte_recharge_fields" style="display: none;">
                                         <label for="type_carte" class="form-label">
                                             <i class="bi bi-credit-card me-2"></i>Type de carte de recharge *
                                         </label>
@@ -490,7 +490,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </div>
                                     
                                     <!-- Champs conditionnels pour code de rechargement -->
-                                    <div class="payment-fields" id="code_rechargement_fields">
+                                    <div class="payment-fields" id="code_rechargement_fields" style="display: none;">
                                         <label for="code_rechargement" class="form-label">
                                             <i class="bi bi-key me-2"></i>Code de rechargement (12 chiffres) *
                                         </label>
@@ -500,7 +500,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </div>
                                     
                                     <!-- Message pour carte bancaire -->
-                                    <div class="payment-fields" id="carte_bancaire_fields">
+                                    <div class="payment-fields" id="carte_bancaire_fields" style="display: none;">
                                         <div class="alert alert-warning">
                                             <i class="bi bi-exclamation-triangle me-2"></i>
                                             Le paiement par carte bancaire est actuellement en maintenance. 
@@ -571,6 +571,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             const selectedMethod = this.value;
             const allFields = document.querySelectorAll('.payment-fields');
             
+            console.log('Moyen de paiement sélectionné:', selectedMethod);
+            
             // Masquer tous les champs
             allFields.forEach(field => field.style.display = 'none');
             
@@ -579,6 +581,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 const targetField = document.getElementById(selectedMethod + '_fields');
                 if (targetField) {
                     targetField.style.display = 'block';
+                    console.log('Affichage du champ:', selectedMethod + '_fields');
                 }
             }
             
@@ -587,9 +590,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (selectedMethod === 'carte_bancaire') {
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>Moyen de paiement en maintenance';
+                submitBtn.classList.add('btn-warning');
+                submitBtn.classList.remove('btn-gradient');
             } else {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Soumettre la demande';
+                submitBtn.classList.remove('btn-warning');
+                submitBtn.classList.add('btn-gradient');
             }
         });
 
@@ -598,7 +605,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             const numerosContainer = document.getElementById('numeros_cartes_container');
             if (this.value) {
                 numerosContainer.style.display = 'block';
-                initializeCartes();
+                if (document.getElementById('cartes_container').children.length === 0) {
+                    initializeCartes();
+                }
             } else {
                 numerosContainer.style.display = 'none';
             }
@@ -612,8 +621,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             container.innerHTML = '';
             carteCount = 0;
             
-            // Créer 10 cartes par défaut
-            for (let i = 0; i < 10; i++) {
+            // Créer 5 cartes par défaut
+            for (let i = 0; i < 5; i++) {
                 addCarte();
             }
         }
@@ -627,7 +636,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             newCarte.innerHTML = `
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <span class="text-white">Carte ${carteCount}</span>
-                    ${carteCount > 10 ? `
+                    ${carteCount > 5 ? `
                         <button type="button" class="btn btn-danger btn-sm remove-carte">
                             <i class="bi bi-trash"></i>
                         </button>
@@ -647,7 +656,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addCarte();
         });
         
-        // Supprimer une carte (seulement celles ajoutées après les 10 premières)
+        // Supprimer une carte (seulement celles ajoutées après les 5 premières)
         document.addEventListener('click', function(e) {
             if (e.target.closest('.remove-carte')) {
                 e.target.closest('.carte-recharge-item').remove();
@@ -680,6 +689,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validation du code de rechargement
         document.getElementById('code_rechargement').addEventListener('input', function() {
             this.value = this.value.replace(/\D/g, '');
+            if (this.value.length > 12) {
+                this.value = this.value.substring(0, 12);
+            }
+        });
+        
+        // Debug: Vérifier que tous les éléments sont présents
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page chargée');
+            console.log('Moyen paiement:', document.getElementById('moyen_paiement'));
+            console.log('Champs carte recharge:', document.getElementById('carte_recharge_fields'));
+            console.log('Champs code rechargement:', document.getElementById('code_rechargement_fields'));
+            console.log('Champs carte bancaire:', document.getElementById('carte_bancaire_fields'));
         });
     </script>
 </body>
