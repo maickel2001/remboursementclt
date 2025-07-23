@@ -31,12 +31,269 @@ if (isLoggedIn()) {
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- CSS INTÉGRÉ DIRECTEMENT -->
+    <style>
+        /* FORCE L'ARRIÈRE-PLAN SOMBRE PARTOUT */
+        * {
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            background: #0f172a !important;
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            min-height: 100vh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Tous les conteneurs */
+        .container, .container-fluid, .row, .col, [class*="col-"] {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #60a5fa !important;
+        }
+
+        /* Hero section */
+        .hero-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%) !important;
+            min-height: 100vh !important;
+            display: flex !important;
+            align-items: center !important;
+            padding: 80px 0 !important;
+        }
+
+        .hero-title {
+            font-size: 3.5rem !important;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+            margin-bottom: 1.5rem !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-size: 1.3rem !important;
+            margin-bottom: 2rem !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Cards glassmorphism */
+        .glass, .feature-card, .calculator-card {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 16px !important;
+            padding: 2rem !important;
+            backdrop-filter: blur(20px) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+            color: #ffffff !important;
+            margin-bottom: 2rem !important;
+        }
+
+        /* Titres */
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            margin-bottom: 1rem !important;
+        }
+
+        /* Textes */
+        p, span, div, label, small {
+            color: #ffffff !important;
+        }
+
+        .text-white-50 {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        /* Boutons */
+        .btn {
+            border-radius: 12px !important;
+            padding: 12px 24px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+            border: none !important;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
+        }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%) !important;
+            color: #ffffff !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6) !important;
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Formulaires */
+        .form-control, .form-select, input, textarea, select {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+            border-radius: 8px !important;
+            padding: 12px 16px !important;
+        }
+
+        .form-control:focus, .form-select:focus, input:focus, textarea:focus {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border-color: #3b82f6 !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25) !important;
+        }
+
+        .form-control::placeholder, input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .form-label {
+            color: #ffffff !important;
+            font-weight: 500 !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        /* Feature icons */
+        .feature-icon {
+            font-size: 4rem !important;
+            color: #3b82f6 !important;
+            margin-bottom: 1.5rem !important;
+            text-align: center !important;
+        }
+
+        /* Alertes */
+        .alert {
+            border-radius: 12px !important;
+            border: none !important;
+            padding: 1rem 1.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .alert-success {
+            background: rgba(34, 197, 94, 0.2) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(34, 197, 94, 0.4) !important;
+        }
+
+        .alert-info {
+            background: rgba(59, 130, 246, 0.2) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(59, 130, 246, 0.4) !important;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.9) !important;
+            color: #ffffff !important;
+            padding: 3rem 0 !important;
+            margin-top: 5rem !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Calculateur */
+        .calculator-result {
+            background: rgba(34, 197, 94, 0.2) !important;
+            border: 1px solid rgba(34, 197, 94, 0.4) !important;
+            border-radius: 12px !important;
+            padding: 1.5rem !important;
+            margin-top: 1.5rem !important;
+            color: #ffffff !important;
+        }
+
+        /* Liens */
+        a {
+            color: #60a5fa !important;
+            text-decoration: none !important;
+        }
+
+        a:hover {
+            color: #93c5fd !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem !important;
+            }
+            
+            .feature-card, .calculator-card {
+                padding: 1.5rem !important;
+            }
+            
+            body {
+                padding-top: 70px !important;
+            }
+        }
+
+        /* Navbar fixed */
+        .navbar.fixed-top {
+            position: fixed !important;
+            top: 0 !important;
+            width: 100% !important;
+            z-index: 1030 !important;
+        }
+
+        body {
+            padding-top: 80px !important;
+        }
+
+        /* Hero image */
+        .hero-image i {
+            opacity: 0.8 !important;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) !important;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0 !important;
+        }
+
+        /* Navbar toggler */
+        .navbar-toggler {
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
@@ -49,13 +306,13 @@ if (isLoggedIn()) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#services">Services</a>
+                        <a class="nav-link" href="#services">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#calculator">Calculateur</a>
+                        <a class="nav-link" href="#calculator">Calculateur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#contact">Contact</a>
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>
                     <?php if ($currentUser): ?>
                         <li class="nav-item">
@@ -64,7 +321,7 @@ if (isLoggedIn()) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white ms-2" href="logout.php">
+                            <a class="nav-link ms-2" href="logout.php">
                                 <i class="bi bi-box-arrow-right"></i>
                             </a>
                         </li>
@@ -111,7 +368,7 @@ if (isLoggedIn()) {
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="text-center">
                         <div class="hero-image">
-                            <i class="bi bi-credit-card" style="font-size: 15rem; color: rgba(255,255,255,0.8);"></i>
+                            <i class="bi bi-credit-card" style="font-size: 12rem; color: rgba(59, 130, 246, 0.8);"></i>
                         </div>
                     </div>
                 </div>
@@ -120,22 +377,22 @@ if (isLoggedIn()) {
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-5">
+    <section id="services">
         <div class="container">
             <div class="row text-center mb-5">
                 <div class="col-12" data-aos="fade-up">
-                    <h2 class="display-4 fw-bold text-white mb-4">Nos Services</h2>
+                    <h2 class="display-4 fw-bold mb-4">Nos Services</h2>
                     <p class="lead text-white-50">Une plateforme complète pour tous vos besoins de remboursement</p>
                 </div>
             </div>
             
             <div class="row g-4">
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-card">
+                    <div class="feature-card text-center">
                         <div class="feature-icon">
                             <i class="bi bi-shield-check"></i>
                         </div>
-                        <h4 class="text-white mb-3">Sécurité Maximale</h4>
+                        <h4 class="mb-3">Sécurité Maximale</h4>
                         <p class="text-white-50">
                             Vos données sont protégées par un système de chiffrement de niveau bancaire. 
                             Toutes les transactions sont sécurisées.
@@ -144,11 +401,11 @@ if (isLoggedIn()) {
                 </div>
                 
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-card">
+                    <div class="feature-card text-center">
                         <div class="feature-icon">
                             <i class="bi bi-lightning-charge"></i>
                         </div>
-                        <h4 class="text-white mb-3">Rapidité</h4>
+                        <h4 class="mb-3">Rapidité</h4>
                         <p class="text-white-50">
                             Traitements ultra-rapides de vos demandes. La plupart des remboursements 
                             sont traités en moins de 24h.
@@ -157,11 +414,11 @@ if (isLoggedIn()) {
                 </div>
                 
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-card">
+                    <div class="feature-card text-center">
                         <div class="feature-icon">
                             <i class="bi bi-headset"></i>
                         </div>
-                        <h4 class="text-white mb-3">Support 24/7</h4>
+                        <h4 class="mb-3">Support 24/7</h4>
                         <p class="text-white-50">
                             Notre équipe de support est disponible 24h/24 et 7j/7 pour vous accompagner 
                             dans toutes vos démarches.
@@ -173,25 +430,25 @@ if (isLoggedIn()) {
     </section>
 
     <!-- Calculator Section -->
-    <section id="calculator" class="py-5">
+    <section id="calculator">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8" data-aos="fade-up">
                     <div class="calculator-card">
-                        <h3 class="text-center text-white mb-4">
+                        <h3 class="text-center mb-4">
                             <i class="bi bi-calculator me-2"></i>Calculateur de Remboursement
                         </h3>
                         
                         <div class="row g-4">
                             <div class="col-md-6">
-                                <label for="totalAmount" class="form-label text-white">Montant à rembourser (€)</label>
-                                <input type="number" class="form-control form-control-glass" id="totalAmount" 
+                                <label for="totalAmount" class="form-label">Montant à rembourser (€)</label>
+                                <input type="number" class="form-control" id="totalAmount" 
                                        placeholder="0.00" min="0" step="0.01">
                             </div>
                             
                             <div class="col-md-6">
-                                <label for="reimbursementAmount" class="form-label text-white">Remboursement à effectuer (€)</label>
-                                <input type="number" class="form-control form-control-glass" id="reimbursementAmount" 
+                                <label for="reimbursementAmount" class="form-label">Remboursement à effectuer (€)</label>
+                                <input type="number" class="form-control" id="reimbursementAmount" 
                                        placeholder="0.00" min="0" step="0.01">
                             </div>
                         </div>
@@ -240,12 +497,12 @@ if (isLoggedIn()) {
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <section id="contact">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8" data-aos="fade-up">
                     <div class="text-center mb-5">
-                        <h2 class="display-4 fw-bold text-white mb-4">Contactez-nous</h2>
+                        <h2 class="display-4 fw-bold mb-4">Contactez-nous</h2>
                         <p class="lead text-white-50">Notre équipe est là pour vous aider</p>
                     </div>
                     
@@ -255,7 +512,7 @@ if (isLoggedIn()) {
                                 <div class="feature-icon">
                                     <i class="bi bi-envelope"></i>
                                 </div>
-                                <h5 class="text-white">Email</h5>
+                                <h5>Email</h5>
                                 <p class="text-white-50">contact@remboursepro.com</p>
                             </div>
                         </div>
@@ -265,7 +522,7 @@ if (isLoggedIn()) {
                                 <div class="feature-icon">
                                     <i class="bi bi-telephone"></i>
                                 </div>
-                                <h5 class="text-white">Téléphone</h5>
+                                <h5>Téléphone</h5>
                                 <p class="text-white-50">+33 1 23 45 67 89</p>
                             </div>
                         </div>
@@ -275,7 +532,7 @@ if (isLoggedIn()) {
                                 <div class="feature-icon">
                                     <i class="bi bi-chat-dots"></i>
                                 </div>
-                                <h5 class="text-white">Chat Live</h5>
+                                <h5>Chat Live</h5>
                                 <p class="text-white-50">Disponible 24h/24</p>
                             </div>
                         </div>
