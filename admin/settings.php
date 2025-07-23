@@ -122,29 +122,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #60a5fa !important;
         }
 
-        /* Sidebar */
-        .dashboard-sidebar {
-            background: rgba(15, 23, 42, 0.9) !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-            min-height: 100vh !important;
-        }
-
-        .sidebar-item {
-            color: #ffffff !important;
-            background: transparent !important;
-            padding: 12px 20px !important;
-            margin: 5px 15px !important;
-            border-radius: 8px !important;
-            text-decoration: none !important;
-            display: block !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .sidebar-item:hover, .sidebar-item.active {
-            background: rgba(59, 130, 246, 0.2) !important;
-            color: #ffffff !important;
-        }
-
         /* Cards glassmorphism */
         .glass, .form-glass {
             background: rgba(15, 23, 42, 0.8) !important;
@@ -343,190 +320,159 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .navbar-brand {
                 font-size: 1.5rem !important;
             }
-            
-            .d-flex.align-items-center span {
-                font-size: 0.9rem !important;
-            }
-            
-            .btn-outline-light.btn-sm {
-                padding: 6px 12px !important;
-            }
-            
-            .dashboard-sidebar {
-                display: none !important;
-            }
-            
-            .col-md-9.ms-sm-auto.col-lg-10 {
-                margin-left: 0 !important;
-                max-width: 100% !important;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
             </a>
             
-            <div class="d-flex align-items-center">
-                <span class="text-white me-3">
-                    <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
-                    <span class="badge bg-danger ms-2">Admin</span>
-                </span>
-                <a href="../logout.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row">
+                        <span class="text-white me-lg-3 mb-2 mb-lg-0">
+                            <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
+                            <span class="badge bg-danger ms-2">Admin</span>
+                        </span>
+                        <div class="d-flex gap-2 flex-wrap justify-content-center">
+                            <a href="dashboard.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                            </a>
+                            <a href="remboursements.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-credit-card me-1"></i>Remboursements
+                            </a>
+                            <a href="utilisateurs.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-people me-1"></i>Utilisateurs
+                            </a>
+                            <a href="../logout.php" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block dashboard-sidebar">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="dashboard.php">
-                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="remboursements.php">
-                                <i class="bi bi-credit-card me-2"></i>Remboursements
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="utilisateurs.php">
-                                <i class="bi bi-people me-2"></i>Utilisateurs
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item active" href="settings.php">
-                                <i class="bi bi-gear me-2"></i>Paramètres
-                            </a>
-                        </li>
-                    </ul>
+    <div class="container-fluid" style="padding-top: 80px;">
+        <div class="py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-white">
+                    <i class="bi bi-gear me-3"></i>Paramètres du Site
+                </h1>
+                <a href="dashboard.php" class="btn btn-glass">
+                    <i class="bi bi-arrow-left me-2"></i>Retour
+                </a>
+            </div>
+
+            <?php if ($error): ?>
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
                 </div>
-            </nav>
+            <?php endif; ?>
+            
+            <?php if ($success): ?>
+                <div class="alert alert-success" role="alert">
+                    <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
+                </div>
+            <?php endif; ?>
 
-            <!-- Main content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="py-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h1 class="text-white">
-                            <i class="bi bi-gear me-3"></i>Paramètres du Site
-                        </h1>
-                        <a href="dashboard.php" class="btn btn-glass">
-                            <i class="bi bi-arrow-left me-2"></i>Retour
-                        </a>
-                    </div>
-
-                    <?php if ($error): ?>
-                        <div class="alert alert-danger" role="alert">
-                            <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php if ($success): ?>
-                        <div class="alert alert-success" role="alert">
-                            <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="form-glass">
-                                <h3 class="text-white mb-4">
-                                    <i class="bi bi-sliders me-2"></i>Configuration Générale
-                                </h3>
-                                
-                                <form method="POST" action="">
-                                    <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
-                                    
-                                    <div class="mb-3">
-                                        <label for="site_name" class="form-label text-white">
-                                            <i class="bi bi-globe me-2"></i>Nom du site *
-                                        </label>
-                                        <input type="text" class="form-control" id="site_name" 
-                                               name="site_name" required value="<?= htmlspecialchars($settings['site_name'] ?? '') ?>">
-                                        <small class="text-white-50">Ce nom apparaîtra dans la navigation et les emails.</small>
-                                    </div>
-                                    
-                                    <div class="mb-4">
-                                        <label for="contact_email" class="form-label text-white">
-                                            <i class="bi bi-envelope me-2"></i>Email de contact *
-                                        </label>
-                                        <input type="email" class="form-control" id="contact_email" 
-                                               name="contact_email" required value="<?= htmlspecialchars($settings['contact_email'] ?? '') ?>">
-                                        <small class="text-white-50">Adresse email utilisée pour les notifications et le support.</small>
-                                    </div>
-                                    
-                                    <div class="d-grid">
-                                        <button type="submit" class="btn btn-gradient">
-                                            <i class="bi bi-check-circle me-2"></i>Sauvegarder les paramètres
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="form-glass">
+                        <h3 class="text-white mb-4">
+                            <i class="bi bi-sliders me-2"></i>Configuration Générale
+                        </h3>
                         
-                        <div class="col-lg-4">
-                            <div class="glass p-4 rounded-3 mb-4">
-                                <h4 class="text-white mb-3">
-                                    <i class="bi bi-info-circle me-2"></i>Informations Système
-                                </h4>
-                                <div class="mb-3">
-                                    <small class="text-white-50">Version PHP</small>
-                                    <div class="text-white"><?= phpversion() ?></div>
-                                </div>
-                                <div class="mb-3">
-                                    <small class="text-white-50">Serveur Web</small>
-                                    <div class="text-white"><?= $_SERVER['SERVER_SOFTWARE'] ?? 'Non disponible' ?></div>
-                                </div>
-                                <div class="mb-3">
-                                    <small class="text-white-50">Dernière mise à jour</small>
-                                    <div class="text-white">
-                                        <?= $settings ? date('d/m/Y H:i', strtotime($settings['updated_at'])) : 'Jamais' ?>
-                                    </div>
-                                </div>
+                        <form method="POST" action="">
+                            <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
+                            
+                            <div class="mb-3">
+                                <label for="site_name" class="form-label text-white">
+                                    <i class="bi bi-globe me-2"></i>Nom du site *
+                                </label>
+                                <input type="text" class="form-control" id="site_name" 
+                                       name="site_name" required value="<?= htmlspecialchars($settings['site_name'] ?? '') ?>">
+                                <small class="text-white-50">Ce nom apparaîtra dans la navigation et les emails.</small>
                             </div>
                             
-                            <div class="glass p-4 rounded-3 mb-4">
-                                <h4 class="text-white mb-3">
-                                    <i class="bi bi-shield-check me-2"></i>Sécurité
-                                </h4>
-                                <ul class="text-white-50 small">
-                                    <li class="mb-2">✅ Hachage des mots de passe activé</li>
-                                    <li class="mb-2">✅ Protection CSRF activée</li>
-                                    <li class="mb-2">✅ Validation des entrées activée</li>
-                                    <li class="mb-2">✅ Sessions sécurisées</li>
-                                </ul>
+                            <div class="mb-4">
+                                <label for="contact_email" class="form-label text-white">
+                                    <i class="bi bi-envelope me-2"></i>Email de contact *
+                                </label>
+                                <input type="email" class="form-control" id="contact_email" 
+                                       name="contact_email" required value="<?= htmlspecialchars($settings['contact_email'] ?? '') ?>">
+                                <small class="text-white-50">Adresse email utilisée pour les notifications et le support.</small>
                             </div>
                             
-                            <div class="glass p-4 rounded-3">
-                                <h4 class="text-white mb-3">
-                                    <i class="bi bi-tools me-2"></i>Actions Avancées
-                                </h4>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-warning" onclick="clearCache()">
-                                        <i class="bi bi-arrow-clockwise me-2"></i>Vider le cache
-                                    </button>
-                                    <button class="btn btn-info" onclick="exportData()">
-                                        <i class="bi bi-download me-2"></i>Exporter les données
-                                    </button>
-                                    <button class="btn btn-secondary" onclick="viewLogs()">
-                                        <i class="bi bi-file-text me-2"></i>Voir les logs
-                                    </button>
-                                </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-gradient">
+                                    <i class="bi bi-check-circle me-2"></i>Sauvegarder les paramètres
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="glass p-4 rounded-3 mb-4">
+                        <h4 class="text-white mb-3">
+                            <i class="bi bi-info-circle me-2"></i>Informations Système
+                        </h4>
+                        <div class="mb-3">
+                            <small class="text-white-50">Version PHP</small>
+                            <div class="text-white"><?= phpversion() ?></div>
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-white-50">Serveur Web</small>
+                            <div class="text-white"><?= $_SERVER['SERVER_SOFTWARE'] ?? 'Non disponible' ?></div>
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-white-50">Dernière mise à jour</small>
+                            <div class="text-white">
+                                <?= $settings ? date('d/m/Y H:i', strtotime($settings['updated_at'])) : 'Jamais' ?>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="glass p-4 rounded-3 mb-4">
+                        <h4 class="text-white mb-3">
+                            <i class="bi bi-shield-check me-2"></i>Sécurité
+                        </h4>
+                        <ul class="text-white-50 small">
+                            <li class="mb-2">✅ Hachage des mots de passe activé</li>
+                            <li class="mb-2">✅ Protection CSRF activée</li>
+                            <li class="mb-2">✅ Validation des entrées activée</li>
+                            <li class="mb-2">✅ Sessions sécurisées</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass p-4 rounded-3">
+                        <h4 class="text-white mb-3">
+                            <i class="bi bi-tools me-2"></i>Actions Avancées
+                        </h4>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-warning" onclick="clearCache()">
+                                <i class="bi bi-arrow-clockwise me-2"></i>Vider le cache
+                            </button>
+                            <button class="btn btn-info" onclick="exportData()">
+                                <i class="bi bi-download me-2"></i>Exporter les données
+                            </button>
+                            <button class="btn btn-secondary" onclick="viewLogs()">
+                                <i class="bi bi-file-text me-2"></i>Voir les logs
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
 

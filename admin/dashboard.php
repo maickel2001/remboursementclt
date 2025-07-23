@@ -600,91 +600,13 @@ try {
         </div>
     </div>
 
-    <!-- Notifications Toast Container -->
-    <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Système de notifications toast
-        function showToast(message, type = 'info') {
-            const toast = document.createElement('div');
-            toast.className = `alert alert-${type} alert-dismissible fade show`;
-            toast.style.cssText = `
-                background: rgba(15, 23, 42, 0.95) !important;
-                border: 1px solid rgba(59, 130, 246, 0.4) !important;
-                color: #ffffff !important;
-                margin-bottom: 10px;
-                border-radius: 10px;
-                backdrop-filter: blur(10px);
-                animation: slideIn 0.3s ease;
-            `;
-            
-            toast.innerHTML = `
-                <i class="bi bi-info-circle me-2"></i>${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" style="filter: invert(1);"></button>
-            `;
-            
-            document.getElementById('toast-container').appendChild(toast);
-            
-            // Auto-remove after 5 seconds
-            setTimeout(() => {
-                if (toast.parentNode) {
-                    toast.remove();
-                }
-            }, 5000);
-        }
-
-        // Animation CSS pour les toasts
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            
-            .stats-card:hover {
-                transform: translateY(-5px) !important;
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4) !important;
-                transition: all 0.3s ease !important;
-            }
-            
-            .glass:hover {
-                border-color: rgba(59, 130, 246, 0.3) !important;
-                transition: all 0.3s ease !important;
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Notifications en temps réel (simulation)
-        function startRealTimeNotifications() {
-            const notifications = [
-                'Nouveau remboursement soumis par Jean Dupont',
-                'Remboursement validé pour Marie Martin',
-                'Nouvel utilisateur inscrit',
-                'Système de sauvegarde automatique effectué'
-            ];
-            
-            setInterval(() => {
-                if (Math.random() > 0.7) { // 30% de chance
-                    const randomNotif = notifications[Math.floor(Math.random() * notifications.length)];
-                    showToast(randomNotif, 'info');
-                }
-            }, 30000); // Toutes les 30 secondes
-        }
-
         // Données pour les graphiques
         const chartData = <?= json_encode($chartData) ?>;
         const stats = <?= json_encode($stats) ?>;
-        
-        // Initialiser les notifications
-        document.addEventListener('DOMContentLoaded', function() {
-            showToast('Bienvenue dans l\'espace administrateur !', 'success');
-            setTimeout(() => {
-                startRealTimeNotifications();
-            }, 5000);
-        });
         
         // Graphique d'évolution des remboursements
         const ctx1 = document.getElementById('reimbursementChart').getContext('2d');

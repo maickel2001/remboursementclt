@@ -178,29 +178,6 @@ try {
             color: #60a5fa !important;
         }
 
-        /* Sidebar */
-        .dashboard-sidebar {
-            background: rgba(15, 23, 42, 0.9) !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-            min-height: 100vh !important;
-        }
-
-        .sidebar-item {
-            color: #ffffff !important;
-            background: transparent !important;
-            padding: 12px 20px !important;
-            margin: 5px 15px !important;
-            border-radius: 8px !important;
-            text-decoration: none !important;
-            display: block !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .sidebar-item:hover, .sidebar-item.active {
-            background: rgba(59, 130, 246, 0.2) !important;
-            color: #ffffff !important;
-        }
-
         /* Cards glassmorphism */
         .glass, .stats-card {
             background: rgba(15, 23, 42, 0.8) !important;
@@ -458,315 +435,284 @@ try {
             .navbar-brand {
                 font-size: 1.5rem !important;
             }
-            
-            .d-flex.align-items-center span {
-                font-size: 0.9rem !important;
-            }
-            
-            .btn-outline-light.btn-sm {
-                padding: 6px 12px !important;
-            }
-            
-            .dashboard-sidebar {
-                display: none !important;
-            }
-            
-            .col-md-9.ms-sm-auto.col-lg-10 {
-                margin-left: 0 !important;
-                max-width: 100% !important;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
             </a>
             
-            <div class="d-flex align-items-center">
-                <span class="text-white me-3">
-                    <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
-                    <span class="badge bg-danger ms-2">Admin</span>
-                </span>
-                <a href="../logout.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row">
+                        <span class="text-white me-lg-3 mb-2 mb-lg-0">
+                            <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
+                            <span class="badge bg-danger ms-2">Admin</span>
+                        </span>
+                        <div class="d-flex gap-2 flex-wrap justify-content-center">
+                            <a href="dashboard.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                            </a>
+                            <a href="remboursements.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-credit-card me-1"></i>Remboursements
+                            </a>
+                            <a href="settings.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-gear me-1"></i>Paramètres
+                            </a>
+                            <a href="../logout.php" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block dashboard-sidebar">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="dashboard.php">
-                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="remboursements.php">
-                                <i class="bi bi-credit-card me-2"></i>Remboursements
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item active" href="utilisateurs.php">
-                                <i class="bi bi-people me-2"></i>Utilisateurs
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="settings.php">
-                                <i class="bi bi-gear me-2"></i>Paramètres
-                            </a>
-                        </li>
-                    </ul>
+    <div class="container-fluid" style="padding-top: 80px;">
+        <div class="py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-white">
+                    <i class="bi bi-people me-3"></i>Gestion des Utilisateurs
+                </h1>
+                <a href="dashboard.php" class="btn btn-glass">
+                    <i class="bi bi-arrow-left me-2"></i>Retour
+                </a>
+            </div>
+
+            <?php if ($error): ?>
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
                 </div>
-            </nav>
+            <?php endif; ?>
+            
+            <?php if ($success): ?>
+                <div class="alert alert-success" role="alert">
+                    <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
+                </div>
+            <?php endif; ?>
 
-            <!-- Main content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="py-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h1 class="text-white">
-                            <i class="bi bi-people me-3"></i>Gestion des Utilisateurs
-                        </h1>
-                        <a href="dashboard.php" class="btn btn-glass">
-                            <i class="bi bi-arrow-left me-2"></i>Retour
-                        </a>
+            <!-- Statistics Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value"><?= $stats['total_users'] ?></div>
+                        <div class="stats-label">
+                            <i class="bi bi-people me-2"></i>Total Utilisateurs
+                        </div>
                     </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value"><?= $stats['total_clients'] ?></div>
+                        <div class="stats-label">
+                            <i class="bi bi-person me-2"></i>Clients
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="stats-card">
+                        <div class="stats-value"><?= $stats['total_admins'] ?></div>
+                        <div class="stats-label">
+                            <i class="bi bi-person-gear me-2"></i>Administrateurs
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <?php if ($error): ?>
-                        <div class="alert alert-danger" role="alert">
-                            <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
+            <!-- Filtres -->
+            <div class="glass p-3 rounded-3 mb-4">
+                <form method="GET" action="" class="row g-3 align-items-end">
+                    <div class="col-md-3">
+                        <label for="role" class="form-label text-white">
+                            <i class="bi bi-funnel me-2"></i>Rôle
+                        </label>
+                        <select class="form-control" id="role" name="role">
+                            <option value="">Tous les rôles</option>
+                            <option value="client" <?= $roleFilter === 'client' ? 'selected' : '' ?>>Client</option>
+                            <option value="admin" <?= $roleFilter === 'admin' ? 'selected' : '' ?>>Admin</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="search" class="form-label text-white">
+                            <i class="bi bi-search me-2"></i>Rechercher
+                        </label>
+                        <input type="text" class="form-control" id="search" name="search" 
+                               placeholder="Nom, prénom ou email" value="<?= htmlspecialchars($searchFilter) ?>">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-gradient w-100">
+                            <i class="bi bi-search me-2"></i>Filtrer
+                        </button>
+                    </div>
+                    <?php if ($roleFilter || $searchFilter): ?>
+                        <div class="col-md-2">
+                            <a href="utilisateurs.php" class="btn btn-glass w-100">
+                                <i class="bi bi-x-circle me-2"></i>Réinitialiser
+                            </a>
                         </div>
                     <?php endif; ?>
+                </form>
+            </div>
+
+            <!-- Tableau des utilisateurs -->
+            <div class="glass p-4 rounded-3">
+                <?php if (empty($users)): ?>
+                    <div class="text-center py-5">
+                        <i class="bi bi-people" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
+                        <h4 class="text-white mt-3">Aucun utilisateur trouvé</h4>
+                        <p class="text-white-50">
+                            <?= ($roleFilter || $searchFilter) ? 'Aucun utilisateur ne correspond aux critères de recherche.' : 'Aucun utilisateur inscrit pour le moment.' ?>
+                        </p>
+                    </div>
+                <?php else: ?>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-white mb-0">
+                            <i class="bi bi-list-check me-2"></i>Liste des Utilisateurs
+                        </h4>
+                        <span class="text-white-50">
+                            <?= $totalRecords ?> utilisateur(s) trouvé(s)
+                        </span>
+                    </div>
                     
-                    <?php if ($success): ?>
-                        <div class="alert alert-success" role="alert">
-                            <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <!-- Statistics Cards -->
-                    <div class="row g-4 mb-4">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value"><?= $stats['total_users'] ?></div>
-                                <div class="stats-label">
-                                    <i class="bi bi-people me-2"></i>Total Utilisateurs
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value"><?= $stats['total_clients'] ?></div>
-                                <div class="stats-label">
-                                    <i class="bi bi-person me-2"></i>Clients
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4 col-md-6">
-                            <div class="stats-card">
-                                <div class="stats-value"><?= $stats['total_admins'] ?></div>
-                                <div class="stats-label">
-                                    <i class="bi bi-person-gear me-2"></i>Administrateurs
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Filtres -->
-                    <div class="glass p-3 rounded-3 mb-4">
-                        <form method="GET" action="" class="row g-3 align-items-end">
-                            <div class="col-md-3">
-                                <label for="role" class="form-label text-white">
-                                    <i class="bi bi-funnel me-2"></i>Rôle
-                                </label>
-                                <select class="form-control" id="role" name="role">
-                                    <option value="">Tous les rôles</option>
-                                    <option value="client" <?= $roleFilter === 'client' ? 'selected' : '' ?>>Client</option>
-                                    <option value="admin" <?= $roleFilter === 'admin' ? 'selected' : '' ?>>Admin</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="search" class="form-label text-white">
-                                    <i class="bi bi-search me-2"></i>Rechercher
-                                </label>
-                                <input type="text" class="form-control" id="search" name="search" 
-                                       placeholder="Nom, prénom ou email" value="<?= htmlspecialchars($searchFilter) ?>">
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-gradient w-100">
-                                    <i class="bi bi-search me-2"></i>Filtrer
-                                </button>
-                            </div>
-                            <?php if ($roleFilter || $searchFilter): ?>
-                                <div class="col-md-2">
-                                    <a href="utilisateurs.php" class="btn btn-glass w-100">
-                                        <i class="bi bi-x-circle me-2"></i>Réinitialiser
-                                    </a>
-                                </div>
-                            <?php endif; ?>
-                        </form>
-                    </div>
-
-                    <!-- Tableau des utilisateurs -->
-                    <div class="glass p-4 rounded-3">
-                        <?php if (empty($users)): ?>
-                            <div class="text-center py-5">
-                                <i class="bi bi-people" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
-                                <h4 class="text-white mt-3">Aucun utilisateur trouvé</h4>
-                                <p class="text-white-50">
-                                    <?= ($roleFilter || $searchFilter) ? 'Aucun utilisateur ne correspond aux critères de recherche.' : 'Aucun utilisateur inscrit pour le moment.' ?>
-                                </p>
-                            </div>
-                        <?php else: ?>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-white mb-0">
-                                    <i class="bi bi-list-check me-2"></i>Liste des Utilisateurs
-                                </h4>
-                                <span class="text-white-50">
-                                    <?= $totalRecords ?> utilisateur(s) trouvé(s)
-                                </span>
-                            </div>
-                            
-                            <div class="table-responsive">
-                                <table class="table table-glass">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Utilisateur</th>
-                                            <th>Email</th>
-                                            <th>Téléphone</th>
-                                            <th>Rôle</th>
-                                            <th>Inscription</th>
-                                            <th>Statistiques</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($users as $user): ?>
-                                            <tr>
-                                                <td>#<?= $user['id'] ?></td>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <?php if ($user['profile_picture']): ?>
-                                                            <img src="../uploads/profiles/<?= htmlspecialchars($user['profile_picture']) ?>" 
-                                                                 alt="Photo" class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
-                                                        <?php else: ?>
-                                                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2" 
-                                                                 style="width: 40px; height: 40px;">
-                                                                <i class="bi bi-person text-white"></i>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                        <div>
-                                                            <strong><?= htmlspecialchars($user['firstName'] . ' ' . $user['lastName']) ?></strong>
-                                                            <?php if ($user['id'] == $currentUser['id']): ?>
-                                                                <span class="badge bg-info ms-1">Vous</span>
-                                                            <?php endif; ?>
-                                                        </div>
+                    <div class="table-responsive">
+                        <table class="table table-glass">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Utilisateur</th>
+                                    <th>Email</th>
+                                    <th>Téléphone</th>
+                                    <th>Rôle</th>
+                                    <th>Inscription</th>
+                                    <th>Statistiques</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($users as $user): ?>
+                                    <tr>
+                                        <td>#<?= $user['id'] ?></td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <?php if ($user['profile_picture']): ?>
+                                                    <img src="../uploads/profiles/<?= htmlspecialchars($user['profile_picture']) ?>" 
+                                                         alt="Photo" class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                                <?php else: ?>
+                                                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2" 
+                                                         style="width: 40px; height: 40px;">
+                                                        <i class="bi bi-person text-white"></i>
                                                     </div>
-                                                </td>
-                                                <td><?= htmlspecialchars($user['email']) ?></td>
-                                                <td><?= htmlspecialchars($user['phone'] ?? 'Non renseigné') ?></td>
-                                                <td>
-                                                    <span class="badge <?= $user['role'] === 'admin' ? 'bg-danger' : 'bg-primary' ?>">
-                                                        <?= ucfirst($user['role']) ?>
-                                                    </span>
-                                                </td>
-                                                <td><?= date('d/m/Y', strtotime($user['created_at'])) ?></td>
-                                                <td>
-                                                    <small class="text-white-50">
-                                                        <?= $user['total_reimbursements'] ?> demande(s)<br>
-                                                        <?= number_format($user['total_amount'], 0) ?>€ total
-                                                    </small>
-                                                </td>
-                                                <td>
-                                                    <?php if ($user['id'] != $currentUser['id']): ?>
-                                                        <div class="btn-group" role="group">
-                                                            <?php if ($user['role'] === 'client'): ?>
-                                                                <form method="POST" style="display: inline;">
-                                                                    <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
-                                                                    <input type="hidden" name="action" value="promote">
-                                                                    <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                                                    <button type="submit" class="btn btn-warning btn-sm" 
-                                                                            onclick="return confirm('Promouvoir cet utilisateur en administrateur ?')"
-                                                                            title="Promouvoir en admin">
-                                                                        <i class="bi bi-arrow-up-circle"></i>
-                                                                    </button>
-                                                                </form>
-                                                            <?php else: ?>
-                                                                <form method="POST" style="display: inline;">
-                                                                    <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
-                                                                    <input type="hidden" name="action" value="demote">
-                                                                    <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                                                    <button type="submit" class="btn btn-secondary btn-sm" 
-                                                                            onclick="return confirm('Rétrograder cet administrateur en client ?')"
-                                                                            title="Rétrograder en client">
-                                                                        <i class="bi bi-arrow-down-circle"></i>
-                                                                    </button>
-                                                                </form>
-                                                            <?php endif; ?>
-                                                            
-                                                            <button class="btn btn-glass btn-sm" onclick="showUserDetails(<?= $user['id'] ?>)"
-                                                                    title="Voir les détails">
-                                                                <i class="bi bi-eye"></i>
-                                                            </button>
-                                                        </div>
-                                                    <?php else: ?>
-                                                        <span class="text-white-50 small">Votre compte</span>
+                                                <?php endif; ?>
+                                                <div>
+                                                    <strong><?= htmlspecialchars($user['firstName'] . ' ' . $user['lastName']) ?></strong>
+                                                    <?php if ($user['id'] == $currentUser['id']): ?>
+                                                        <span class="badge bg-info ms-1">Vous</span>
                                                     <?php endif; ?>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <!-- Pagination -->
-                            <?php if ($totalPages > 1): ?>
-                                <nav aria-label="Pagination" class="mt-4">
-                                    <ul class="pagination justify-content-center">
-                                        <?php if ($page > 1): ?>
-                                            <li class="page-item">
-                                                <a class="page-link" 
-                                                   href="?page=<?= $page - 1 ?><?= $roleFilter ? '&role=' . $roleFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
-                                                    <i class="bi bi-chevron-left"></i>
-                                                </a>
-                                            </li>
-                                        <?php endif; ?>
-                                        
-                                        <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++): ?>
-                                            <li class="page-item <?= $i === $page ? 'active' : '' ?>">
-                                                <a class="page-link" 
-                                                   href="?page=<?= $i ?><?= $roleFilter ? '&role=' . $roleFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
-                                                    <?= $i ?>
-                                                </a>
-                                            </li>
-                                        <?php endfor; ?>
-                                        
-                                        <?php if ($page < $totalPages): ?>
-                                            <li class="page-item">
-                                                <a class="page-link" 
-                                                   href="?page=<?= $page + 1 ?><?= $roleFilter ? '&role=' . $roleFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
-                                                    <i class="bi bi-chevron-right"></i>
-                                                </a>
-                                            </li>
-                                        <?php endif; ?>
-                                    </ul>
-                                </nav>
-                            <?php endif; ?>
-                        <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><?= htmlspecialchars($user['email']) ?></td>
+                                        <td><?= htmlspecialchars($user['phone'] ?? 'Non renseigné') ?></td>
+                                        <td>
+                                            <span class="badge <?= $user['role'] === 'admin' ? 'bg-danger' : 'bg-primary' ?>">
+                                                <?= ucfirst($user['role']) ?>
+                                            </span>
+                                        </td>
+                                        <td><?= date('d/m/Y', strtotime($user['created_at'])) ?></td>
+                                        <td>
+                                            <small class="text-white-50">
+                                                <?= $user['total_reimbursements'] ?> demande(s)<br>
+                                                <?= number_format($user['total_amount'], 0) ?>€ total
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <?php if ($user['id'] != $currentUser['id']): ?>
+                                                <div class="btn-group" role="group">
+                                                    <?php if ($user['role'] === 'client'): ?>
+                                                        <form method="POST" style="display: inline;">
+                                                            <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
+                                                            <input type="hidden" name="action" value="promote">
+                                                            <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                                            <button type="submit" class="btn btn-warning btn-sm" 
+                                                                    onclick="return confirm('Promouvoir cet utilisateur en administrateur ?')"
+                                                                    title="Promouvoir en admin">
+                                                                <i class="bi bi-arrow-up-circle"></i>
+                                                            </button>
+                                                        </form>
+                                                    <?php else: ?>
+                                                        <form method="POST" style="display: inline;">
+                                                            <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
+                                                            <input type="hidden" name="action" value="demote">
+                                                            <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                                            <button type="submit" class="btn btn-secondary btn-sm" 
+                                                                    onclick="return confirm('Rétrograder cet administrateur en client ?')"
+                                                                    title="Rétrograder en client">
+                                                                <i class="bi bi-arrow-down-circle"></i>
+                                                            </button>
+                                                        </form>
+                                                    <?php endif; ?>
+                                                    
+                                                    <button class="btn btn-glass btn-sm" onclick="showUserDetails(<?= $user['id'] ?>)"
+                                                            title="Voir les détails">
+                                                        <i class="bi bi-eye"></i>
+                                                    </button>
+                                                </div>
+                                            <?php else: ?>
+                                                <span class="text-white-50 small">Votre compte</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </main>
+                    
+                    <!-- Pagination -->
+                    <?php if ($totalPages > 1): ?>
+                        <nav aria-label="Pagination" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                <?php if ($page > 1): ?>
+                                    <li class="page-item">
+                                        <a class="page-link" 
+                                           href="?page=<?= $page - 1 ?><?= $roleFilter ? '&role=' . $roleFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
+                                            <i class="bi bi-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                
+                                <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++): ?>
+                                    <li class="page-item <?= $i === $page ? 'active' : '' ?>">
+                                        <a class="page-link" 
+                                           href="?page=<?= $i ?><?= $roleFilter ? '&role=' . $roleFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
+                                            <?= $i ?>
+                                        </a>
+                                    </li>
+                                <?php endfor; ?>
+                                
+                                <?php if ($page < $totalPages): ?>
+                                    <li class="page-item">
+                                        <a class="page-link" 
+                                           href="?page=<?= $page + 1 ?><?= $roleFilter ? '&role=' . $roleFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        </nav>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 

@@ -193,29 +193,6 @@ try {
             color: #60a5fa !important;
         }
 
-        /* Sidebar */
-        .dashboard-sidebar {
-            background: rgba(15, 23, 42, 0.9) !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-            min-height: 100vh !important;
-        }
-
-        .sidebar-item {
-            color: #ffffff !important;
-            background: transparent !important;
-            padding: 12px 20px !important;
-            margin: 5px 15px !important;
-            border-radius: 8px !important;
-            text-decoration: none !important;
-            display: block !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .sidebar-item:hover, .sidebar-item.active {
-            background: rgba(59, 130, 246, 0.2) !important;
-            color: #ffffff !important;
-        }
-
         /* Cards glassmorphism */
         .glass, .alert-glass {
             background: rgba(15, 23, 42, 0.8) !important;
@@ -502,288 +479,257 @@ try {
             .navbar-brand {
                 font-size: 1.5rem !important;
             }
-            
-            .d-flex.align-items-center span {
-                font-size: 0.9rem !important;
-            }
-            
-            .btn-outline-light.btn-sm {
-                padding: 6px 12px !important;
-            }
-            
-            .dashboard-sidebar {
-                display: none !important;
-            }
-            
-            .col-md-9.ms-sm-auto.col-lg-10 {
-                margin-left: 0 !important;
-                max-width: 100% !important;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
             </a>
             
-            <div class="d-flex align-items-center">
-                <span class="text-white me-3">
-                    <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
-                    <span class="badge bg-danger ms-2">Admin</span>
-                </span>
-                <a href="../logout.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row">
+                        <span class="text-white me-lg-3 mb-2 mb-lg-0">
+                            <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
+                            <span class="badge bg-danger ms-2">Admin</span>
+                        </span>
+                        <div class="d-flex gap-2 flex-wrap justify-content-center">
+                            <a href="dashboard.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                            </a>
+                            <a href="utilisateurs.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-people me-1"></i>Utilisateurs
+                            </a>
+                            <a href="settings.php" class="btn btn-glass btn-sm">
+                                <i class="bi bi-gear me-1"></i>Paramètres
+                            </a>
+                            <a href="../logout.php" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block dashboard-sidebar">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="dashboard.php">
-                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item active" href="remboursements.php">
-                                <i class="bi bi-credit-card me-2"></i>Remboursements
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="utilisateurs.php">
-                                <i class="bi bi-people me-2"></i>Utilisateurs
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="sidebar-item" href="settings.php">
-                                <i class="bi bi-gear me-2"></i>Paramètres
-                            </a>
-                        </li>
-                    </ul>
+    <div class="container-fluid" style="padding-top: 80px;">
+        <div class="py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-white">
+                    <i class="bi bi-credit-card me-3"></i>Gestion des Remboursements
+                </h1>
+                <a href="dashboard.php" class="btn btn-glass">
+                    <i class="bi bi-arrow-left me-2"></i>Retour
+                </a>
+            </div>
+
+            <?php if ($error): ?>
+                <div class="alert alert-danger alert-glass" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
                 </div>
-            </nav>
+            <?php endif; ?>
+            
+            <?php if ($success): ?>
+                <div class="alert alert-success alert-glass" role="alert">
+                    <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
+                </div>
+            <?php endif; ?>
 
-            <!-- Main content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="py-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h1 class="text-white">
-                            <i class="bi bi-credit-card me-3"></i>Gestion des Remboursements
-                        </h1>
-                        <a href="dashboard.php" class="btn btn-glass">
-                            <i class="bi bi-arrow-left me-2"></i>Retour
-                        </a>
+            <!-- Filtres -->
+            <div class="glass p-3 rounded-3 mb-4">
+                <form method="GET" action="" class="row g-3 align-items-end">
+                    <div class="col-md-3">
+                        <label for="status" class="form-label text-white">
+                            <i class="bi bi-funnel me-2"></i>Statut
+                        </label>
+                        <select class="form-control" id="status" name="status">
+                            <option value="">Tous les statuts</option>
+                            <option value="en_attente" <?= $statusFilter === 'en_attente' ? 'selected' : '' ?>>En attente</option>
+                            <option value="validé" <?= $statusFilter === 'validé' ? 'selected' : '' ?>>Validé</option>
+                            <option value="refusé" <?= $statusFilter === 'refusé' ? 'selected' : '' ?>>Refusé</option>
+                        </select>
                     </div>
-
-                    <?php if ($error): ?>
-                        <div class="alert alert-danger alert-glass" role="alert">
-                            <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
+                    <div class="col-md-4">
+                        <label for="search" class="form-label text-white">
+                            <i class="bi bi-search me-2"></i>Rechercher un client
+                        </label>
+                        <input type="text" class="form-control" id="search" name="search" 
+                               placeholder="Nom, prénom ou email" value="<?= htmlspecialchars($searchFilter) ?>">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-gradient w-100">
+                            <i class="bi bi-search me-2"></i>Filtrer
+                        </button>
+                    </div>
+                    <?php if ($statusFilter || $searchFilter): ?>
+                        <div class="col-md-2">
+                            <a href="remboursements.php" class="btn btn-glass w-100">
+                                <i class="bi bi-x-circle me-2"></i>Réinitialiser
+                            </a>
                         </div>
                     <?php endif; ?>
+                </form>
+            </div>
+
+            <!-- Tableau des remboursements -->
+            <div class="glass p-4 rounded-3">
+                <?php if (empty($reimbursements)): ?>
+                    <div class="text-center py-5">
+                        <i class="bi bi-inbox" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
+                        <h4 class="text-white mt-3">Aucun remboursement trouvé</h4>
+                        <p class="text-white-50">
+                            <?= ($statusFilter || $searchFilter) ? 'Aucun remboursement ne correspond aux critères de recherche.' : 'Aucune demande de remboursement pour le moment.' ?>
+                        </p>
+                    </div>
+                <?php else: ?>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-white mb-0">
+                            <i class="bi bi-list-check me-2"></i>Liste des Remboursements
+                        </h4>
+                        <span class="text-white-50">
+                            <?= $totalRecords ?> résultat(s) trouvé(s)
+                        </span>
+                    </div>
                     
-                    <?php if ($success): ?>
-                        <div class="alert alert-success alert-glass" role="alert">
-                            <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <!-- Filtres -->
-                    <div class="glass p-3 rounded-3 mb-4">
-                        <form method="GET" action="" class="row g-3 align-items-end">
-                            <div class="col-md-3">
-                                <label for="status" class="form-label text-white">
-                                    <i class="bi bi-funnel me-2"></i>Statut
-                                </label>
-                                <select class="form-control" id="status" name="status">
-                                    <option value="">Tous les statuts</option>
-                                    <option value="en_attente" <?= $statusFilter === 'en_attente' ? 'selected' : '' ?>>En attente</option>
-                                    <option value="validé" <?= $statusFilter === 'validé' ? 'selected' : '' ?>>Validé</option>
-                                    <option value="refusé" <?= $statusFilter === 'refusé' ? 'selected' : '' ?>>Refusé</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="search" class="form-label text-white">
-                                    <i class="bi bi-search me-2"></i>Rechercher un client
-                                </label>
-                                <input type="text" class="form-control" id="search" name="search" 
-                                       placeholder="Nom, prénom ou email" value="<?= htmlspecialchars($searchFilter) ?>">
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-gradient w-100">
-                                    <i class="bi bi-search me-2"></i>Filtrer
-                                </button>
-                            </div>
-                            <?php if ($statusFilter || $searchFilter): ?>
-                                <div class="col-md-2">
-                                    <a href="remboursements.php" class="btn btn-glass w-100">
-                                        <i class="bi bi-x-circle me-2"></i>Réinitialiser
-                                    </a>
-                                </div>
-                            <?php endif; ?>
-                        </form>
-                    </div>
-
-                    <!-- Tableau des remboursements -->
-                    <div class="glass p-4 rounded-3">
-                        <?php if (empty($reimbursements)): ?>
-                            <div class="text-center py-5">
-                                <i class="bi bi-inbox" style="font-size: 4rem; color: rgba(255,255,255,0.3);"></i>
-                                <h4 class="text-white mt-3">Aucun remboursement trouvé</h4>
-                                <p class="text-white-50">
-                                    <?= ($statusFilter || $searchFilter) ? 'Aucun remboursement ne correspond aux critères de recherche.' : 'Aucune demande de remboursement pour le moment.' ?>
-                                </p>
-                            </div>
-                        <?php else: ?>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-white mb-0">
-                                    <i class="bi bi-list-check me-2"></i>Liste des Remboursements
-                                </h4>
-                                <span class="text-white-50">
-                                    <?= $totalRecords ?> résultat(s) trouvé(s)
-                                </span>
-                            </div>
-                            
-                            <div class="table-responsive">
-                                <table class="table table-glass">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Client</th>
-                                            <th>Date</th>
-                                            <th>Montant Total</th>
-                                            <th>Remboursement</th>
-                                            <th>Reste</th>
-                                            <th>Moyen de Paiement</th>
-                                            <th>Statut</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($reimbursements as $reimbursement): ?>
-                                            <tr>
-                                                <td>#<?= $reimbursement['id'] ?></td>
-                                                <td>
-                                                    <strong><?= htmlspecialchars($reimbursement['firstName'] . ' ' . $reimbursement['lastName']) ?></strong>
-                                                    <br><small class="text-white-50"><?= htmlspecialchars($reimbursement['email']) ?></small>
-                                                </td>
-                                                <td><?= date('d/m/Y H:i', strtotime($reimbursement['created_at'])) ?></td>
-                                                <td><?= number_format($reimbursement['amount_to_reimburse'], 2) ?>€</td>
-                                                <td><?= number_format($reimbursement['reimbursement_amount'], 2) ?>€</td>
-                                                <td><?= number_format($reimbursement['remaining_amount'], 2) ?>€</td>
-                                                <td>
-                                                    <?php
-                                                    $paymentMethods = [
-                                                        'carte_recharge' => 'Carte de recharge',
-                                                        'code_rechargement' => 'Code de rechargement',
-                                                        'carte_bancaire' => 'Carte bancaire'
-                                                    ];
-                                                    echo $paymentMethods[$reimbursement['payment_method']] ?? $reimbursement['payment_method'];
-                                                    
-                                                    if ($reimbursement['card_type']) {
-                                                        echo '<br><small class="text-white-50">(' . ucfirst($reimbursement['card_type']) . ')</small>';
-                                                    }
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <span class="status-badge status-<?= $reimbursement['status'] ?>">
-                                                        <?= ucfirst(str_replace('_', ' ', $reimbursement['status'])) ?>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group" role="group">
-                                                        <?php if ($reimbursement['status'] !== 'validé'): ?>
-                                                            <form method="POST" style="display: inline;">
-                                                                <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
-                                                                <input type="hidden" name="action" value="validate">
-                                                                <input type="hidden" name="reimbursement_id" value="<?= $reimbursement['id'] ?>">
-                                                                <button type="submit" class="btn btn-success btn-sm" 
-                                                                        onclick="return confirm('Valider ce remboursement ?')">
-                                                                    <i class="bi bi-check"></i>
-                                                                </button>
-                                                            </form>
-                                                        <?php endif; ?>
-                                                        
-                                                        <?php if ($reimbursement['status'] !== 'refusé'): ?>
-                                                            <form method="POST" style="display: inline;">
-                                                                <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
-                                                                <input type="hidden" name="action" value="refuse">
-                                                                <input type="hidden" name="reimbursement_id" value="<?= $reimbursement['id'] ?>">
-                                                                <button type="submit" class="btn btn-danger btn-sm" 
-                                                                        onclick="return confirm('Refuser ce remboursement ?')">
-                                                                    <i class="bi bi-x"></i>
-                                                                </button>
-                                                            </form>
-                                                        <?php endif; ?>
-                                                        
-                                                        <?php if ($reimbursement['status'] !== 'en_attente'): ?>
-                                                            <form method="POST" style="display: inline;">
-                                                                <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
-                                                                <input type="hidden" name="action" value="reset">
-                                                                <input type="hidden" name="reimbursement_id" value="<?= $reimbursement['id'] ?>">
-                                                                <button type="submit" class="btn btn-warning btn-sm" 
-                                                                        onclick="return confirm('Remettre en attente ?')">
-                                                                    <i class="bi bi-arrow-clockwise"></i>
-                                                                </button>
-                                                            </form>
-                                                        <?php endif; ?>
-                                                        
-                                                        <button class="btn btn-glass btn-sm" onclick="showDetails(<?= $reimbursement['id'] ?>)">
-                                                            <i class="bi bi-eye"></i>
+                    <div class="table-responsive">
+                        <table class="table table-glass">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Client</th>
+                                    <th>Date</th>
+                                    <th>Montant Total</th>
+                                    <th>Remboursement</th>
+                                    <th>Reste</th>
+                                    <th>Moyen de Paiement</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($reimbursements as $reimbursement): ?>
+                                    <tr>
+                                        <td>#<?= $reimbursement['id'] ?></td>
+                                        <td>
+                                            <strong><?= htmlspecialchars($reimbursement['firstName'] . ' ' . $reimbursement['lastName']) ?></strong>
+                                            <br><small class="text-white-50"><?= htmlspecialchars($reimbursement['email']) ?></small>
+                                        </td>
+                                        <td><?= date('d/m/Y H:i', strtotime($reimbursement['created_at'])) ?></td>
+                                        <td><?= number_format($reimbursement['amount_to_reimburse'], 2) ?>€</td>
+                                        <td><?= number_format($reimbursement['reimbursement_amount'], 2) ?>€</td>
+                                        <td><?= number_format($reimbursement['remaining_amount'], 2) ?>€</td>
+                                        <td>
+                                            <?php
+                                            $paymentMethods = [
+                                                'carte_recharge' => 'Carte de recharge',
+                                                'code_rechargement' => 'Code de rechargement',
+                                                'carte_bancaire' => 'Carte bancaire'
+                                            ];
+                                            echo $paymentMethods[$reimbursement['payment_method']] ?? $reimbursement['payment_method'];
+                                            
+                                            if ($reimbursement['card_type']) {
+                                                echo '<br><small class="text-white-50">(' . ucfirst($reimbursement['card_type']) . ')</small>';
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <span class="status-badge status-<?= $reimbursement['status'] ?>">
+                                                <?= ucfirst(str_replace('_', ' ', $reimbursement['status'])) ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <?php if ($reimbursement['status'] !== 'validé'): ?>
+                                                    <form method="POST" style="display: inline;">
+                                                        <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
+                                                        <input type="hidden" name="action" value="validate">
+                                                        <input type="hidden" name="reimbursement_id" value="<?= $reimbursement['id'] ?>">
+                                                        <button type="submit" class="btn btn-success btn-sm" 
+                                                                onclick="return confirm('Valider ce remboursement ?')">
+                                                            <i class="bi bi-check"></i>
                                                         </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <!-- Pagination -->
-                            <?php if ($totalPages > 1): ?>
-                                <nav aria-label="Pagination" class="mt-4">
-                                    <ul class="pagination justify-content-center">
-                                        <?php if ($page > 1): ?>
-                                            <li class="page-item">
-                                                <a class="page-link" 
-                                                   href="?page=<?= $page - 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
-                                                    <i class="bi bi-chevron-left"></i>
-                                                </a>
-                                            </li>
-                                        <?php endif; ?>
-                                        
-                                        <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++): ?>
-                                            <li class="page-item <?= $i === $page ? 'active' : '' ?>">
-                                                <a class="page-link" 
-                                                   href="?page=<?= $i ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
-                                                    <?= $i ?>
-                                                </a>
-                                            </li>
-                                        <?php endfor; ?>
-                                        
-                                        <?php if ($page < $totalPages): ?>
-                                            <li class="page-item">
-                                                <a class="page-link" 
-                                                   href="?page=<?= $page + 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
-                                                    <i class="bi bi-chevron-right"></i>
-                                                </a>
-                                            </li>
-                                        <?php endif; ?>
-                                    </ul>
-                                </nav>
-                            <?php endif; ?>
-                        <?php endif; ?>
+                                                    </form>
+                                                <?php endif; ?>
+                                                
+                                                <?php if ($reimbursement['status'] !== 'refusé'): ?>
+                                                    <form method="POST" style="display: inline;">
+                                                        <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
+                                                        <input type="hidden" name="action" value="refuse">
+                                                        <input type="hidden" name="reimbursement_id" value="<?= $reimbursement['id'] ?>">
+                                                        <button type="submit" class="btn btn-danger btn-sm" 
+                                                                onclick="return confirm('Refuser ce remboursement ?')">
+                                                            <i class="bi bi-x"></i>
+                                                        </button>
+                                                    </form>
+                                                <?php endif; ?>
+                                                
+                                                <?php if ($reimbursement['status'] !== 'en_attente'): ?>
+                                                    <form method="POST" style="display: inline;">
+                                                        <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
+                                                        <input type="hidden" name="action" value="reset">
+                                                        <input type="hidden" name="reimbursement_id" value="<?= $reimbursement['id'] ?>">
+                                                        <button type="submit" class="btn btn-warning btn-sm" 
+                                                                onclick="return confirm('Remettre en attente ?')">
+                                                            <i class="bi bi-arrow-clockwise"></i>
+                                                        </button>
+                                                    </form>
+                                                <?php endif; ?>
+                                                
+                                                <button class="btn btn-glass btn-sm" onclick="showDetails(<?= $reimbursement['id'] ?>)">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </main>
+                    
+                    <!-- Pagination -->
+                    <?php if ($totalPages > 1): ?>
+                        <nav aria-label="Pagination" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                <?php if ($page > 1): ?>
+                                    <li class="page-item">
+                                        <a class="page-link" 
+                                           href="?page=<?= $page - 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
+                                            <i class="bi bi-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                
+                                <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++): ?>
+                                    <li class="page-item <?= $i === $page ? 'active' : '' ?>">
+                                        <a class="page-link" 
+                                           href="?page=<?= $i ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
+                                            <?= $i ?>
+                                        </a>
+                                    </li>
+                                <?php endfor; ?>
+                                
+                                <?php if ($page < $totalPages): ?>
+                                    <li class="page-item">
+                                        <a class="page-link" 
+                                           href="?page=<?= $page + 1 ?><?= $statusFilter ? '&status=' . $statusFilter : '' ?><?= $searchFilter ? '&search=' . urlencode($searchFilter) : '' ?>">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        </nav>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 
