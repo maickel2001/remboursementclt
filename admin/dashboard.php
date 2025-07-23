@@ -374,6 +374,15 @@ try {
             .btn-outline-light.btn-sm {
                 padding: 6px 12px !important;
             }
+            
+            .dashboard-sidebar {
+                display: none !important;
+            }
+            
+            .col-md-9.ms-sm-auto.col-lg-10 {
+                margin-left: 0 !important;
+                max-width: 100% !important;
+            }
         }
     </style>
 </head>

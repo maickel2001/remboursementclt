@@ -392,62 +392,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-glass">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">
                 <i class="bi bi-shield-check me-2"></i>RemboursePRO
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">
-                            <i class="bi bi-speedometer2 me-1"></i>Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="profil.php">
-                            <i class="bi bi-person me-1"></i>Mon Profil
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="remboursement.php">
-                            <i class="bi bi-credit-card me-1"></i>Nouveau Remboursement
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="historique.php">
-                            <i class="bi bi-clock-history me-1"></i>Historique
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="calculateur.php">
-                            <i class="bi bi-calculator me-1"></i>Calculateur
-                        </a>
-                    </li>
-                </ul>
-                
-                <div class="navbar-nav">
-                    <div class="d-flex align-items-center flex-column flex-lg-row">
-                        <span class="text-white me-lg-3 mb-2 mb-lg-0">
-                            <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
-                        </span>
-                        <a href="../logout.php" class="btn btn-outline-light btn-sm">
-                            <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
-                        </a>
-                    </div>
-                </div>
+            <div class="d-flex align-items-center">
+                <span class="text-white me-3">
+                    <i class="bi bi-person-circle me-2"></i><?= htmlspecialchars($currentUser['firstName'] . ' ' . $currentUser['lastName']) ?>
+                </span>
+                <a href="../logout.php" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
             </div>
         </div>
     </nav>
 
     <div class="container-fluid" style="padding-top: 80px;">
-        <!-- Main content -->
-        <main class="px-md-4">
             <div class="py-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h1 class="text-white">
