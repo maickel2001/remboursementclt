@@ -1,16 +1,9 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { User, AuthContextType } from '../types';
 import toast from 'react-hot-toast';
+import { initializeAdminUser } from '../utils/auth';
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -26,21 +19,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
 
     // Initialize with admin user if no users exist
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    if (users.length === 0) {
-      const adminUser: User = {
-        id: 'admin-1',
-        email: 'admin@remboursepro.com',
-        firstName: 'Admin',
-        lastName: 'RemboursePRO',
-        phone: '+33 1 23 45 67 89',
-        address: '123 Avenue des Remboursements, 75001 Paris',
-        role: 'admin',
-        createdAt: new Date().toISOString()
-      };
-      localStorage.setItem('users', JSON.stringify([adminUser]));
-      localStorage.setItem('passwords', JSON.stringify({ 'admin@remboursepro.com': 'admin123' }));
-    }
+    initializeAdminUser();
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
