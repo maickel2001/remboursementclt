@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Comptable & Développeur Web | Solutions Professionnelles</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Expert comptable et développeur web professionnel. Services de comptabilité, développement web sur mesure et solutions digitales innovantes.">
+    <meta name="keywords" content="comptable, développeur web, expert comptable, développement web, sites internet, comptabilité">
+    <meta name="author" content="Votre Nom">
+    <meta property="og:title" content="Expert Comptable & Développeur Web">
+    <meta property="og:description" content="Solutions professionnelles en comptabilité et développement web">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://votre-site.com">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Chargement...</div>
+        </div>
+    </div>
+
+    <!-- Barre de progression du scroll -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> Expert Pro
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Accueil</a></li>
+                <li><a href="about.html" class="nav-link">À propos</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="testimonials.html" class="nav-link">Témoignages</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Expert Comptable & Développeur Web</h1>
+            <p class="hero-subtitle">Double expertise - Solutions complètes</p>
+            <p class="hero-description">
+                Alliant rigueur comptable et innovation technologique, je vous accompagne dans votre transformation digitale 
+                avec des solutions sur mesure qui répondent précisément à vos besoins professionnels.
+            </p>
+            <div class="hero-buttons">
+                <a href="services.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Découvrir mes services
+                </a>
+                <a href="portfolio.html" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i>
+                    Voir mon portfolio
+                </a>
+                <a href="assets/docs/cv.pdf" download class="btn btn-secondary">
+                    <i class="fas fa-download"></i>
+                    Télécharger mon CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À propos rapide -->
+    <section class="section" id="about-preview">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Qui suis-je ?</h2>
+                <p class="section-subtitle">
+                    Une double compétence unique au service de votre réussite
+                </p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="card-title">Expert Comptable</h3>
+                    <p class="card-description">
+                        Plus de 5 ans d'expérience en comptabilité, fiscalité et gestion d'entreprise. 
+                        J'apporte rigueur, précision et conseils stratégiques pour optimiser votre gestion financière.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="card-title">Développeur Web</h3>
+                    <p class="card-description">
+                        Passionné de technologies modernes, je crée des solutions web sur mesure, 
+                        performantes et évolutives qui accompagnent la croissance de votre entreprise.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Statistiques -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="stats-container">
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="150">0</span>
+                    <span class="stat-label">Clients satisfaits</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="8">0</span>
+                    <span class="stat-label">Années d'expérience</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="200">0</span>
+                    <span class="stat-label">Projets réalisés</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="99">0</span>
+                    <span class="stat-label">% de satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services aperçu -->
+    <section class="section" id="services-preview">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Mes Services</h2>
+                <p class="section-subtitle">
+                    Des solutions complètes pour accompagner votre entreprise
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="card-title">Comptabilité</h3>
+                    <p class="card-description">
+                        Tenue de comptabilité, déclarations fiscales, audit comptable et conseils en gestion financière.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="card-title">Développement Web</h3>
+                    <p class="card-description">
+                        Création de sites web, applications métier, e-commerce et solutions digitales sur mesure.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="card-title">Conseil & Stratégie</h3>
+                    <p class="card-description">
+                        Accompagnement stratégique, optimisation des processus et transformation digitale de votre entreprise.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="services.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-right"></i>
+                    Voir tous mes services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets récents -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Projets Récents</h2>
+                <p class="section-subtitle">
+                    Découvrez quelques-unes de mes dernières réalisations
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: var(--gradient-secondary);">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 class="card-title">E-commerce BoutiquePro</h3>
+                    <p class="card-description">
+                        Développement complet d'une plateforme e-commerce avec gestion comptable intégrée pour une boutique de mode.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: var(--gradient-secondary);">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="card-title">Système GestEntreprise</h3>
+                    <p class="card-description">
+                        Application web de gestion d'entreprise avec modules comptabilité, RH et facturation pour une PME.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: var(--gradient-secondary);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Dashboard Analytics</h3>
+                    <p class="card-description">
+                        Tableau de bord interactif avec visualisations avancées pour le suivi des performances financières.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="portfolio.html" class="btn btn-primary">
+                    <i class="fas fa-folder-open"></i>
+                    Voir le portfolio complet
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages carrousel -->
+    <section class="section" id="testimonials-preview">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Ce que disent mes clients</h2>
+                <p class="section-subtitle">
+                    La satisfaction client est au cœur de mon engagement
+                </p>
+            </div>
+            
+            <div class="carousel animate-on-scroll">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p style="font-size: 1.2rem; margin-bottom: 2rem; font-style: italic;">
+                                "Un professionnel exceptionnel ! Sa double compétence en comptabilité et développement web 
+                                nous a permis d'avoir un interlocuteur unique pour tous nos besoins. Résultats au-delà de nos attentes."
+                            </p>
+                            <div>
+                                <strong>Marie Dupont</strong><br>
+                                <span style="color: var(--text-secondary);">Directrice, TechStart SAS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p style="font-size: 1.2rem; margin-bottom: 2rem; font-style: italic;">
+                                "Rigueur comptable et innovation technologique : exactement ce que nous cherchions ! 
+                                Notre site web et notre comptabilité sont désormais parfaitement synchronisés."
+                            </p>
+                            <div>
+                                <strong>Jean Martin</strong><br>
+                                <span style="color: var(--text-secondary);">PDG, Innovate Plus</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p style="font-size: 1.2rem; margin-bottom: 2rem; font-style: italic;">
+                                "Un accompagnement personnalisé et une expertise technique remarquable. 
+                                Notre transformation digitale s'est déroulée sans accroc grâce à son professionnalisme."
+                            </p>
+                            <div>
+                                <strong>Sophie Laurent</strong><br>
+                                <span style="color: var(--text-secondary);">Directrice Financière, Creative Agency</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn carousel-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="carousel-indicators">
+                    <div class="carousel-indicator active"></div>
+                    <div class="carousel-indicator"></div>
+                    <div class="carousel-indicator"></div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="testimonials.html" class="btn btn-primary">
+                    <i class="fas fa-comments"></i>
+                    Voir tous les témoignages
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section FAQ -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Questions Fréquentes</h2>
+                <p class="section-subtitle">
+                    Trouvez rapidement les réponses à vos questions
+                </p>
+            </div>
+            
+            <div class="animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Quels sont vos domaines d'expertise ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Je suis expert comptable avec plus de 5 ans d'expérience et développeur web passionné. 
+                            Cette double compétence me permet d'offrir des solutions complètes alliant rigueur financière 
+                            et innovation technologique.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Travaillez-vous avec des entreprises de toutes tailles ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Oui, j'accompagne aussi bien les TPE, PME que les grandes entreprises. 
+                            Mon approche s'adapte à vos besoins spécifiques et à votre budget, 
+                            que vous soyez une startup ou une entreprise établie.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Proposez-vous un suivi après projet ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolument ! Je propose un accompagnement post-projet incluant maintenance, 
+                            support technique, formations et conseils d'optimisation. 
+                            Mon objectif est votre réussite à long terme.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Comment obtenez-vous un devis personnalisé ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Contactez-moi via le formulaire de contact ou directement par téléphone. 
+                            Après un premier échange pour comprendre vos besoins, 
+                            je vous propose un devis détaillé gratuit sous 48h.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="section">
+        <div class="section-container">
+            <div class="card animate-on-scroll" style="text-align: center; background: var(--gradient-primary); color: white; padding: 4rem 2rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Prêt à transformer votre entreprise ?</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9;">
+                    Discutons de vos projets et trouvons ensemble les solutions adaptées à vos besoins.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-envelope"></i>
+                        Contactez-moi
+                    </a>
+                    <a href="tel:+33123456789" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-phone"></i>
+                        01 23 45 67 89
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Expert Pro</h3>
+                <p>Expert comptable et développeur web, je vous accompagne dans votre transformation digitale avec passion et expertise.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#comptabilite">Comptabilité</a></li>
+                    <li><a href="services.html#fiscalite">Fiscalité</a></li>
+                    <li><a href="services.html#web-dev">Développement Web</a></li>
+                    <li><a href="services.html#conseil">Conseil</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="testimonials.html">Témoignages</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="legal.html">Mentions légales</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@expert-pro.com</li>
+                    <li><i class="fas fa-phone"></i> 01 23 45 67 89</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                    <li><a href="chatbot.html">Assistant virtuel</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Expert Pro. Tous droits réservés. | Site développé avec passion ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Chatbot -->
+    <button class="chatbot-toggle" aria-label="Assistant virtuel">
+        <i class="fas fa-comments"></i>
+    </button>
+    
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <i class="fas fa-robot"></i> Assistant Virtuel
+        </div>
+        <div class="chatbot-messages"></div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" placeholder="Tapez votre message...">
+            <button class="chatbot-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- CSS pour l'effet ripple -->
+    <style>
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>
