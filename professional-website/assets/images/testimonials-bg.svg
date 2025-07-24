@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="testimonialGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="testimonialGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.7" />
+    </linearGradient>
+    <pattern id="socialPattern" x="0" y="0" width="150" height="150" patternUnits="userSpaceOnUse">
+      <circle cx="75" cy="75" r="3" fill="rgba(255,255,255,0.1)">
+        <animate attributeName="opacity" values="0.1;0.3;0.1" dur="5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="25" cy="25" r="1.5" fill="rgba(255,255,255,0.08)"/>
+      <circle cx="125" cy="125" r="2" fill="rgba(255,255,255,0.06)"/>
+      <circle cx="125" cy="25" r="1" fill="rgba(255,255,255,0.07)"/>
+      <circle cx="25" cy="125" r="1.5" fill="rgba(255,255,255,0.05)"/>
+    </pattern>
+  </defs>
+  
+  <!-- Social network background -->
+  <rect width="100%" height="100%" fill="url(#socialPattern)" opacity="0.7"/>
+  
+  <!-- Speech bubbles -->
+  <g opacity="0.3" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+    <ellipse cx="250" cy="300" rx="60" ry="40">
+      <animate attributeName="rx" values="60;70;60" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
+    <polygon points="290,320 310,330 290,340"/>
+    
+    <ellipse cx="1500" cy="200" rx="70" ry="45">
+      <animate attributeName="rx" values="70;80;70" dur="7s" repeatCount="indefinite"/>
+    </ellipse>
+    <polygon points="1430,220 1410,230 1430,240"/>
+    
+    <ellipse cx="800" cy="800" rx="55" ry="35">
+      <animate attributeName="rx" values="55;65;55" dur="5s" repeatCount="indefinite"/>
+    </ellipse>
+    <polygon points="840,820 860,830 840,840"/>
+  </g>
+  
+  <!-- Customer avatars outline -->
+  <g opacity="0.4" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none">
+    <circle cx="300" cy="600" r="25"/>
+    <circle cx="300" cy="590" r="8"/>
+    <path d="M285,615 Q300,625 315,615"/>
+    
+    <circle cx="1600" cy="500" r="30"/>
+    <circle cx="1600" cy="485" r="10"/>
+    <path d="M1580,520 Q1600,535 1620,520"/>
+    
+    <circle cx="150" cy="800" r="20"/>
+    <circle cx="150" cy="792" r="6"/>
+    <path d="M138,808 Q150,815 162,808"/>
+    
+    <circle cx="1400" cy="700" r="28"/>
+    <circle cx="1400" cy="687" r="9"/>
+    <path d="M1382,715 Q1400,728 1418,715"/>
+  </g>
+  
+  <!-- Star ratings -->
+  <g opacity="0.3" font-size="16" fill="rgba(255,215,0,0.6)">
+    <text x="200" y="150">★★★★★</text>
+    <text x="1300" y="250">★★★★★</text>
+    <text x="600" y="900">★★★★★</text>
+    <text x="1600" y="800">★★★★★</text>
+    <text x="100" y="450">★★★★★</text>
+  </g>
+  
+  <!-- Quote marks -->
+  <g opacity="0.2" font-size="80" fill="rgba(255,255,255,0.3)" font-family="serif">
+    <text x="500" y="250">"</text>
+    <text x="1200" y="400">"</text>
+    <text x="300" y="750">"</text>
+    <text x="1700" y="150">"</text>
+  </g>
+  
+  <!-- Network connections -->
+  <g stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none" opacity="0.6">
+    <line x1="300" y1="600" x2="800" y2="800" stroke-dasharray="3,3">
+      <animate attributeName="stroke-dashoffset" values="0;6" dur="2s" repeatCount="indefinite"/>
+    </line>
+    <line x1="1600" y1="500" x2="1400" y2="700" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;8" dur="2.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="150" y1="800" x2="300" y2="600" stroke-dasharray="2,2">
+      <animate attributeName="stroke-dashoffset" values="0;4" dur="1.8s" repeatCount="indefinite"/>
+    </line>
+    <path d="M250,300 Q600,150 1500,200" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" values="0;10" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Floating testimonial cards -->
+  <g opacity="0.2">
+    <rect x="700" y="350" width="100" height="70" rx="10" fill="url(#testimonialGrad1)" transform="rotate(8 750 385)">
+      <animateTransform attributeName="transform" type="rotate" values="8 750 385;12 750 385;8 750 385" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1000" y="600" width="90" height="60" rx="8" fill="url(#testimonialGrad2)" transform="rotate(-10 1045 630)">
+      <animateTransform attributeName="transform" type="rotate" values="-10 1045 630;-15 1045 630;-10 1045 630" dur="9s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Trust badges -->
+  <g opacity="0.3" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none">
+    <!-- Shield -->
+    <path d="M400,500 L400,460 Q400,450 420,450 Q440,450 440,460 L440,500 Q440,520 420,530 Q400,520 400,500"/>
+    <polyline points="410,475 418,483 430,465"/>
+    
+    <!-- Medal -->
+    <circle cx="1200" cy="600" r="20"/>
+    <polygon points="1200,580 1205,590 1215,590 1207,597 1210,607 1200,602 1190,607 1193,597 1185,590 1195,590" fill="rgba(255,255,255,0.3)"/>
+    <rect x="1198" y="620" width="4" height="15" rx="2" fill="rgba(255,255,255,0.2)"/>
+    
+    <!-- Verified checkmark -->
+    <circle cx="600" cy="150" r="18"/>
+    <polyline points="590,150 598,158 610,140" stroke-width="3"/>
+  </g>
+  
+  <!-- Animated elements -->
+  <circle cx="900" cy="300" r="35" fill="url(#testimonialGrad1)" opacity="0.2">
+    <animate attributeName="r" values="35;50;35" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="400" cy="700" r="40" fill="url(#testimonialGrad2)" opacity="0.25">
+    <animate attributeName="r" values="40;55;40" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.25;0.45;0.25" dur="12s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Satisfaction indicators -->
+  <g opacity="0.3" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="rgba(255,255,255,0.1)">
+    <!-- Thumbs up -->
+    <rect x="1300" y="400" width="8" height="20" rx="4"/>
+    <rect x="1295" y="395" width="6" height="8" rx="3"/>
+    <circle cx="1301" cy="390" r="3"/>
+    
+    <!-- Heart -->
+    <path d="M500,600 Q495,590 485,595 Q475,600 485,610 L500,625 L515,610 Q525,600 515,595 Q505,590 500,600"/>
+    
+    <!-- Smile -->
+    <circle cx="1000" cy="150" r="15"/>
+    <circle cx="995" cy="145" r="2" fill="rgba(255,255,255,0.4)"/>
+    <circle cx="1005" cy="145" r="2" fill="rgba(255,255,255,0.4)"/>
+    <path d="M992,155 Q1000,162 1008,155" stroke="rgba(255,255,255,0.4)" fill="none"/>
+  </g>
+  
+  <!-- Social proof particles -->
+  <g opacity="0.4">
+    <circle cx="150" cy="300" r="2" fill="white">
+      <animate attributeName="cy" values="300;280;300" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.8;0.4" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1800" cy="400" r="3" fill="white">
+      <animate attributeName="cy" values="400;375;400" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="700" cy="700" r="2.5" fill="white">
+      <animate attributeName="cy" values="700;680;700" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

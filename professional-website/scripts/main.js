@@ -144,7 +144,7 @@ function updateScrollProgress() {
     }
 }
 
-// ===== ANIMATIONS AU SCROLL =====
+// ===== ANIMATIONS AU SCROLL OPTIMISÉES =====
 function initializeScrollEffects() {
     const observerOptions = {
         threshold: 0.1,
@@ -154,39 +154,83 @@ function initializeScrollEffects() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                const element = entry.target;
+                
+                // Animations différentes selon la position et le type d'élément
+                const rect = element.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                const elementCenter = rect.top + rect.height / 2;
+                const windowCenter = windowHeight / 2;
+                
+                // Définir l'animation selon la position
+                let animationClass = 'slideInUp';
+                if (elementCenter < windowCenter) {
+                    animationClass = element.classList.contains('card') ? 'slideInLeft' : 'fadeInUp';
+                } else {
+                    animationClass = element.classList.contains('card') ? 'slideInRight' : 'slideInUp';
+                }
+                
+                // Ajouter un délai pour les éléments en groupe
+                const siblings = element.parentElement?.querySelectorAll('.animate-on-scroll') || [];
+                const index = Array.from(siblings).indexOf(element);
+                const delay = Math.min(index * 100, 500); // Max 500ms de délai
+                
+                setTimeout(() => {
+                    element.style.animation = `${animationClass} 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+                    element.classList.add('visible');
+                }, delay);
+                
+                observer.unobserve(element);
             }
         });
     }, observerOptions);
     
-    // Observer tous les éléments avec la classe animate-on-scroll
+    // Préparer et observer les éléments
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
         observer.observe(el);
     });
     
-    // Effet parallaxe
-    window.addEventListener('scroll', () => {
+    // Effet parallaxe optimisé avec throttling
+    let ticking = false;
+    function updateParallax() {
         const parallaxElements = document.querySelectorAll('.parallax');
         const scrolled = window.pageYOffset;
         
-        parallaxElements.forEach(element => {
-            const rate = scrolled * -0.5;
-            element.style.transform = `translateY(${rate}px)`;
+        parallaxElements.forEach((element, index) => {
+            const rate = scrolled * (-0.3 - index * 0.1); // Vitesses différentes
+            element.style.transform = `translate3d(0, ${rate}px, 0)`;
         });
-    });
+        
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
 // ===== ANIMATIONS GÉNÉRALES =====
 function initializeAnimations() {
-    // Animation des éléments au survol
+    // Animation des éléments au survol avec transition CSS pour de meilleures performances
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
+        // Ajouter les styles de transition
+        card.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease';
+        card.style.willChange = 'transform';
+        
         card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.02)';
+            card.style.transform = 'translate3d(0, -10px, 0) scale(1.02)';
+            card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
         });
         
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
+            card.style.transform = 'translate3d(0, 0, 0) scale(1)';
+            card.style.boxShadow = '';
         });
     });
     
