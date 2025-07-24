@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant Virtuel | Expert Comptable & Développeur Web</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discutez avec notre assistant virtuel intelligent. Obtenez des réponses instantanées sur nos services de comptabilité et développement web.">
+    <meta name="keywords" content="chatbot, assistant virtuel, support client, comptabilité, développement web, aide en ligne">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <!-- Styles spécifiques au chatbot -->
+    <style>
+        .chatbot-page {
+            min-height: 100vh;
+            background: var(--bg-primary);
+            padding-top: 100px;
+        }
+        
+        .chatbot-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .chatbot-interface {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-primary);
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chatbot-header-main {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .chatbot-messages-main {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .chatbot-input-main {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .chatbot-input-main input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            outline: none;
+        }
+        
+        .chatbot-send-main {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-send-main:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem;
+            border-radius: 18px;
+            position: relative;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        .message.user {
+            align-self: flex-end;
+            background: var(--primary-color);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message.bot {
+            align-self: flex-start;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-bottom-left-radius: 5px;
+        }
+        
+        .message-time {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+        
+        .typing-indicator {
+            align-self: flex-start;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+            display: none;
+        }
+        
+        .typing-dots {
+            display: inline-flex;
+            gap: 0.25rem;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            animation: typingDot 1.4s infinite ease-in-out both;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        .typing-dot:nth-child(3) { animation-delay: 0; }
+        
+        @keyframes typingDot {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+        
+        .quick-questions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .quick-question {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .quick-question:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .chatbot-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .info-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-primary);
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @media (max-width: 768px) {
+            .chatbot-main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .chatbot-interface {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Chargement...</div>
+        </div>
+    </div>
+
+    <!-- Barre de progression du scroll -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> Expert Pro
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="about.html" class="nav-link">À propos</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="testimonials.html" class="nav-link">Témoignages</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Chatbot -->
+    <div class="chatbot-page">
+        <div class="chatbot-main">
+            <!-- Interface Chatbot Principal -->
+            <div class="chatbot-interface animate-on-scroll">
+                <div class="chatbot-header-main">
+                    <h2 style="margin: 0; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <i class="fas fa-robot"></i>
+                        Assistant Virtuel Expert Pro
+                    </h2>
+                    <p style="margin: 0.5rem 0 0 0; opacity: 0.9; font-size: 0.9rem;">
+                        Posez-moi vos questions sur nos services !
+                    </p>
+                </div>
+                
+                <div class="chatbot-messages-main" id="chatbot-messages-main">
+                    <!-- Message de bienvenue -->
+                    <div class="message bot">
+                        <div>👋 Bonjour ! Je suis l'assistant virtuel d'Expert Pro.</div>
+                        <div style="margin-top: 0.5rem;">
+                            Je peux vous renseigner sur nos services de comptabilité, développement web, tarifs et bien plus encore.
+                        </div>
+                        <div class="message-time">Maintenant</div>
+                    </div>
+                    
+                    <!-- Questions rapides -->
+                    <div class="quick-questions">
+                        <div class="quick-question" onclick="sendQuickQuestion('Quels sont vos services ?')">
+                            💼 Quels sont vos services ?
+                        </div>
+                        <div class="quick-question" onclick="sendQuickQuestion('Quels sont vos tarifs ?')">
+                            💰 Quels sont vos tarifs ?
+                        </div>
+                        <div class="quick-question" onclick="sendQuickQuestion('Comment vous contacter ?')">
+                            📞 Comment vous contacter ?
+                        </div>
+                        <div class="quick-question" onclick="sendQuickQuestion('Voir votre portfolio')">
+                            🎨 Voir votre portfolio
+                        </div>
+                    </div>
+                    
+                    <!-- Indicateur de frappe -->
+                    <div class="typing-indicator" id="typing-indicator">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div class="typing-dots">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                            <span style="font-size: 0.9rem;">Assistant Pro écrit...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chatbot-input-main">
+                    <input 
+                        type="text" 
+                        id="chatbot-input-main" 
+                        placeholder="Tapez votre message..."
+                        onkeypress="if(event.key==='Enter') sendMessage()"
+                    >
+                    <button class="chatbot-send-main" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Panneau d'informations -->
+            <div class="chatbot-info">
+                <!-- Statut -->
+                <div class="info-card animate-on-scroll">
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        En ligne - Réponse instantanée
+                    </div>
+                    <h3 style="margin-bottom: 1rem; color: var(--primary-color);">
+                        <i class="fas fa-info-circle"></i> Comment ça marche ?
+                    </h3>
+                    <ul style="list-style: none; color: var(--text-secondary); line-height: 1.6;">
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
+                            Posez vos questions en français
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
+                            Obtenez des réponses instantanées
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
+                            Demandez plus de détails si besoin
+                        </li>
+                        <li>
+                            <i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
+                            Contactez-nous pour aller plus loin
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Sujets populaires -->
+                <div class="info-card animate-on-scroll">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary-color);">
+                        <i class="fas fa-fire"></i> Sujets populaires
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <button class="quick-question" onclick="sendQuickQuestion('Différence entre vos services comptables et développement web')">
+                            🤔 Comptabilité vs Développement web
+                        </button>
+                        <button class="quick-question" onclick="sendQuickQuestion('Combien coûte un site web ?')">
+                            💻 Prix d'un site web
+                        </button>
+                        <button class="quick-question" onclick="sendQuickQuestion('Accompagnement création entreprise')">
+                            🚀 Création d'entreprise
+                        </button>
+                        <button class="quick-question" onclick="sendQuickQuestion('Optimisation fiscale')">
+                            📊 Optimisation fiscale
+                        </button>
+                        <button class="quick-question" onclick="sendQuickQuestion('Délai de réalisation projet')">
+                            ⏰ Délais de réalisation
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contact rapide -->
+                <div class="info-card animate-on-scroll">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary-color);">
+                        <i class="fas fa-phone-alt"></i> Besoin d'aide humaine ?
+                    </h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Notre assistant virtuel ne répond pas à votre question ? 
+                        Contactez-nous directement !
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <a href="contact.html" class="btn btn-primary" style="justify-content: center;">
+                            <i class="fas fa-envelope"></i>
+                            Formulaire de contact
+                        </a>
+                        <a href="tel:+33123456789" class="btn btn-secondary" style="justify-content: center;">
+                            <i class="fas fa-phone"></i>
+                            01 23 45 67 89
+                        </a>
+                        <a href="mailto:contact@expert-pro.com" class="btn btn-secondary" style="justify-content: center;">
+                            <i class="fas fa-at"></i>
+                            Email direct
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Expert Pro</h3>
+                <p>Expert comptable et développeur web, je vous accompagne dans votre transformation digitale avec passion et expertise.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#comptabilite">Comptabilité</a></li>
+                    <li><a href="services.html#fiscalite">Fiscalité</a></li>
+                    <li><a href="services.html#web-dev">Développement Web</a></li>
+                    <li><a href="services.html#conseil">Conseil</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="testimonials.html">Témoignages</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="legal.html">Mentions légales</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@expert-pro.com</li>
+                    <li><i class="fas fa-phone"></i> 01 23 45 67 89</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                    <li><a href="chatbot.html">Assistant virtuel</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Expert Pro. Tous droits réservés. | Site développé avec passion ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript du chatbot avancé -->
+    <script>
+        // Réponses étendues du chatbot
+        const extendedBotResponses = {
+            // Services
+            'services': `🔧 **Mes services principaux :**
+
+**💼 Comptabilité & Fiscalité**
+• Tenue de comptabilité complète
+• Déclarations fiscales (TVA, IS, CFE...)
+• Optimisation fiscale personnalisée
+• Audit et analyse financière
+
+**💻 Développement Web**
+• Sites web sur mesure (vitrine, e-commerce)
+• Applications web métier
+• Optimisation SEO et performances
+• Maintenance et support technique
+
+**🎯 Conseil & Stratégie**
+• Transformation digitale
+• Conseil en gestion d'entreprise
+• Formation et accompagnement
+
+Voulez-vous plus de détails sur un service spécifique ?`,
+
+            // Tarifs
+            'tarif': `💰 **Nos tarifs transparents :**
+
+**📊 Comptabilité :** À partir de 300€/mois
+• Tenue de comptabilité
+• Déclarations TVA
+• Bilan annuel + support
+
+**💻 Site Web :** À partir de 1 500€
+• Design sur mesure et responsive
+• Optimisation SEO incluse
+• Formation à la gestion
+
+**🎯 Pack Complet :** Sur devis personnalisé
+• Comptabilité + Site web
+• Conseil stratégique inclus
+• Support prioritaire
+
+Les tarifs s'adaptent à vos besoins spécifiques. Souhaitez-vous un devis personnalisé ?`,
+
+            // Contact
+            'contact': `📞 **Comment me joindre :**
+
+**📧 Email :** contact@expert-pro.com
+**☎️ Téléphone :** 01 23 45 67 89
+**📍 Localisation :** Paris, France
+
+**🕐 Disponibilités :**
+• Lun-Ven : 9h-18h
+• Consultation gratuite de 30min
+• Support technique 7j/7
+
+**⚡ Urgences comptables :**
+Assistance prioritaire pour mes clients lors des échéances fiscales importantes.
+
+Préférez-vous que je vous rappelle ou souhaitez-vous prendre rendez-vous directement ?`,
+
+            // Portfolio
+            'portfolio': `🎨 **Quelques réalisations récentes :**
+
+**🛒 BoutiquePro** - E-commerce mode
+• +500 produits en ligne
+• +150% de conversions
+• Gestion comptable intégrée
+
+**📊 Dashboard Innovate+** - Analytics
+• Tableaux de bord temps réel
+• Métriques financières avancées
+• Interface intuitive
+
+**🏢 Cabinet Juridique** - Site vitrine
+• Score performance 97/100
+• SEO optimisé
+• Design moderne et professionnel
+
+Vous pouvez voir tous mes projets sur la [page Portfolio](portfolio.html). Quel type de projet vous intéresse ?`,
+
+            // Comptabilité spécifique
+            'comptabilité': `📊 **Services comptables détaillés :**
+
+**✅ Tenue de comptabilité :**
+• Saisie et lettrage des écritures
+• Rapprochements bancaires
+• Édition des balances mensuelles
+• Comptes de résultat et bilans
+
+**📋 Déclarations obligatoires :**
+• TVA (mensuelle/trimestrielle)
+• Liasse fiscale annuelle
+• Impôt sur les sociétés
+• CFE et autres taxes
+
+**📈 Analyse financière :**
+• Ratios de performance
+• Seuil de rentabilité
+• Prévisionnel financier
+• Conseils d'optimisation
+
+Utilisez-vous déjà un logiciel comptable ?`,
+
+            // Développement web spécifique
+            'développement': `💻 **Développement web sur mesure :**
+
+**🎨 Sites vitrines :**
+• Design moderne et responsive
+• Optimisation SEO incluse
+• Interface d'administration
+• Compatible tous écrans
+
+**🛒 E-commerce :**
+• Catalogue produits avancé
+• Paiements sécurisés (Stripe, PayPal)
+• Gestion des stocks
+• Analytics de vente
+
+**⚙️ Applications métier :**
+• CRM personnalisé
+• Outils de gestion
+• Dashboards analytics
+• API et intégrations
+
+**🔧 Technologies :** HTML5, CSS3, JavaScript, PHP, MySQL
+
+Avez-vous déjà un cahier des charges ou souhaitez-vous que nous le définissions ensemble ?`,
+
+            // Création entreprise
+            'création': `🚀 **Accompagnement création d'entreprise :**
+
+**📋 Étapes que je peux vous accompagner :**
+• Choix du statut juridique optimal
+• Rédaction des statuts
+• Formalités de création
+• Mise en place de la comptabilité
+
+**💡 Conseils stratégiques :**
+• Business plan financier
+• Optimisation fiscale dès le départ
+• Prévisionnel de trésorerie
+• Choix des assurances pro
+
+**💻 Présence digitale :**
+• Site web professionnel
+• Identité visuelle
+• Outils de gestion
+
+**⏰ Délai moyen :** 2-4 semaines pour une création complète
+
+À quelle étape en êtes-vous dans votre projet de création ?`,
+
+            // Optimisation fiscale
+            'optimisation': `📊 **Optimisation fiscale légale :**
+
+**🎯 Stratégies principales :**
+• Choix du régime fiscal optimal
+• Optimisation des charges déductibles
+• Étalement des revenus
+• Investissements défiscalisants
+
+**💰 Économies possibles :**
+• Réduction d'IS jusqu'à 30%
+• Optimisation TVA
+• Crédit d'impôt recherche
+• Dispositifs sectoriels
+
+**⚖️ En toute légalité :**
+• Respect strict de la réglementation
+• Veille fiscale permanente
+• Documentation complète
+• Conseil personnalisé
+
+**📈 Suivi régulier :**
+Évaluation annuelle de votre situation pour identifier de nouvelles opportunités.
+
+Souhaitez-vous un audit fiscal gratuit de votre situation actuelle ?`,
+
+            // Délais
+            'délai': `⏰ **Délais de réalisation :**
+
+**💻 Site web vitrine :** 3-6 semaines
+• Maquettes : 1 semaine
+• Développement : 2-3 semaines
+• Tests et livraison : 1-2 semaines
+
+**🛒 E-commerce :** 6-10 semaines
+• Conception : 2 semaines
+• Développement : 4-6 semaines
+• Tests et formation : 2 semaines
+
+**📊 Mise en place comptabilité :** 1-2 semaines
+• Paramétrage logiciel : 2-3 jours
+• Formation utilisateur : 1 semaine
+• Premier bilan : 1 semaine
+
+**🎯 Projets sur mesure :** Sur devis
+Les délais dépendent de la complexité et de vos contraintes.
+
+Avez-vous des échéances particulières à respecter ?`
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('chatbot-input-main');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+            
+            // Ajouter le message utilisateur
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Afficher l'indicateur de frappe
+            showTypingIndicator();
+            
+            // Simuler un délai de réponse
+            setTimeout(() => {
+                hideTypingIndicator();
+                const response = getBotResponseExtended(message);
+                addMessage(response, 'bot');
+            }, 1500 + Math.random() * 1000);
+        }
+
+        function sendQuickQuestion(question) {
+            document.getElementById('chatbot-input-main').value = question;
+            sendMessage();
+        }
+
+        function addMessage(content, sender) {
+            const messagesContainer = document.getElementById('chatbot-messages-main');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const now = new Date();
+            const time = now.toLocaleTimeString('fr-FR', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            // Convertir les liens en HTML
+            const htmlContent = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color: inherit; text-decoration: underline;">$1</a>');
+            
+            messageDiv.innerHTML = `
+                <div>${htmlContent}</div>
+                <div class="message-time">${time}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            indicator.style.display = 'block';
+            
+            const messagesContainer = document.getElementById('chatbot-messages-main');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            indicator.style.display = 'none';
+        }
+
+        function getBotResponseExtended(message) {
+            const lowercaseMessage = message.toLowerCase();
+            
+            // Recherche de mots-clés dans les réponses étendues
+            for (const [keyword, response] of Object.entries(extendedBotResponses)) {
+                if (lowercaseMessage.includes(keyword)) {
+                    return response;
+                }
+            }
+            
+            // Mots-clés supplémentaires
+            if (lowercaseMessage.includes('aide') || lowercaseMessage.includes('help')) {
+                return `🤝 **Je suis là pour vous aider !**
+
+Voici ce que je peux vous expliquer :
+• 💼 Nos services (comptabilité, web, conseil)
+• 💰 Nos tarifs et devis
+• 📞 Comment nous contacter
+• 🎨 Nos réalisations (portfolio)
+• ⏰ Les délais de nos projets
+
+Posez-moi une question spécifique ou utilisez les boutons de suggestion !`;
+            }
+            
+            if (lowercaseMessage.includes('merci')) {
+                return `😊 **De rien !**
+
+C'est un plaisir de vous aider. N'hésitez pas si vous avez d'autres questions !
+
+Pour aller plus loin, vous pouvez :
+• Consulter notre [portfolio complet](portfolio.html)
+• Demander un [devis personnalisé](contact.html)
+• Découvrir tous nos [services détaillés](services.html)`;
+            }
+            
+            // Réponse par défaut améliorée
+            return `🤔 **Je ne suis pas sûr de comprendre votre question.**
+
+Voici quelques sujets sur lesquels je peux vous renseigner :
+
+💼 **Services :** "Quels sont vos services ?"
+💰 **Tarifs :** "Combien coûte un site web ?"
+📞 **Contact :** "Comment vous joindre ?"
+🎨 **Portfolio :** "Voir vos réalisations"
+⏰ **Délais :** "Combien de temps pour un projet ?"
+
+Ou posez-moi directement votre question, je ferai de mon mieux pour y répondre !`;
+        }
+
+        // Auto-focus sur le champ de saisie
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('chatbot-input-main').focus();
+        });
+    </script>
+
+    <!-- JavaScript principal -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>

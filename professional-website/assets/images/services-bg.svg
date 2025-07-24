@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="serviceGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="serviceGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.7" />
+    </linearGradient>
+    <pattern id="hexPattern" x="0" y="0" width="120" height="104" patternUnits="userSpaceOnUse">
+      <polygon points="60,14 90,34 90,74 60,94 30,74 30,34" 
+               stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+    </pattern>
+  </defs>
+  
+  <!-- Hexagonal grid background -->
+  <rect width="100%" height="100%" fill="url(#hexPattern)" opacity="0.7"/>
+  
+  <!-- Service icons -->
+  <g opacity="0.3" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none">
+    <!-- Calculator -->
+    <rect x="200" y="200" width="80" height="100" rx="8"/>
+    <rect x="210" y="210" width="60" height="20" rx="4" fill="rgba(255,255,255,0.2)"/>
+    <circle cx="225" cy="245" r="6"/>
+    <circle cx="245" cy="245" r="6"/>
+    <circle cx="255" cy="245" r="6"/>
+    <circle cx="225" cy="265" r="6"/>
+    <circle cx="245" cy="265" r="6"/>
+    <circle cx="255" cy="265" r="6"/>
+    
+    <!-- Web browser -->
+    <rect x="1500" y="300" width="120" height="90" rx="8"/>
+    <line x1="1500" y1="320" x2="1620" y2="320"/>
+    <circle cx="1515" cy="310" r="3"/>
+    <circle cx="1530" cy="310" r="3"/>
+    <circle cx="1545" cy="310" r="3"/>
+    
+    <!-- Chart -->
+    <rect x="800" y="700" width="140" height="100" rx="8"/>
+    <polyline points="820,780 840,760 870,740 890,750 920,720 940,730"/>
+    <line x1="820" y1="780" x2="940" y2="780"/>
+    <line x1="820" y1="780" x2="820" y2="720"/>
+    
+    <!-- Gear -->
+    <circle cx="1400" cy="800" r="40"/>
+    <circle cx="1400" cy="800" r="20"/>
+    <rect x="1395" y="740" width="10" height="20" rx="2"/>
+    <rect x="1395" y="840" width="10" height="20" rx="2"/>
+    <rect x="1340" y="795" width="20" height="10" rx="2"/>
+    <rect x="1440" y="795" width="20" height="10" rx="2"/>
+  </g>
+  
+  <!-- Floating business cards -->
+  <g opacity="0.2">
+    <rect x="400" y="500" width="90" height="50" rx="5" fill="url(#serviceGrad1)" transform="rotate(15 445 525)">
+      <animateTransform attributeName="transform" type="rotate" values="15 445 525;20 445 525;15 445 525" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1200" y="400" width="90" height="50" rx="5" fill="url(#serviceGrad2)" transform="rotate(-10 1245 425)">
+      <animateTransform attributeName="transform" type="rotate" values="-10 1245 425;-15 1245 425;-10 1245 425" dur="5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Network connections -->
+  <g stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none" opacity="0.6">
+    <line x1="280" y1="250" x2="800" y2="750" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" values="0;10" dur="1.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="1560" y1="345" x2="1400" y2="800" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="2s" repeatCount="indefinite"/>
+    </line>
+    <line x1="870" y1="750" x2="1400" y2="800" stroke-dasharray="6,6">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="2.5s" repeatCount="indefinite"/>
+    </line>
+  </g>
+  
+  <!-- Code snippets -->
+  <g opacity="0.25" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">
+    <text x="100" y="600" transform="rotate(10 100 600)">.service { display: flex; }</text>
+    <text x="100" y="620" transform="rotate(10 100 620)">margin: auto;</text>
+    
+    <text x="1650" y="150" transform="rotate(-5 1650 150)">function validate() {</text>
+    <text x="1650" y="170" transform="rotate(-5 1650 170)">  return true;</text>
+    <text x="1650" y="190" transform="rotate(-5 1650 190)">}</text>
+  </g>
+  
+  <!-- Animated circles -->
+  <circle cx="600" cy="300" r="50" fill="url(#serviceGrad1)" opacity="0.2">
+    <animate attributeName="r" values="50;70;50" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="1300" cy="600" r="60" fill="url(#serviceGrad2)" opacity="0.25">
+    <animate attributeName="r" values="60;80;60" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.25;0.45;0.25" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Business flow arrows -->
+  <g stroke="rgba(255,255,255,0.2)" stroke-width="3" fill="none" marker-end="url(#arrowhead)">
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.2)"/>
+      </marker>
+    </defs>
+    <path d="M350,400 Q600,300 850,400" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M1000,500 Q1200,400 1400,500" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Digital particles -->
+  <g opacity="0.4">
+    <rect x="500" y="150" width="4" height="4" fill="white" transform="rotate(45 502 152)">
+      <animate attributeName="y" values="150;130;150" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1100" y="200" width="3" height="3" fill="white" transform="rotate(45 1101.5 201.5)">
+      <animate attributeName="y" values="200;180;200" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="700" y="900" width="5" height="5" fill="white" transform="rotate(45 702.5 902.5)">
+      <animate attributeName="y" values="900;880;900" dur="3.5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

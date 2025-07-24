@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Expert Comptable & Développeur Web</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Contactez-moi pour vos projets de comptabilité et développement web. Devis gratuit et réponse rapide garantie.">
+    <meta name="keywords" content="contact, devis, comptable, développeur web, consultation">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Chargement...</div>
+        </div>
+    </div>
+
+    <!-- Barre de progression du scroll -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> Expert Pro
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="about.html" class="nav-link">À propos</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="testimonials.html" class="nav-link">Témoignages</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">Contactez-moi</h1>
+            <p class="hero-subtitle">Discutons de votre projet</p>
+            <p class="hero-description">
+                Je suis à votre écoute pour répondre à vos questions et vous accompagner dans vos projets
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Informations de contact -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Restons en contact</h2>
+                <p class="section-subtitle">
+                    Plusieurs moyens pour me joindre rapidement
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="card-title">Email</h3>
+                    <p class="card-description">
+                        Envoyez-moi un email, je vous réponds sous 24h
+                    </p>
+                    <a href="mailto:contact@expert-pro.com" style="color: var(--primary-color); font-weight: 600; text-decoration: none; margin-top: 1rem; display: inline-block;">
+                        contact@expert-pro.com
+                    </a>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="card-title">Téléphone</h3>
+                    <p class="card-description">
+                        Appelez-moi pour discuter directement de votre projet
+                    </p>
+                    <a href="tel:+33123456789" style="color: var(--primary-color); font-weight: 600; text-decoration: none; margin-top: 1rem; display: inline-block;">
+                        01 23 45 67 89
+                    </a>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="card-title">Localisation</h3>
+                    <p class="card-description">
+                        Basé à Paris, j'interviens en Île-de-France et à distance
+                    </p>
+                    <span style="color: var(--primary-color); font-weight: 600; margin-top: 1rem; display: inline-block;">
+                        Paris, Île-de-France
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Formulaire de contact -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="grid grid-2" style="gap: 4rem; align-items: start;">
+                <div class="animate-on-scroll">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 2rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        Envoyez-moi un message
+                    </h2>
+                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
+                        Que vous ayez un projet précis en tête ou simplement des questions, 
+                        n'hésitez pas à me contacter. Je vous répondrai rapidement avec des conseils personnalisés.
+                    </p>
+                    
+                    <div class="card" style="margin-bottom: 2rem;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-gift"></i>
+                            Consultation gratuite
+                        </h3>
+                        <p>
+                            Premier échange gratuit de 30 minutes pour analyser vos besoins 
+                            et vous proposer les meilleures solutions.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-clock"></i>
+                            Réponse rapide
+                        </h3>
+                        <p>
+                            Réponse garantie sous 24h en semaine, 
+                            et souvent beaucoup plus rapidement !
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <form id="contact-form" class="card">
+                        <div class="form-group">
+                            <label for="name" class="form-label">
+                                <i class="fas fa-user"></i>
+                                Nom complet *
+                            </label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                <i class="fas fa-envelope"></i>
+                                Adresse email *
+                            </label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">
+                                <i class="fas fa-phone"></i>
+                                Téléphone
+                            </label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company" class="form-label">
+                                <i class="fas fa-building"></i>
+                                Entreprise
+                            </label>
+                            <input type="text" id="company" name="company" class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" class="form-label">
+                                <i class="fas fa-cogs"></i>
+                                Service souhaité *
+                            </label>
+                            <select id="service" name="service" class="form-input" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="comptabilite">Services de comptabilité</option>
+                                <option value="fiscalite">Conseil fiscal</option>
+                                <option value="web-dev">Développement web</option>
+                                <option value="ecommerce">Site e-commerce</option>
+                                <option value="app">Application web</option>
+                                <option value="conseil">Conseil & stratégie</option>
+                                <option value="maintenance">Maintenance & support</option>
+                                <option value="autre">Autre (précisez dans le message)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget" class="form-label">
+                                <i class="fas fa-euro-sign"></i>
+                                Budget approximatif
+                            </label>
+                            <select id="budget" name="budget" class="form-input">
+                                <option value="">Sélectionnez votre budget</option>
+                                <option value="500-2000">500€ - 2 000€</option>
+                                <option value="2000-5000">2 000€ - 5 000€</option>
+                                <option value="5000-10000">5 000€ - 10 000€</option>
+                                <option value="10000+">Plus de 10 000€</option>
+                                <option value="mensuel">Budget mensuel/récurrent</option>
+                                <option value="discuter">À discuter</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline" class="form-label">
+                                <i class="fas fa-calendar"></i>
+                                Délai souhaité
+                            </label>
+                            <select id="timeline" name="timeline" class="form-input">
+                                <option value="">Sélectionnez un délai</option>
+                                <option value="urgent">Urgent (moins d'1 mois)</option>
+                                <option value="1-3-mois">1 à 3 mois</option>
+                                <option value="3-6-mois">3 à 6 mois</option>
+                                <option value="6-mois+">Plus de 6 mois</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">
+                                <i class="fas fa-comment"></i>
+                                Votre message *
+                            </label>
+                            <textarea id="message" name="message" class="form-textarea" 
+                                      placeholder="Décrivez votre projet, vos besoins spécifiques, vos objectifs..." 
+                                      required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" id="consent" name="consent" required 
+                                       style="width: auto; margin: 0;">
+                                <span style="font-size: 0.9rem; color: var(--text-secondary);">
+                                    J'accepte que mes données soient utilisées pour me recontacter 
+                                    (<a href="legal.html" style="color: var(--primary-color);">voir mentions légales</a>)
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1.25rem;">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Disponibilités -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Mes Disponibilités</h2>
+                <p class="section-subtitle">
+                    Horaires et modalités de contact
+                </p>
+            </div>
+            
+            <div class="grid grid-2" style="gap: 3rem;">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-business-time"></i>
+                    </div>
+                    <h3 class="card-title">Horaires de bureau</h3>
+                    <div style="margin-top: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Lundi - Vendredi</span>
+                            <span style="color: var(--primary-color); font-weight: 600;">9h00 - 18h00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Samedi</span>
+                            <span style="color: var(--primary-color); font-weight: 600;">9h00 - 12h00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Dimanche</span>
+                            <span style="color: var(--text-secondary);">Fermé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="card-title">Support d'urgence</h3>
+                    <p style="margin: 1rem 0;">
+                        Pour les urgences comptables ou techniques, 
+                        je reste joignable en dehors des heures de bureau.
+                    </p>
+                    <div style="color: var(--primary-color); font-weight: 600;">
+                        <i class="fas fa-phone"></i>
+                        06 12 34 56 78 (urgences)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section FAQ Contact -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Questions Fréquentes</h2>
+                <p class="section-subtitle">
+                    Avant de me contacter, consultez ces réponses
+                </p>
+            </div>
+            
+            <div class="animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Quel est le délai de réponse à ma demande ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Je m'engage à répondre à toute demande sous 24h en semaine. 
+                            Pour les urgences, vous pouvez me joindre directement par téléphone.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        La consultation initiale est-elle gratuite ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Oui, le premier échange de 30 minutes est entièrement gratuit. 
+                            C'est l'occasion de faire connaissance et d'analyser ensemble vos besoins.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Travaillez-vous à distance ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolument ! Je travaille avec des clients partout en France et même à l'international. 
+                            Tous mes outils sont pensés pour un travail collaboratif à distance efficace.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Comment sont calculés vos tarifs ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Mes tarifs sont adaptés à chaque projet selon sa complexité, 
+                            le délai souhaité et vos besoins spécifiques. 
+                            Je vous propose toujours un devis détaillé et transparent.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Carte/Localisation -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Localisation</h2>
+                <p class="section-subtitle">
+                    Basé à Paris, j'interviens dans toute l'Île-de-France
+                </p>
+            </div>
+            
+            <div class="card animate-on-scroll" style="text-align: center; padding: 3rem;">
+                <div style="background: var(--gradient-primary); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                    <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3 style="margin-bottom: 1rem;">Zone d'intervention</h3>
+                    <p style="opacity: 0.9;">
+                        Paris et Île-de-France pour les rendez-vous physiques<br>
+                        Partout en France et à l'international en télétravail
+                    </p>
+                </div>
+                
+                <div class="grid grid-2" style="gap: 2rem; text-align: left;">
+                    <div>
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-building"></i>
+                            Rendez-vous sur site
+                        </h4>
+                        <ul style="list-style: none; color: var(--text-secondary);">
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Paris et petite couronne</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Grande couronne (sur demande)</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Déplacements possibles</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-laptop"></i>
+                            Télétravail
+                        </h4>
+                        <ul style="list-style: none; color: var(--text-secondary);">
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Toute la France</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> International</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Outils collaboratifs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Expert Pro</h3>
+                <p>Expert comptable et développeur web, je vous accompagne dans votre transformation digitale avec passion et expertise.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#comptabilite">Comptabilité</a></li>
+                    <li><a href="services.html#fiscalite">Fiscalité</a></li>
+                    <li><a href="services.html#web-dev">Développement Web</a></li>
+                    <li><a href="services.html#conseil">Conseil</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="testimonials.html">Témoignages</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="legal.html">Mentions légales</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@expert-pro.com</li>
+                    <li><i class="fas fa-phone"></i> 01 23 45 67 89</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                    <li><a href="chatbot.html">Assistant virtuel</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Expert Pro. Tous droits réservés. | Site développé avec passion ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Chatbot -->
+    <button class="chatbot-toggle" aria-label="Assistant virtuel">
+        <i class="fas fa-comments"></i>
+    </button>
+    
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <i class="fas fa-robot"></i> Assistant Virtuel
+        </div>
+        <div class="chatbot-messages"></div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" placeholder="Tapez votre message...">
+            <button class="chatbot-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>

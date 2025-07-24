@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos | Expert Comptable & Développeur Web</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Découvrez mon parcours professionnel, mes compétences et mon approche unique alliant expertise comptable et développement web.">
+    <meta name="keywords" content="parcours professionnel, expert comptable, développeur web, compétences, expérience">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Chargement...</div>
+        </div>
+    </div>
+
+    <!-- Barre de progression du scroll -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> Expert Pro
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="about.html" class="nav-link active">À propos</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="testimonials.html" class="nav-link">Témoignages</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">À propos de moi</h1>
+            <p class="hero-subtitle">Passion, expertise et innovation</p>
+            <p class="hero-description">
+                Découvrez mon parcours unique qui allie rigueur comptable et créativité technologique
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Présentation -->
+    <section class="section">
+        <div class="section-container">
+            <div class="grid grid-2" style="align-items: center; gap: 4rem;">
+                <div class="animate-on-scroll">
+                    <div class="card" style="background: var(--gradient-primary); color: white; text-align: center; padding: 3rem;">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.2); margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Votre Expert</h3>
+                        <p style="opacity: 0.9;">
+                            Une approche personnalisée pour chaque projet
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 2rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        Une vision unique
+                    </h2>
+                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
+                        Diplômé en expertise comptable et passionné de développement web, j'ai développé une approche unique qui combine
+                        <strong>rigueur financière</strong> et <strong>innovation technologique</strong>.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary);">
+                        Cette double compétence me permet d'offrir à mes clients des solutions complètes et cohérentes, 
+                        où chaque aspect technique est pensé en harmonie avec les contraintes et objectifs financiers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Parcours -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Mon Parcours</h2>
+                <p class="section-subtitle">
+                    De la formation à l'expertise : un chemin jalonné de défis et de réussites
+                </p>
+            </div>
+            
+            <div class="timeline" style="max-width: 800px; margin: 0 auto;">
+                <div class="timeline-item animate-on-scroll" style="position: relative; padding: 2rem 0; border-left: 3px solid var(--primary-color); margin-left: 2rem; padding-left: 3rem;">
+                    <div style="position: absolute; left: -1rem; top: 2rem; width: 2rem; height: 2rem; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="color: var(--primary-color);">Formation en Expertise Comptable</h3>
+                            <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.9rem;">2016 - 2019</span>
+                        </div>
+                        <p>
+                            Master en Comptabilité, Contrôle, Audit (CCA) et Diplôme Supérieur de Comptabilité et de Gestion (DSCG). 
+                            Formation approfondie en fiscalité, droit des affaires et analyse financière.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll" style="position: relative; padding: 2rem 0; border-left: 3px solid var(--primary-color); margin-left: 2rem; padding-left: 3rem;">
+                    <div style="position: absolute; left: -1rem; top: 2rem; width: 2rem; height: 2rem; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="color: var(--primary-color);">Expert Comptable en Cabinet</h3>
+                            <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.9rem;">2019 - 2022</span>
+                        </div>
+                        <p>
+                            Expérience en cabinet d'expertise comptable, gestion d'un portefeuille de 50+ clients, 
+                            spécialisation en accompagnement de startups et PME innovantes.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll" style="position: relative; padding: 2rem 0; border-left: 3px solid var(--secondary-color); margin-left: 2rem; padding-left: 3rem;">
+                    <div style="position: absolute; left: -1rem; top: 2rem; width: 2rem; height: 2rem; background: var(--secondary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="color: var(--secondary-color);">Reconversion Développement Web</h3>
+                            <span style="background: var(--secondary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.9rem;">2021 - 2022</span>
+                        </div>
+                        <p>
+                            Formation intensive en développement web (HTML5, CSS3, JavaScript, React, Node.js). 
+                            Certifications professionnelles et premiers projets clients.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll" style="position: relative; padding: 2rem 0; border-left: 3px solid var(--accent-color); margin-left: 2rem; padding-left: 3rem;">
+                    <div style="position: absolute; left: -1rem; top: 2rem; width: 2rem; height: 2rem; background: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="color: var(--accent-color);">Expert Indépendant</h3>
+                            <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.9rem;">2022 - Aujourd'hui</span>
+                        </div>
+                        <p>
+                            Lancement de mon activité indépendante offrant des services de comptabilité et développement web. 
+                            Plus de 150 clients satisfaits et une expertise reconnue dans les deux domaines.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Mes Compétences</h2>
+                <p class="section-subtitle">
+                    Un éventail de compétences techniques et métier au service de vos projets
+                </p>
+            </div>
+            
+            <div class="grid grid-2" style="gap: 3rem;">
+                <div class="animate-on-scroll">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="card-title">Expertise Comptable</h3>
+                        <div style="margin-top: 2rem;">
+                            <div class="skill-item" style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Comptabilité Générale</span>
+                                    <span style="color: var(--primary-color); font-weight: 600;">95%</span>
+                                </div>
+                                <div style="background: var(--bg-secondary); height: 8px; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 95%; height: 100%; background: var(--gradient-primary); animation: fillBar 2s ease 1s both;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item" style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Fiscalité</span>
+                                    <span style="color: var(--primary-color); font-weight: 600;">90%</span>
+                                </div>
+                                <div style="background: var(--bg-secondary); height: 8px; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 90%; height: 100%; background: var(--gradient-primary); animation: fillBar 2s ease 1.2s both;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item" style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Analyse Financière</span>
+                                    <span style="color: var(--primary-color); font-weight: 600;">88%</span>
+                                </div>
+                                <div style="background: var(--bg-secondary); height: 8px; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 88%; height: 100%; background: var(--gradient-primary); animation: fillBar 2s ease 1.4s both;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Conseil Stratégique</span>
+                                    <span style="color: var(--primary-color); font-weight: 600;">85%</span>
+                                </div>
+                                <div style="background: var(--bg-secondary); height: 8px; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 85%; height: 100%; background: var(--gradient-primary); animation: fillBar 2s ease 1.6s both;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="card-title">Développement Web</h3>
+                        <div style="margin-top: 2rem;">
+                            <div class="skill-item" style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>HTML5 / CSS3</span>
+                                    <span style="color: var(--secondary-color); font-weight: 600;">92%</span>
+                                </div>
+                                <div style="background: var(--bg-secondary); height: 8px; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 92%; height: 100%; background: var(--gradient-secondary); animation: fillBar 2s ease 1.8s both;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item" style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>JavaScript</span>
+                                    <span style="color: var(--secondary-color); font-weight: 600;">85%</span>
+                                </div>
+                                <div style="background: var(--bg-secondary); height: 8px; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 85%; height: 100%; background: var(--gradient-secondary); animation: fillBar 2s ease 2s both;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item" style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>React / Node.js</span>
+                                    <span style="color: var(--secondary-color); font-weight: 600;">80%</span>
+                                </div>
+                                <div style="background: var(--bg-secondary); height: 8px; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 80%; height: 100%; background: var(--gradient-secondary); animation: fillBar 2s ease 2.2s both;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>UX/UI Design</span>
+                                    <span style="color: var(--secondary-color); font-weight: 600;">78%</span>
+                                </div>
+                                <div style="background: var(--bg-secondary); height: 8px; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 78%; height: 100%; background: var(--gradient-secondary); animation: fillBar 2s ease 2.4s both;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Valeurs -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Mes Valeurs</h2>
+                <p class="section-subtitle">
+                    Les principes qui guident mon travail au quotidien
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title">Intégrité</h3>
+                    <p class="card-description">
+                        Transparence totale dans mes pratiques, respect strict des normes déontologiques 
+                        et engagement envers la confidentialité de vos données.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="card-title">Innovation</h3>
+                    <p class="card-description">
+                        Recherche constante de solutions créatives et modernes pour optimiser 
+                        vos processus et vous faire bénéficier des dernières technologies.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title">Proximité</h3>
+                    <p class="card-description">
+                        Accompagnement personnalisé et écoute attentive de vos besoins. 
+                        Je suis votre partenaire de confiance pour la réussite de vos projets.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="card-title">Réactivité</h3>
+                    <p class="card-description">
+                        Respect des délais convenus et réponse rapide à vos demandes. 
+                        Votre satisfaction et votre sérénité sont mes priorités absolues.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="card-title">Excellence</h3>
+                    <p class="card-description">
+                        Exigence de qualité dans chaque mission, formation continue et 
+                        perfectionnement permanent pour vous offrir le meilleur service.
+                    </p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="card-title">Partenariat</h3>
+                    <p class="card-description">
+                        Relation de confiance à long terme, conseil stratégique et 
+                        accompagnement dans la croissance et l'évolution de votre entreprise.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="section">
+        <div class="section-container">
+            <div class="card animate-on-scroll" style="text-align: center; background: var(--gradient-primary); color: white; padding: 4rem 2rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Construisons ensemble votre succès</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9;">
+                    Mon expertise et ma passion sont à votre service pour réaliser vos ambitions
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-envelope"></i>
+                        Parlons de votre projet
+                    </a>
+                    <a href="services.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-eye"></i>
+                        Découvrir mes services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Expert Pro</h3>
+                <p>Expert comptable et développeur web, je vous accompagne dans votre transformation digitale avec passion et expertise.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#comptabilite">Comptabilité</a></li>
+                    <li><a href="services.html#fiscalite">Fiscalité</a></li>
+                    <li><a href="services.html#web-dev">Développement Web</a></li>
+                    <li><a href="services.html#conseil">Conseil</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="testimonials.html">Témoignages</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="legal.html">Mentions légales</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@expert-pro.com</li>
+                    <li><i class="fas fa-phone"></i> 01 23 45 67 89</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                    <li><a href="chatbot.html">Assistant virtuel</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Expert Pro. Tous droits réservés. | Site développé avec passion ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Chatbot -->
+    <button class="chatbot-toggle" aria-label="Assistant virtuel">
+        <i class="fas fa-comments"></i>
+    </button>
+    
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <i class="fas fa-robot"></i> Assistant Virtuel
+        </div>
+        <div class="chatbot-messages"></div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" placeholder="Tapez votre message...">
+            <button class="chatbot-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- CSS Animations -->
+    <style>
+        @keyframes fillBar {
+            from {
+                width: 0;
+            }
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>

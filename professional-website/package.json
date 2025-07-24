@@ -1,0 +1,38 @@
+{
+  "name": "professional-website",
+  "version": "1.0.0",
+  "description": "Site web professionnel pour expert comptable et développeur web",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "npx http-server -p 8000",
+    "test": "echo \"Aucun test configuré pour ce projet statique\"",
+    "build": "echo \"Projet statique - Aucune build nécessaire\""
+  },
+  "keywords": [
+    "website",
+    "professional",
+    "comptable",
+    "accountant",
+    "web-developer",
+    "html",
+    "css",
+    "javascript",
+    "responsive",
+    "modern"
+  ],
+  "author": "Expert Pro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/votre-username/professional-website.git"
+  },
+  "homepage": "https://votre-username.github.io/professional-website",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

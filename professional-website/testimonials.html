@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Témoignages | Expert Comptable & Développeur Web</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Découvrez les témoignages de mes clients satisfaits. Avis authentiques sur mes services de comptabilité et développement web.">
+    <meta name="keywords" content="témoignages, avis clients, satisfaction, comptabilité, développement web, recommandations">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Chargement...</div>
+        </div>
+    </div>
+
+    <!-- Barre de progression du scroll -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> Expert Pro
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="about.html" class="nav-link">À propos</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="testimonials.html" class="nav-link active">Témoignages</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">Témoignages</h1>
+            <p class="hero-subtitle">Ce que disent mes clients</p>
+            <p class="hero-description">
+                La satisfaction de mes clients est ma plus grande fierté
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Statistiques satisfaction -->
+    <section class="section">
+        <div class="section-container">
+            <div class="stats-container">
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="98">0</span>
+                    <span class="stat-label">% de satisfaction</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="150">0</span>
+                    <span class="stat-label">Clients satisfaits</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="4.9">0</span>
+                    <span class="stat-label">Note moyenne /5</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="95">0</span>
+                    <span class="stat-label">% de recommandation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages détaillés -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Avis Clients</h2>
+                <p class="section-subtitle">
+                    Découvrez les retours authentiques de mes clients
+                </p>
+            </div>
+            
+            <div class="grid grid-2" style="gap: 3rem;">
+                <!-- Témoignage 1 -->
+                <div class="card animate-on-scroll">
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-right: 1rem;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem; color: var(--primary-color);">Marie Dupont</h3>
+                            <p style="color: var(--text-secondary); margin: 0;">Directrice, TechStart SAS</p>
+                            <div style="color: #ffa500; margin-top: 0.5rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; opacity: 0.3;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p style="font-style: italic; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
+                        "Exceptional professionnel ! Sa double compétence en comptabilité et développement web 
+                        nous a permis d'avoir un interlocuteur unique pour tous nos besoins. Non seulement notre 
+                        site web est magnifique et performant, mais notre comptabilité est désormais parfaitement 
+                        organisée. Les résultats ont dépassé nos attentes !"
+                    </p>
+                    <div style="border-left: 3px solid var(--primary-color); padding-left: 1rem;">
+                        <strong>Projet :</strong> Refonte site web + Réorganisation comptable<br>
+                        <strong>Durée :</strong> 3 mois<br>
+                        <strong>Résultat :</strong> +150% de conversions, -40% temps comptable
+                    </div>
+                </div>
+
+                <!-- Témoignage 2 -->
+                <div class="card animate-on-scroll">
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient-secondary); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-right: 1rem;">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem; color: var(--primary-color);">Jean Martin</h3>
+                            <p style="color: var(--text-secondary); margin: 0;">PDG, Innovate Plus</p>
+                            <div style="color: #ffa500; margin-top: 0.5rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem; opacity: 0.3;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p style="font-style: italic; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
+                        "Rigueur comptable et innovation technologique : exactement ce que nous cherchions ! 
+                        Notre site web et notre comptabilité sont désormais parfaitement synchronisés. 
+                        Son expertise technique nous a fait économiser des milliers d'euros en optimisation fiscale."
+                    </p>
+                    <div style="border-left: 3px solid var(--secondary-color); padding-left: 1rem;">
+                        <strong>Projet :</strong> Application de gestion + Optimisation fiscale<br>
+                        <strong>Durée :</strong> 6 mois<br>
+                        <strong>Résultat :</strong> 25 000€ d'économies fiscales annuelles
+                    </div>
+                </div>
+
+                <!-- Témoignage 3 -->
+                <div class="card animate-on-scroll">
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-right: 1rem;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem; color: var(--primary-color);">Sophie Laurent</h3>
+                            <p style="color: var(--text-secondary); margin: 0;">Directrice Financière, Creative Agency</p>
+                            <div style="color: #ffa500; margin-top: 0.5rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; opacity: 0.3;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p style="font-style: italic; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
+                        "Un accompagnement personnalisé et une expertise technique remarquable. 
+                        Notre transformation digitale s'est déroulée sans accroc grâce à son professionnalisme. 
+                        Je recommande vivement ses services !"
+                    </p>
+                    <div style="border-left: 3px solid var(--primary-color); padding-left: 1rem;">
+                        <strong>Projet :</strong> Transformation digitale complète<br>
+                        <strong>Durée :</strong> 4 mois<br>
+                        <strong>Résultat :</strong> Processus automatisés à 80%
+                    </div>
+                </div>
+
+                <!-- Témoignage 4 -->
+                <div class="card animate-on-scroll">
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient-secondary); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-right: 1rem;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem; color: var(--primary-color);">Pierre Rousseau</h3>
+                            <p style="color: var(--text-secondary); margin: 0;">Fondateur, EcoTech Solutions</p>
+                            <div style="color: #ffa500; margin-top: 0.5rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem; opacity: 0.3;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p style="font-style: italic; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
+                        "Depuis que nous travaillons avec lui, notre comptabilité est irréprochable et notre 
+                        présence en ligne s'est considérablement renforcée. Sa réactivité et son professionnalisme 
+                        font la différence. Un vrai partenaire de confiance !"
+                    </p>
+                    <div style="border-left: 3px solid var(--secondary-color); padding-left: 1rem;">
+                        <strong>Projet :</strong> Site e-commerce + Suivi comptable<br>
+                        <strong>Durée :</strong> En cours (2 ans)<br>
+                        <strong>Résultat :</strong> CA en ligne x3, comptabilité optimisée
+                    </div>
+                </div>
+
+                <!-- Témoignage 5 -->
+                <div class="card animate-on-scroll">
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-right: 1rem;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem; color: var(--primary-color);">Amélie Dubois</h3>
+                            <p style="color: var(--text-secondary); margin: 0;">Responsable Administrative, MediCare Plus</p>
+                            <div style="color: #ffa500; margin-top: 0.5rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; opacity: 0.3;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p style="font-style: italic; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
+                        "Nous cherchions quelqu'un capable de comprendre nos enjeux métier tout en modernisant 
+                        nos outils. Mission accomplie ! Notre nouveau système de gestion nous fait gagner 
+                        un temps précieux au quotidien."
+                    </p>
+                    <div style="border-left: 3px solid var(--primary-color); padding-left: 1rem;">
+                        <strong>Projet :</strong> Système de gestion sur mesure<br>
+                        <strong>Durée :</strong> 5 mois<br>
+                        <strong>Résultat :</strong> -60% temps administratif
+                    </div>
+                </div>
+
+                <!-- Témoignage 6 -->
+                <div class="card animate-on-scroll">
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient-secondary); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-right: 1rem;">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem; color: var(--primary-color);">Thomas Bernard</h3>
+                            <p style="color: var(--text-secondary); margin: 0;">Gérant, Artisan Bâtiment Pro</p>
+                            <div style="color: #ffa500; margin-top: 0.5rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem; opacity: 0.3;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p style="font-style: italic; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
+                        "En tant qu'artisan, je n'y connaissais rien en comptabilité ni en informatique. 
+                        Il a su m'expliquer simplement et m'accompagner pas à pas. Aujourd'hui, je gère 
+                        tout facilement et mon activité s'est développée grâce au site web qu'il a créé."
+                    </p>
+                    <div style="border-left: 3px solid var(--secondary-color); padding-left: 1rem;">
+                        <strong>Projet :</strong> Site vitrine + Formation comptabilité<br>
+                        <strong>Durée :</strong> 2 mois + suivi<br>
+                        <strong>Résultat :</strong> +200% de demandes de devis
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Carrousel vidéo témoignages -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Témoignages Vidéo</h2>
+                <p class="section-subtitle">
+                    Ils parlent de leur expérience en images
+                </p>
+            </div>
+            
+            <div class="carousel animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <div class="card" style="text-align: center; padding: 3rem;">
+                            <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--gradient-primary); margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Marie Dupont</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                                "Découvrez comment Expert Pro a transformé notre entreprise en 3 mois"
+                            </p>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-play"></i> Voir la vidéo
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="card" style="text-align: center; padding: 3rem;">
+                            <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--gradient-secondary); margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; color: var(--secondary-color);">Jean Martin</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                                "25 000€ d'économies grâce à l'optimisation fiscale et au nouveau système"
+                            </p>
+                            <button class="btn" style="background: var(--secondary-color); color: white;">
+                                <i class="fas fa-play"></i> Voir la vidéo
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="card" style="text-align: center; padding: 3rem;">
+                            <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--gradient-primary); margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Sophie Laurent</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                                "La transformation digitale de notre agence créative"
+                            </p>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-play"></i> Voir la vidéo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn carousel-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="carousel-indicators">
+                    <div class="carousel-indicator active"></div>
+                    <div class="carousel-indicator"></div>
+                    <div class="carousel-indicator"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Notes et avis -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Nos Évaluations</h2>
+                <p class="section-subtitle">
+                    Retrouvez-nous sur les principales plateformes
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll" style="text-align: center;">
+                    <div style="color: #4285f4; font-size: 3rem; margin-bottom: 1rem;">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem;">Google Reviews</h3>
+                    <div style="color: #ffa500; font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">4.9/5</div>
+                    <p style="color: var(--text-secondary);">Basé sur 47 avis</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">
+                        <i class="fas fa-external-link-alt"></i> Voir tous les avis
+                    </a>
+                </div>
+                
+                <div class="card animate-on-scroll" style="text-align: center;">
+                    <div style="color: #0077b5; font-size: 3rem; margin-bottom: 1rem;">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem;">LinkedIn</h3>
+                    <div style="color: #ffa500; font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">5.0/5</div>
+                    <p style="color: var(--text-secondary);">32 recommandations</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">
+                        <i class="fas fa-external-link-alt"></i> Voir le profil
+                    </a>
+                </div>
+                
+                <div class="card animate-on-scroll" style="text-align: center;">
+                    <div style="color: var(--primary-color); font-size: 3rem; margin-bottom: 1rem;">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem;">Recommandations</h3>
+                    <div style="color: #ffa500; font-size: 1.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">98%</div>
+                    <p style="color: var(--text-secondary);">Taux de recommandation</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">
+                        <i class="fas fa-heart"></i> Laisser un avis
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section FAQ Témoignages -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Questions sur les Témoignages</h2>
+                <p class="section-subtitle">
+                    Transparence et authenticité
+                </p>
+            </div>
+            
+            <div class="animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Ces témoignages sont-ils authentiques ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolument ! Tous les témoignages présentés sont authentiques et vérifiés. 
+                            Nous pouvons fournir les coordonnées de nos clients (avec leur accord) 
+                            pour toute vérification.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Puis-je parler directement avec vos anciens clients ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Oui, sur demande et avec l'accord de nos clients, nous pouvons organiser 
+                            des échanges pour que vous puissiez avoir leur retour d'expérience direct.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Comment puis-je laisser mon témoignage ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Après la réalisation de votre projet, nous vous inviterons à partager 
+                            votre expérience. Vous pouvez également nous contacter directement 
+                            pour laisser un avis.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Garantissez-vous la même qualité pour tous vos clients ?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Chaque client bénéficie du même niveau d'exigence et de professionnalisme. 
+                            Notre approche personnalisée s'adapte à vos besoins spécifiques tout en 
+                            maintenant nos standards de qualité.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="card animate-on-scroll" style="text-align: center; background: var(--gradient-primary); color: white; padding: 4rem 2rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Rejoignez nos clients satisfaits</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9;">
+                    Votre succès sera notre prochaine histoire à célébrer
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-rocket"></i>
+                        Démarrer mon projet
+                    </a>
+                    <a href="services.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-info-circle"></i>
+                        Voir mes services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Expert Pro</h3>
+                <p>Expert comptable et développeur web, je vous accompagne dans votre transformation digitale avec passion et expertise.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#comptabilite">Comptabilité</a></li>
+                    <li><a href="services.html#fiscalite">Fiscalité</a></li>
+                    <li><a href="services.html#web-dev">Développement Web</a></li>
+                    <li><a href="services.html#conseil">Conseil</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="testimonials.html">Témoignages</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="legal.html">Mentions légales</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@expert-pro.com</li>
+                    <li><i class="fas fa-phone"></i> 01 23 45 67 89</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                    <li><a href="chatbot.html">Assistant virtuel</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Expert Pro. Tous droits réservés. | Site développé avec passion ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Chatbot -->
+    <button class="chatbot-toggle" aria-label="Assistant virtuel">
+        <i class="fas fa-comments"></i>
+    </button>
+    
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <i class="fas fa-robot"></i> Assistant Virtuel
+        </div>
+        <div class="chatbot-messages"></div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" placeholder="Tapez votre message...">
+            <button class="chatbot-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>
