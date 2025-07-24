@@ -55,7 +55,7 @@
                 <button class="theme-toggle" onclick="toggleTheme()">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <button class="mobile-menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -63,8 +63,9 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" style="min-height: 60vh;">
-        <div class="hero-content">
+    <section class="hero" style="min-height: 60vh; background: var(--gradient-primary); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/images/about-bg.svg') center/cover no-repeat; opacity: 0.6; z-index: 1;"></div>
+        <div class="hero-content" style="z-index: 2; position: relative;">
             <h1 class="hero-title">À propos de moi</h1>
             <p class="hero-subtitle">Passion, expertise et innovation</p>
             <p class="hero-description">
