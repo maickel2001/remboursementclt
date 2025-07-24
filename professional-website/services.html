@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Expert Comptable & Développeur Web</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Services professionnels de comptabilité, fiscalité, développement web et conseil stratégique. Solutions complètes pour votre entreprise.">
+    <meta name="keywords" content="services comptables, développement web, fiscalité, conseil, expertise comptable">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Chargement...</div>
+        </div>
+    </div>
+
+    <!-- Barre de progression du scroll -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> Expert Pro
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="about.html" class="nav-link">À propos</a></li>
+                <li><a href="services.html" class="nav-link active">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="testimonials.html" class="nav-link">Témoignages</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">Mes Services</h1>
+            <p class="hero-subtitle">Solutions complètes pour votre entreprise</p>
+            <p class="hero-description">
+                De la comptabilité au développement web, découvrez comment je peux vous accompagner
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Aperçu des services -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Une expertise double</h2>
+                <p class="section-subtitle">
+                    Comptabilité rigoureuse et développement web innovant
+                </p>
+            </div>
+            
+            <div class="grid grid-2" style="gap: 3rem;">
+                <div class="card animate-on-scroll" style="background: var(--gradient-primary); color: white; text-align: center; padding: 3rem;">
+                    <div style="font-size: 4rem; margin-bottom: 2rem;">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Expert Comptable</h3>
+                    <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem;">
+                        5+ ans d'expérience en comptabilité, fiscalité et gestion d'entreprise
+                    </p>
+                    <ul style="text-align: left; list-style: none;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: rgba(255,255,255,0.8); margin-right: 0.5rem;"></i> Tenue de comptabilité</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: rgba(255,255,255,0.8); margin-right: 0.5rem;"></i> Déclarations fiscales</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: rgba(255,255,255,0.8); margin-right: 0.5rem;"></i> Conseil stratégique</li>
+                        <li><i class="fas fa-check" style="color: rgba(255,255,255,0.8); margin-right: 0.5rem;"></i> Audit et analyse</li>
+                    </ul>
+                </div>
+                
+                <div class="card animate-on-scroll" style="background: var(--gradient-secondary); color: white; text-align: center; padding: 3rem;">
+                    <div style="font-size: 4rem; margin-bottom: 2rem;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Développeur Web</h3>
+                    <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem;">
+                        Passionné de technologies modernes et solutions digitales
+                    </p>
+                    <ul style="text-align: left; list-style: none;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: rgba(255,255,255,0.8); margin-right: 0.5rem;"></i> Sites web sur mesure</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: rgba(255,255,255,0.8); margin-right: 0.5rem;"></i> Applications web</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: rgba(255,255,255,0.8); margin-right: 0.5rem;"></i> E-commerce</li>
+                        <li><i class="fas fa-check" style="color: rgba(255,255,255,0.8); margin-right: 0.5rem;"></i> Maintenance & support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services Comptables -->
+    <section id="comptabilite" class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Services Comptables</h2>
+                <p class="section-subtitle">
+                    Gestion financière complète pour votre entreprise
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="card-title">Tenue de Comptabilité</h3>
+                    <p class="card-description">
+                        Saisie comptable, lettrage, rapprochements bancaires et établissement des comptes annuels.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Inclus :</h4>
+                        <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Saisie des écritures</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Édition des balances</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Comptes de résultat</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Bilans comptables</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="card-title">Déclarations Fiscales</h3>
+                    <p class="card-description">
+                        TVA, impôts sur les sociétés, CFE, et toutes déclarations obligatoires dans les délais.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Services :</h4>
+                        <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Déclarations TVA</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Liasse fiscale</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Impôt sur les sociétés</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Taxes diverses</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Analyse Financière</h3>
+                    <p class="card-description">
+                        Tableaux de bord, ratios financiers et conseils pour optimiser votre gestion.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Analyses :</h4>
+                        <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Ratios de rentabilité</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Seuil de rentabilité</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Prévisionnel financier</li>
+                            <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Tableaux de bord</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Développement Web -->
+    <section id="web-dev" class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Développement Web</h2>
+                <p class="section-subtitle">
+                    Solutions digitales modernes et performantes
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: var(--gradient-secondary);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="card-title">Sites Web Vitrine</h3>
+                    <p class="card-description">
+                        Sites web modernes, responsive et optimisés SEO pour présenter votre activité.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Technologies :</h4>
+                        <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> HTML5 / CSS3</li>
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> JavaScript moderne</li>
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Design responsive</li>
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Optimisation SEO</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: var(--gradient-secondary);">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="card-title">E-commerce</h3>
+                    <p class="card-description">
+                        Boutiques en ligne complètes avec gestion des commandes, paiements et stocks.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Fonctionnalités :</h4>
+                        <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Catalogue produits</li>
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Panier et commandes</li>
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Paiements sécurisés</li>
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Gestion des stocks</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon" style="background: var(--gradient-secondary);">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="card-title">Applications Web</h3>
+                    <p class="card-description">
+                        Applications métier personnalisées pour automatiser vos processus internes.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Solutions :</h4>
+                        <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> CRM sur mesure</li>
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Gestion de projets</li>
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Outils comptables</li>
+                            <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Dashboards analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services Conseil -->
+    <section id="conseil" class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Conseil & Stratégie</h2>
+                <p class="section-subtitle">
+                    Accompagnement personnalisé pour votre transformation digitale
+                </p>
+            </div>
+            
+            <div class="grid grid-2" style="gap: 3rem;">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="card-title">Conseil Stratégique</h3>
+                    <p class="card-description" style="margin-bottom: 1.5rem;">
+                        Analyse de vos besoins et recommandations pour optimiser votre gestion et votre présence digitale.
+                    </p>
+                    <ul style="list-style: none; color: var(--text-secondary);">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-arrow-right" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Audit organisationnel</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-arrow-right" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Stratégie digitale</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-arrow-right" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Optimisation des processus</li>
+                        <li><i class="fas fa-arrow-right" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Plan de développement</li>
+                    </ul>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="card-title">Support & Maintenance</h3>
+                    <p class="card-description" style="margin-bottom: 1.5rem;">
+                        Accompagnement continu pour assurer la pérennité de vos outils comptables et digitaux.
+                    </p>
+                    <ul style="list-style: none; color: var(--text-secondary);">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-arrow-right" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Maintenance préventive</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-arrow-right" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Support technique</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-arrow-right" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Mises à jour régulières</li>
+                        <li><i class="fas fa-arrow-right" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Formation utilisateurs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Tarifs -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Tarification</h2>
+                <p class="section-subtitle">
+                    Des tarifs transparents adaptés à vos besoins
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll" style="text-align: center;">
+                    <div style="background: var(--gradient-primary); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Comptabilité</h3>
+                        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">À partir de</div>
+                        <div style="font-size: 3rem; font-weight: 800;">300€</div>
+                        <div style="opacity: 0.9;">/mois</div>
+                    </div>
+                    <ul style="list-style: none; text-align: left;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Tenue de comptabilité</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Déclarations TVA</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Bilan annuel</li>
+                        <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Support téléphonique</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 2rem;">
+                        Demander un devis
+                    </a>
+                </div>
+                
+                <div class="card animate-on-scroll" style="text-align: center; position: relative; border: 2px solid var(--primary-color);">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 0.5rem 2rem; border-radius: 25px; font-weight: 600;">
+                        Populaire
+                    </div>
+                    <div style="background: var(--gradient-secondary); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Site Web</h3>
+                        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">À partir de</div>
+                        <div style="font-size: 3rem; font-weight: 800;">1500€</div>
+                        <div style="opacity: 0.9;">projet</div>
+                    </div>
+                    <ul style="list-style: none; text-align: left;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Design sur mesure</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Responsive design</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Optimisation SEO</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Formation incluse</li>
+                    </ul>
+                    <a href="contact.html" class="btn" style="background: var(--secondary-color); color: white; width: 100%; justify-content: center; margin-top: 2rem;">
+                        Demander un devis
+                    </a>
+                </div>
+                
+                <div class="card animate-on-scroll" style="text-align: center;">
+                    <div style="background: var(--gradient-primary); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Pack Complet</h3>
+                        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">Sur devis</div>
+                        <div style="font-size: 2rem; font-weight: 600;">Personnalisé</div>
+                        <div style="opacity: 0.9;">selon besoins</div>
+                    </div>
+                    <ul style="list-style: none; text-align: left;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Comptabilité complète</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Site web professionnel</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Conseil stratégique</li>
+                        <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Support prioritaire</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 2rem;">
+                        Contactez-moi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="card animate-on-scroll" style="text-align: center; background: var(--gradient-primary); color: white; padding: 4rem 2rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Prêt à démarrer votre projet ?</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9;">
+                    Contactez-moi pour une consultation gratuite de 30 minutes
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-calendar"></i>
+                        Réserver ma consultation
+                    </a>
+                    <a href="tel:+33123456789" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-phone"></i>
+                        01 23 45 67 89
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Expert Pro</h3>
+                <p>Expert comptable et développeur web, je vous accompagne dans votre transformation digitale avec passion et expertise.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#comptabilite">Comptabilité</a></li>
+                    <li><a href="services.html#fiscalite">Fiscalité</a></li>
+                    <li><a href="services.html#web-dev">Développement Web</a></li>
+                    <li><a href="services.html#conseil">Conseil</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="testimonials.html">Témoignages</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="legal.html">Mentions légales</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@expert-pro.com</li>
+                    <li><i class="fas fa-phone"></i> 01 23 45 67 89</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                    <li><a href="chatbot.html">Assistant virtuel</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Expert Pro. Tous droits réservés. | Site développé avec passion ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Chatbot -->
+    <button class="chatbot-toggle" aria-label="Assistant virtuel">
+        <i class="fas fa-comments"></i>
+    </button>
+    
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <i class="fas fa-robot"></i> Assistant Virtuel
+        </div>
+        <div class="chatbot-messages"></div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" placeholder="Tapez votre message...">
+            <button class="chatbot-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Expert Comptable & Développeur Web</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Découvrez mes réalisations en comptabilité et développement web. Projets clients, études de cas et exemples de mon expertise.">
+    <meta name="keywords" content="portfolio, projets, réalisations, comptabilité, développement web, études de cas">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Chargement...</div>
+        </div>
+    </div>
+
+    <!-- Barre de progression du scroll -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> Expert Pro
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="about.html" class="nav-link">À propos</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                <li><a href="testimonials.html" class="nav-link">Témoignages</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">Mon Portfolio</h1>
+            <p class="hero-subtitle">Réalisations & Projets</p>
+            <p class="hero-description">
+                Découvrez mes derniers projets et réalisations en comptabilité et développement web
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Filtres -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Mes Réalisations</h2>
+                <p class="section-subtitle">
+                    Une sélection de projets qui illustrent mon expertise
+                </p>
+            </div>
+            
+            <!-- Filtres de catégories -->
+            <div style="text-align: center; margin-bottom: 3rem;" class="animate-on-scroll">
+                <div class="portfolio-filters" style="display: inline-flex; gap: 1rem; flex-wrap: wrap; background: var(--bg-glass); backdrop-filter: blur(10px); padding: 1rem; border-radius: 50px; border: 1px solid var(--border-color);">
+                    <button class="filter-btn active" data-filter="all" style="padding: 0.75rem 1.5rem; border: none; border-radius: 25px; background: var(--primary-color); color: white; cursor: pointer; transition: all 0.3s ease;">
+                        Tous les projets
+                    </button>
+                    <button class="filter-btn" data-filter="comptabilite" style="padding: 0.75rem 1.5rem; border: none; border-radius: 25px; background: transparent; color: var(--text-primary); cursor: pointer; transition: all 0.3s ease;">
+                        Comptabilité
+                    </button>
+                    <button class="filter-btn" data-filter="web" style="padding: 0.75rem 1.5rem; border: none; border-radius: 25px; background: transparent; color: var(--text-primary); cursor: pointer; transition: all 0.3s ease;">
+                        Développement Web
+                    </button>
+                    <button class="filter-btn" data-filter="ecommerce" style="padding: 0.75rem 1.5rem; border: none; border-radius: 25px; background: transparent; color: var(--text-primary); cursor: pointer; transition: all 0.3s ease;">
+                        E-commerce
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets -->
+    <section class="section" style="padding-top: 0;">
+        <div class="section-container">
+            <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                
+                <!-- Projet 1 - E-commerce -->
+                <div class="portfolio-item animate-on-scroll" data-category="ecommerce web">
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <div style="height: 200px; background: var(--gradient-secondary); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div style="padding: 2rem;">
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: var(--gradient-secondary); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">E-commerce</span>
+                                <span style="background: var(--gradient-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Web</span>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">BoutiquePro - Mode Féminine</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                                Développement complet d'une boutique en ligne avec gestion comptable intégrée. 
+                                Plus de 500 produits, paiements sécurisés et tableau de bord financier en temps réel.
+                            </p>
+                            <div style="margin-bottom: 1.5rem;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 0.9rem;">Technologies utilisées :</h4>
+                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                    <span style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 5px; font-size: 0.8rem;">HTML5/CSS3</span>
+                                    <span style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 5px; font-size: 0.8rem;">JavaScript</span>
+                                    <span style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 5px; font-size: 0.8rem;">Stripe API</span>
+                                    <span style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 5px; font-size: 0.8rem;">Comptabilité</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.9rem;">
+                                    <i class="fas fa-eye"></i> Voir le projet
+                                </button>
+                                <button class="btn btn-secondary" style="padding: 0.75rem;">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 2 - Comptabilité -->
+                <div class="portfolio-item animate-on-scroll" data-category="comptabilite">
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <div style="height: 200px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div style="padding: 2rem;">
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: var(--gradient-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Comptabilité</span>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Restructuration TechStart</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                                Accompagnement complet d'une startup tech : restructuration comptable, optimisation fiscale 
+                                et mise en place d'outils de gestion prévisionnelle.
+                            </p>
+                            <div style="margin-bottom: 1.5rem;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 0.9rem;">Résultats obtenus :</h4>
+                                <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary);">
+                                    <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> -30% de charges fiscales</li>
+                                    <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Processus automatisés</li>
+                                    <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Tableaux de bord temps réel</li>
+                                </ul>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.9rem;">
+                                    <i class="fas fa-file-alt"></i> Étude de cas
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3 - Application Web -->
+                <div class="portfolio-item animate-on-scroll" data-category="web">
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <div style="height: 200px; background: var(--gradient-secondary); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div style="padding: 2rem;">
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: var(--gradient-secondary); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Application</span>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">GestPro - CRM Entreprise</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                                Application de gestion d'entreprise complète avec modules CRM, facturation, 
+                                comptabilité et reporting avancé pour une PME de 50 employés.
+                            </p>
+                            <div style="margin-bottom: 1.5rem;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 0.9rem;">Fonctionnalités clés :</h4>
+                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                    <span style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 5px; font-size: 0.8rem;">CRM</span>
+                                    <span style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 5px; font-size: 0.8rem;">Facturation</span>
+                                    <span style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 5px; font-size: 0.8rem;">Analytics</span>
+                                    <span style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 5px; font-size: 0.8rem;">API REST</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.9rem;">
+                                    <i class="fas fa-play"></i> Démo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 4 - Site Web -->
+                <div class="portfolio-item animate-on-scroll" data-category="web">
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <div style="height: 200px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div style="padding: 2rem;">
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: var(--gradient-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Site Web</span>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Cabinet Juridique Moderne</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                                Site web vitrine ultra-moderne pour un cabinet d'avocats avec système de prise de rendez-vous, 
+                                blog juridique et espace client sécurisé.
+                            </p>
+                            <div style="margin-bottom: 1.5rem;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 0.9rem;">Performance :</h4>
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; font-size: 0.9rem;">
+                                    <div>
+                                        <span style="color: var(--primary-color); font-weight: 600;">SEO:</span>
+                                        <span style="color: var(--text-secondary);"> 95/100</span>
+                                    </div>
+                                    <div>
+                                        <span style="color: var(--primary-color); font-weight: 600;">Vitesse:</span>
+                                        <span style="color: var(--text-secondary);"> 97/100</span>
+                                    </div>
+                                    <div>
+                                        <span style="color: var(--primary-color); font-weight: 600;">Mobile:</span>
+                                        <span style="color: var(--text-secondary);"> 100%</span>
+                                    </div>
+                                    <div>
+                                        <span style="color: var(--primary-color); font-weight: 600;">Accessibilité:</span>
+                                        <span style="color: var(--text-secondary);"> 98/100</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.9rem;">
+                                    <i class="fas fa-external-link-alt"></i> Voir le site
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 5 - Dashboard Analytics -->
+                <div class="portfolio-item animate-on-scroll" data-category="comptabilite web">
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <div style="height: 200px; background: var(--gradient-secondary); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div style="padding: 2rem;">
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: var(--gradient-secondary); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Analytics</span>
+                                <span style="background: var(--gradient-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Comptabilité</span>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Dashboard Financier Innovate+</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                                Tableau de bord interactif avec visualisations avancées pour le suivi des performances 
+                                financières en temps réel d'une entreprise technologique.
+                            </p>
+                            <div style="margin-bottom: 1.5rem;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 0.9rem;">Métriques suivies :</h4>
+                                <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary);">
+                                    <li><i class="fas fa-chart-bar" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Chiffre d'affaires en temps réel</li>
+                                    <li><i class="fas fa-chart-bar" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Ratios financiers</li>
+                                    <li><i class="fas fa-chart-bar" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Prévisions automatisées</li>
+                                </ul>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.9rem;">
+                                    <i class="fas fa-chart-area"></i> Voir la démo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 6 - Audit & Conseil -->
+                <div class="portfolio-item animate-on-scroll" data-category="comptabilite">
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <div style="height: 200px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <div style="padding: 2rem;">
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: var(--gradient-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Audit</span>
+                                <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Conseil</span>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Transformation Digitale PME</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                                Mission complète d'audit et de transformation digitale pour une PME traditionnelle : 
+                                dématérialisation, automatisation et nouvelles pratiques comptables.
+                            </p>
+                            <div style="margin-bottom: 1.5rem;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 0.9rem;">Impact :</h4>
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; font-size: 0.9rem;">
+                                    <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 10px;">
+                                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">-60%</div>
+                                        <div style="color: var(--text-secondary);">Temps de saisie</div>
+                                    </div>
+                                    <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 10px;">
+                                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">+40%</div>
+                                        <div style="color: var(--text-secondary);">Productivité</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.9rem;">
+                                    <i class="fas fa-download"></i> Télécharger l'étude
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Statistiques Projets -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">En Chiffres</h2>
+                <p class="section-subtitle">
+                    L'impact de mes réalisations
+                </p>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="50">0</span>
+                    <span class="stat-label">Projets réalisés</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="98">0</span>
+                    <span class="stat-label">% de satisfaction</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="35">0</span>
+                    <span class="stat-label">Clients accompagnés</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="150">0</span>
+                    <span class="stat-label">K€ économisés clients</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Technologies -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Technologies Maîtrisées</h2>
+                <p class="section-subtitle">
+                    Outils et technologies que j'utilise dans mes projets
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="card-title">Développement</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">HTML5</span>
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">CSS3</span>
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">JavaScript</span>
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">React</span>
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Node.js</span>
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">PHP</span>
+                    </div>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="card-title">Comptabilité</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                        <span style="background: var(--secondary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Sage</span>
+                        <span style="background: var(--secondary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">QuickBooks</span>
+                        <span style="background: var(--secondary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Cegid</span>
+                        <span style="background: var(--secondary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">EBP</span>
+                        <span style="background: var(--secondary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Excel Avancé</span>
+                    </div>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="card-title">Outils</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                        <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Git</span>
+                        <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Docker</span>
+                        <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">AWS</span>
+                        <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Figma</span>
+                        <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="card animate-on-scroll" style="text-align: center; background: var(--gradient-primary); color: white; padding: 4rem 2rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Votre projet sera le prochain ?</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9;">
+                    Discutons de vos besoins et créons ensemble quelque chose d'exceptionnel
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-rocket"></i>
+                        Démarrer un projet
+                    </a>
+                    <a href="services.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-cogs"></i>
+                        Voir mes services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Expert Pro</h3>
+                <p>Expert comptable et développeur web, je vous accompagne dans votre transformation digitale avec passion et expertise.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#comptabilite">Comptabilité</a></li>
+                    <li><a href="services.html#fiscalite">Fiscalité</a></li>
+                    <li><a href="services.html#web-dev">Développement Web</a></li>
+                    <li><a href="services.html#conseil">Conseil</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="testimonials.html">Témoignages</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="legal.html">Mentions légales</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@expert-pro.com</li>
+                    <li><i class="fas fa-phone"></i> 01 23 45 67 89</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                    <li><a href="chatbot.html">Assistant virtuel</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Expert Pro. Tous droits réservés. | Site développé avec passion ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Chatbot -->
+    <button class="chatbot-toggle" aria-label="Assistant virtuel">
+        <i class="fas fa-comments"></i>
+    </button>
+    
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <i class="fas fa-robot"></i> Assistant Virtuel
+        </div>
+        <div class="chatbot-messages"></div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" placeholder="Tapez votre message...">
+            <button class="chatbot-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript pour les filtres -->
+    <script>
+        // Filtres du portfolio
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Retirer la classe active de tous les boutons
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.background = 'transparent';
+                        b.style.color = 'var(--text-primary)';
+                    });
+                    
+                    // Ajouter la classe active au bouton cliqué
+                    btn.classList.add('active');
+                    btn.style.background = 'var(--primary-color)';
+                    btn.style.color = 'white';
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                            item.style.display = 'block';
+                            item.style.animation = 'fadeIn 0.5s ease';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <!-- JavaScript principal -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>
